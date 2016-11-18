@@ -1,0 +1,156 @@
+/*============  Search form  =============*/
+.js-search
+{
+    z-index:10;
+    display: inline-block;
+    margin:23px 0 0 0;
+    position: relative;
+    float: right;
+    
+}
+.js-search.active .toggle
+{
+    color: #bcbcbc;
+}
+.js-search.active .toggle:before
+{
+    content: '\f00d';
+}
+.js-search.active .search-form
+{
+    width: 200px;
+}
+.js-search .toggle
+{
+    font:20px/43px 'FontAwesome';
+    position: relative;
+    z-index: 2;
+    margin-left: 10px;
+    display: block;
+    width:43px;
+    height:43px;
+    border-radius:100%;
+    background:#e1e1e1;
+    text-align:center;
+
+    cursor: pointer;
+    -webkit-transition: .3s all ease;
+       -moz-transition: .3s all ease;
+         -o-transition: .3s all ease;
+            transition: .3s all ease;
+    text-align: center;
+
+    color:#fff;
+    text-align:center;
+}
+.js-search .toggle:hover
+{
+    color:#323232;
+}
+.js-search .toggle:before
+{
+    content: '\f002';
+}
+.js-search .search-form
+{
+    position: absolute;
+    z-index: 1;
+    top:3px;
+    right: 100%;
+
+    overflow: hidden;
+
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 0;
+
+    -webkit-transition: .3s all ease;
+       -moz-transition: .3s all ease;
+         -o-transition: .3s all ease;
+            transition: .3s all ease;
+}
+.js-search .search-form .input {
+    box-shadow:none;
+    border-radius:0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border:none;
+    margin:0;
+    width:100%;
+    border: 1px solid #e1e1e1;
+    font:13px 'Raleway';
+    color:#6a6a6a;
+    background:#fff;
+    padding:8px 35px 8px 15px;
+    height: 37px;
+    outline:none;
+    resize:none;
+    overflow:hidden;
+}
+.js-search .search-form a
+{
+    font: normal 14px 'FontAwesome';
+    line-height: 20px;
+
+    position: absolute;
+    top: 50%;
+    right: 7px;
+
+    width: 20px;
+    height: 20px;
+    margin-top: -12px;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    color: #b3b4a7;
+}
+.js-search .search-form a:before
+{
+    content: '\f054';
+}
+.js-search .search-form a:hover
+{
+    text-decoration: none;
+
+    color: #323232;
+}
+.js-search .search-form input {
+    font: inherit;
+    line-height: inherit;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    color: inherit;
+    border:none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    outline: none;
+    background-color:none;
+    -webkit-appearance: none;
+}
+@media (max-width: 1350px) {
+  .js-search {
+      margin: 57px 0 0 0;
+  }
+} 
+@media (max-width: 991px) {
+.js-search {
+  margin: 20px 0 0 0;
+  float: none;
+}
+@media (max-width: 560px)
+{
+.js-search {
+    margin: 20px 0;
+    float: right;
+}
+}
+} 
