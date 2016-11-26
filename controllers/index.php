@@ -10,6 +10,7 @@ class Index extends Controller {
     {
         $this->view->title = 'Home';
 
+        //$this->view->js[] = ''
         $this->view->render('header.site');
         $this->view->render('index/index');
         $this->view->render('footer.site');
@@ -21,7 +22,10 @@ class Index extends Controller {
         $this->view->product = new Product_Model();
         $this->view->product->obterProduct( $id_product );*/
 
-        $this->view->title = 'Produto';
+      $this->view->title = 'Produto';
+
+      $this->view->id = $id_product;
+
     	$this->view->render('header.site');
     	$this->view->render('index/produto');
     	$this->view->render('footer.site');

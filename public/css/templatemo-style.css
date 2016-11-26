@@ -203,6 +203,14 @@ header .social-icon li a
 }
 /* end navigation */
 
+#pagina
+{
+	background: url('../../public/img/home-bg.jpg') no-repeat;
+	background-size: cover;
+
+	min-height: 150px;
+}
+
 /* start home */
 #home
 	{
@@ -212,6 +220,7 @@ header .social-icon li a
 		padding-bottom: 100px;
 		min-height: 650px;
 	}
+
 #home h1
 	{
 		font-weight: 300;
@@ -289,7 +298,7 @@ header .social-icon li a
 #team .team-wrapper:hover
 	{
 		cursor: pointer;
-		opacity: 0.4;
+		opacity: 0.6;
 		bottom: 4px;
 	}
 #team .team-wrapper .team-des

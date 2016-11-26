@@ -1,92 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<!--
-        Awesome Template
-        http://www.templatemo.com/preview/templatemo_450_awesome
-        -->
-		<title>3DSELF</title>
-		<meta name="keywords" content="">
-		<meta name="description" content="">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="stylesheet" href="<?php echo URL; ?>public/css/animate.min.css">
-		<link rel="stylesheet" href="<?php echo URL; ?>public/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo URL; ?>public/css/font-awesome.min.css">
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="<?php echo URL; ?>public/css/templatemo-style.css">
-		<script src="<?php echo URL; ?>public/js/jquery.js"></script>
-		<script src="<?php echo URL; ?>public/js/bootstrap.min.js"></script>
-        <script src="<?php echo URL; ?>public/js/jquery.singlePageNav.min.js"></script>
-		<script src="<?php echo URL; ?>public/js/typed.js"></script>
-		<script src="<?php echo URL; ?>public/js/wow.min.js"></script>
-		<script src="<?php echo URL; ?>public/js/custom.js"></script>
-	</head>
-	<body id="top">
-
-		<!-- start preloader -->
-		<div class="preloader">
-			<div class="sk-spinner sk-spinner-wave">
-     	 		<div class="sk-rect1"></div>
-       			<div class="sk-rect2"></div>
-       			<div class="sk-rect3"></div>
-      	 		<div class="sk-rect4"></div>
-      			<div class="sk-rect5"></div>
-     		</div>
-    	</div>
-    	<!-- end preloader -->
-
-        <!-- start header -->
-        <header>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-4 col-xs-12">
-                        <!--<p><i class="fa fa-phone" ></i> (11) 95569-1005</p>-->
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <!--<p><i class="fa fa-envelope-o"></i> <a href="#">contato@3dself.com</a> <i class="fa fa-phone" ></i> (11) 95569-1005</p>-->
-
-                    </div>
-                    <div class="col-md-5 col-sm-4 col-xs-12">
-                        <ul class="social-icon">
-                            <li><span>Siga-nos</span></li>
-                            <li><a href="#" class="fa fa-facebook" style="background:#1c90dd; "></a></li>
-                            <li><a href="#" class="fa fa-twitter" style="background:#1c90dd; "></a></li>
-                            <li><a href="#" class="fa fa-instagram" style="background:#1c90dd; "></a></li>
-                            <li><a href="#" class="fa fa-apple" style="background:#1c90dd; "></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- end header -->
-
-    	<!-- start navigation -->
-		<nav class="navbar navbar-default templatemo-nav " role="navigation">
-			<div class="container" style="margin-bottom:5px; margin-top:5px">
-				<div class="navbar-header">
-					<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="icon icon-bar"></span>
-						<span class="icon icon-bar"></span>
-						<span class="icon icon-bar"></span>
-					</button>
-					<div style="margin-top:-70px"><a href="#" class="navbar-brand"><img src="<?php echo URL?>public/img/logo-3dself.png" height="150" alt=""></a></div>
-				</div>
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#top">HOME</a></li>
-						<li><a href="#about">QUEM SOMOS</a></li>
-						<li><a href="#team">PRODUTOS</a></li>
-						<!--<li><a href="#service">SERVICE</a></li>-->
-						<li><a href="#portfolio">PORTFOLIO</a></li>
-						<li><a href="#contact">CONTATO</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<!-- end navigation -->
 
     	<!-- start home -->
     	<section id="home">
@@ -168,7 +80,7 @@
 
 					<?php for ($i=1; $i <=12; $i++) { ?>
     				<div class="col-md-2 col-sm-3 col-xs-6 wow fadeIn produto-box" data-wow-offset="50" data-wow-delay="0.4s">
-    					<div class="team-wrapper">
+    					<div class="team-wrapper" id="<?php echo $i; ?>">
     						<img src="<?php echo URL; ?>public/img/product/<?php echo $i;?>/1.jpg" class="img-responsive" alt="team img 1">
 							<div class="team-des">
 								<h4 style="color:#fff">Nome produto</h4>
@@ -305,60 +217,3 @@
     		</div>
     	</section>
     	<!-- end portfolio -->
-
-    	<!-- start contact -->
-    	<section id="contact" style="background: #0e0e0e">
-    		<div class="container">
-    			<div class="row">
-    				<div class="col-md-12">
-    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTATO <span>PEÇA JÁ O SEU</span></h2>
-    				</div>
-    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.2s">
-    					<form action="#" method="post">
-    						<label>NOME</label>
-    						<input name="fullname" type="text" class="form-control" id="fullname">
-
-                            <label>E-MAIL</label>
-    						<input name="email" type="email" class="form-control" id="email">
-
-                            <label>MENSAGEM</label>
-    						<textarea name="message" rows="4" class="form-control" id="message"></textarea>
-
-                            <input type="submit" class="form-control">
-    					</form>
-    				</div>
-    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.2s">
-    					<address>
-    						<p class="address-title">NOSSO ENDEREÇO</p>
-    						<span>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</span>
-    						<p><i class="fa fa-phone"></i> (11) 3380-1329</p>
-    						<p><i class="fa fa-envelope-o"></i> contato@3dself.com</p>
-    						<p><i class="fa fa-map-marker"></i> Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-    					</address>
-    					<ul class="social-icon">
-    						<li><h4>Siga-nos</h4></li>
-    						<li><a href="#" class="fa fa-facebook"></a></li>
-    						<li><a href="#" class="fa fa-twitter"></a></li>
-    						<li><a href="#" class="fa fa-instagram"></a></li>
-    					</ul>
-    				</div>
-    			</div>
-    		</div>
-    	</section>
-    	<!-- end contact -->
-
-        <!-- start copyright -->
-        <footer id="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.1s">
-                       	Copyright &copy; <?php echo date('Y') ?> by <a href="http://www.nepali.com.br" target="_blank">nepali</a></p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- end copyright -->
-
-	</body>
-</html>
