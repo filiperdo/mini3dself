@@ -36,6 +36,29 @@ h2 span
 	}
 /* end h2 */
 
+.ico-step{
+	border: 1px solid #fff;
+	border-radius: 2px;
+	color: #fff;
+	font-size: 50px;
+	width: 100px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+}
+.ico-about{
+	border: 1px solid #fff;
+	border-radius: 2px;
+	color: #fff;
+	font-size: 24px;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	margin-bottom: 20px;
+	margin-right: 20px;
+}
+
 /* start about team service portfolio contact */
 #about, #team, #service,
 #portfolio, #contact
@@ -276,6 +299,31 @@ header .social-icon li a
 /* end about */
 
 /* start team */
+.cart{
+	font-size: 150%;
+}
+#team .team-product
+{
+	background: #404040;
+	padding-bottom: 10px;
+	-webkit-transition: all 0.4s ease-in-out;
+	        transition: all 0.4s ease-in-out;
+	position: relative;
+	border:1px solid #999
+}
+#team .team-product .team-des
+{
+	padding: 20px;
+}
+#team .team-product .team-des span
+{
+	color: #28a7e9;
+	display: block;
+	font-weight: bold;
+	padding-bottom: 12px;
+}
+
+
 #team .team-wrapper
 	{
 		background: #404040;
@@ -313,7 +361,7 @@ header .social-icon li a
 		padding: 40px;
 		-webkit-transition: all 0.4s ease-in-out;
 		        transition: all 0.4s ease-in-out;
-		background: #eaeaea;
+		text-align: center;
 	}
 #service .col-md-4:hover
 	{
