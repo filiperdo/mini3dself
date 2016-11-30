@@ -52,15 +52,17 @@ class User extends Controller {
 	{
 		$data = array(
 			'name' => $_POST["name"], 
+			'email' => $_POST["email"], 
 			'login' => $_POST["login"], 
 			'password' => $_POST["password"], 
-			'email' => $_POST["email"], 
-			'numlogin' => $_POST["numlogin"], 
 			'date' => $_POST["date"], 
-			'id_typeuser' => $_POST["id_typeuser"], 
 			'lastlogin' => $_POST["lastlogin"], 
-			'status' => $_POST["status"], 
-			'path' => $_POST["path"], 
+			'adress1' => $_POST["adress1"], 
+			'adress2' => $_POST["adress2"], 
+			'phone1' => $_POST["phone1"], 
+			'phone2' => $_POST["phone2"], 
+			'num_login' => $_POST["num_login"], 
+			'id_usertype' => $_POST["id_usertype"], 
 		);
 
 		$this->model->create( $data ) ? $msg = base64_encode( "OPERACAO_SUCESSO" ) : $msg = base64_encode( "OPERACAO_ERRO" );
@@ -75,15 +77,17 @@ class User extends Controller {
 	{
 		$data = array(
 			'name' => $_POST["name"], 
+			'email' => $_POST["email"], 
 			'login' => $_POST["login"], 
 			'password' => $_POST["password"], 
-			'email' => $_POST["email"], 
-			'numlogin' => $_POST["numlogin"], 
 			'date' => $_POST["date"], 
-			'id_typeuser' => $_POST["id_typeuser"], 
 			'lastlogin' => $_POST["lastlogin"], 
-			'status' => $_POST["status"], 
-			'path' => $_POST["path"], 
+			'adress1' => $_POST["adress1"], 
+			'adress2' => $_POST["adress2"], 
+			'phone1' => $_POST["phone1"], 
+			'phone2' => $_POST["phone2"], 
+			'num_login' => $_POST["num_login"], 
+			'id_usertype' => $_POST["id_usertype"], 
 		);
 
 		$this->model->edit( $data, $id ) ? $msg = base64_encode( "OPERACAO_SUCESSO" ) : $msg = base64_encode( "OPERACAO_ERRO" );

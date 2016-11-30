@@ -6,7 +6,7 @@
         Awesome Template
         http://www.templatemo.com/preview/templatemo_450_awesome
         -->
-		<title>Awesome Responsive Template</title>
+		<title>3DSELF</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -43,18 +43,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-4 col-xs-12">
-                        <p><i class="fa fa-phone"></i><span> Phone</span>010-020-0340</p>
+                        <!--<p><i class="fa fa-phone" ></i> (11) 95569-1005</p>-->
                     </div>
-                    <div class="col-md-3 col-sm-4 col-xs-12">
-                        <p><i class="fa fa-envelope-o"></i><span> Email</span><a href="#">awesome@company.com</a></p>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <!--<p><i class="fa fa-envelope-o"></i> <a href="#">contato@3dself.com</a> <i class="fa fa-phone" ></i> (11) 95569-1005</p>-->
+
                     </div>
                     <div class="col-md-5 col-sm-4 col-xs-12">
                         <ul class="social-icon">
-                            <li><span>Meet us on</span></li>
-                            <li><a href="#" class="fa fa-facebook"></a></li>
-                            <li><a href="#" class="fa fa-twitter"></a></li>
-                            <li><a href="#" class="fa fa-instagram"></a></li>
-                            <li><a href="#" class="fa fa-apple"></a></li>
+                            <li><span>Siga-nos</span></li>
+                            <li><a href="#" class="fa fa-facebook" style="background:#1c90dd; "></a></li>
+                            <li><a href="#" class="fa fa-twitter" style="background:#1c90dd; "></a></li>
+                            <li><a href="#" class="fa fa-instagram" style="background:#1c90dd; "></a></li>
+                            <li><a href="#" class="fa fa-apple" style="background:#1c90dd; "></a></li>
                         </ul>
                     </div>
                 </div>
@@ -63,24 +64,24 @@
         <!-- end header -->
 
     	<!-- start navigation -->
-		<nav class="navbar navbar-default templatemo-nav" role="navigation">
-			<div class="container">
+		<nav class="navbar navbar-default templatemo-nav " role="navigation">
+			<div class="container" style="margin-bottom:5px; margin-top:5px">
 				<div class="navbar-header">
 					<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="icon icon-bar"></span>
 						<span class="icon icon-bar"></span>
 						<span class="icon icon-bar"></span>
 					</button>
-					<a href="#" class="navbar-brand">Awesome</a>
+					<div style="margin-top:-70px"><a href="#" class="navbar-brand"><img src="<?php echo URL?>public/img/logo-3dself.png" height="150" alt=""></a></div>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#top">HOME</a></li>
-						<li><a href="#about">ABOUT</a></li>
-						<li><a href="#team">TEAM</a></li>
-						<li><a href="#service">SERVICE</a></li>
+						<li><a href="#about">QUEM SOMOS</a></li>
+						<li><a href="#team">PRODUTOS</a></li>
+						<!--<li><a href="#service">SERVICE</a></li>-->
 						<li><a href="#portfolio">PORTFOLIO</a></li>
-						<li><a href="#contact">CONTACT</a></li>
+						<li><a href="#contact">CONTATO</a></li>
 					</ul>
 				</div>
 			</div>
@@ -92,13 +93,13 @@
     		<div class="container">
     			<div class="row">
     				<div class="col-md-offset-2 col-md-8">
-    					<h1 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">We make templates that are <span>awesome</span></h1>
+    					<h1 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">Grandes momentos merecem ser eternizados com <span>uma miniatura 3D</span></h1>
     					<div class="element">
-                            <div class="sub-element">Hello, this is Typed.js</div>
+                            <!--<div class="sub-element">Hello, this is Typed.js</div>
                             <div class="sub-element">Awesome Template is provided by templatemo.com website for everyone</div>
-                            <div class="sub-element">Download, edit and apply this awesome template for your websites</div>
+                            <div class="sub-element">Download, edit and apply this awesome template for your websites</div>-->
                         </div>
-    					<a data-scroll href="#about" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">GET STARTED</a>
+    					<a data-scroll href="#about" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">Comece agora</a>
     				</div>
     			</div>
     		</div>
@@ -110,31 +111,31 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">WE ARE <span>AWESOME</span></h2>
+    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span>QUEM SOMOS</span></h2>
     				</div>
-					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.6s">
+					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.2s">
 						<div class="media">
 							<div class="media-heading-wrapper">
 								<div class="media-object pull-left">
 									<i class="fa fa-mobile"></i>
 								</div>
-								<h3 class="media-heading">FULLY RESPONSIVE</h3>
+								<h3 class="media-heading">MINIATURA 3D PARA EMPRESAS</h3>
 							</div>
 							<div class="media-body">
-								<p>Awesome responsive template is provided by <a rel="nofollow" href="http://www.templatemo.com" target="_parent">templatemo</a> website. This is Bootstrap v3.3.2 layout built on HTML5 CSS3. You can use this for any purpose. Please tell your friends about it.</p>
+								<p>Reconheça seus funcionários. Trabalhamos com conceitos especiais para reconhecimento e aumento de produtividade.</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-offset="50" data-wow-delay="0.9s">
+					<div class="col-md-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-offset="50" data-wow-delay="0.4s">
 						<div class="media">
 							<div class="media-heading-wrapper">
 								<div class="media-object pull-left">
 									<i class="fa fa-comment-o"></i>
 								</div>
-								<h3 class="media-heading">FREE SUPPORT</h3>
+								<h3 class="media-heading">MINIATURA 3D PARA MILITARES</h3>
 							</div>
 							<div class="media-body">
-								<p>Credits go to <a rel="nofollow" href="http://pixabay.com">Pixabay</a> for homepage image and <a rel="nofollow" href="http://unsplash.com">Unsplash</a> for portfolio images. Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</p>
+								<p>Para você que é Militar, temos um grande prazer em eternizar a Miniatura 3D de alguém tão dedicado em proteger a sociedade.</p>
 							</div>
 						</div>
 					</div>
@@ -144,10 +145,11 @@
 								<div class="media-object pull-left">
 									<i class="fa fa-html5"></i>
 								</div>
-								<h3 class="media-heading">HTML5 &AMP; CSS3</h3>
+								<h3 class="media-heading">MINIATURAS 3D INCRÍVEIS</h3>
 							</div>
 							<div class="media-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. Adipiscing vitae vel quam proin eget mauris eget. Lorem ipsum dolor sit amet.</p>
+								<p>Eternize momentos especiais.
+										A mini3D está pronta para registrar os melhores momentos da sua vida.</p>
 							</div>
 						</div>
 					</div>
@@ -161,17 +163,17 @@
     		<div class="container">
     			<div class="row">
     				<div class="col-md-12">
-    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span>PRODUTOS</span> 3DSELF</h2>
+    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span>PRODUTOS</span></h2>
     				</div>
 
-					<?php for ($i=1; $i <=8; $i++) { ?>
-    				<div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn produto-box" data-wow-offset="50" data-wow-delay="1.3s">
+					<?php for ($i=1; $i <=12; $i++) { ?>
+    				<div class="col-md-2 col-sm-3 col-xs-6 wow fadeIn produto-box" data-wow-offset="50" data-wow-delay="0.4s">
     					<div class="team-wrapper">
-    						<img src="<?php echo URL; ?>public/img/team-img.jpg" class="img-responsive" alt="team img 1">
+    						<img src="<?php echo URL; ?>public/img/product/<?php echo $i;?>/1.jpg" class="img-responsive" alt="team img 1">
 							<div class="team-des">
-								<h4>TRACY</h4>
-								<span>Designer</span>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molest.</p>
+								<h4 style="color:#fff">Nome produto</h4>
+								<span>R$ 99,00</span>
+								<!--<p style="color:#eaeaea">Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molest.</p>-->
 							</div>
     					</div>
     				</div>
@@ -187,22 +189,25 @@
     		<div class="container">
     			<div class="row">
     				<div class="col-md-12">
-    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">OUR <span>AWESOME</span> THINGS</h2>
+    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">ENTENDA <span>COMO FUNCIONA</span></h2>
     				</div>
-    				<div class="col-md-4 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
-    					<i class="fa fa-laptop"></i>
-    					<h4>Web Design</h4>
-    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. Adipiscing vitae vel quam proin eget mauris eget. Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</p>
+    				<div class="col-md-4 wow fadeIn" data-wow-offset="50" data-wow-delay="0.2s">
+    					<i class="fa fa-laptop" style="color: #28a7e9"></i>
+						<h3>PASSO 1</h3>
+						<h4>ESCOLHA O MODELO DE CORPO</h4>
+    					<!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. Adipiscing vitae vel quam proin eget mauris eget. Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</p>-->
     				</div>
-    				<div class="col-md-4 active wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">
-    					<i class="fa fa-cloud"></i>
-    					<h4>Cloud Computing</h4>
-    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. Adipiscing vitae vel quam proin eget mauris eget. Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</p>
+    				<div class="col-md-4 wow fadeIn" data-wow-offset="50" data-wow-delay="0.3s">
+    					<i class="fa fa-cloud" style="color: #28a7e9"></i>
+						<h3>PASSO 2</h3>
+						<h4>ENVIE AS FOTOS</h4>
+
     				</div>
-    				<div class="col-md-4 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
-    					<i class="fa fa-cog"></i>
-    					<h4>UX Design</h4>
-    					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. Adipiscing vitae vel quam proin eget mauris eget. Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</p>
+    				<div class="col-md-4 wow fadeIn" data-wow-offset="50" data-wow-delay="0.4s">
+    					<i class="fa fa-cog" style="color: #28a7e9"></i>
+						<h3>PASSO 3</h3>
+						<h4>NÓS CONSTRUÍMOS SEU MODELO</h4>
+
     				</div>
     			</div>
     		</div>
@@ -214,85 +219,85 @@
     		<div class="container">
     			<div class="row">
     				<div class="col-md-12">
-    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span>AWESOME</span> PORTFOLIO</h2>
+    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONHEÇA NOSSO <span>PORTFOLIO</span> </h2>
     				</div>
-    				<div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+    				<div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.2s">
                         <div class="portfolio-thumb">
     					   <img src="<?php echo URL; ?>public/img/portfolio-img1.jpg" class="img-responsive" alt="portfolio img 1">
                                 <div class="portfolio-overlay">
-                                    <h4>Project One</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                                    <a href="#" class="btn btn-default">DETAIL</a>
+									<h4>Nome projeto</h4>
+
+                                    <a href="#" class="btn btn-default">Detalhes</a>
                                 </div>
                         </div>
     				</div>
-    				<div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+    				<div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.2s">
                         <div class="portfolio-thumb">
                            <img src="<?php echo URL; ?>public/img/portfolio-img2.jpg" class="img-responsive" alt="portfolio img 2">
                                 <div class="portfolio-overlay">
-                                    <h4>Project Two</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                                    <a href="#" class="btn btn-default">DETAIL</a>
+									<h4>Nome projeto</h4>
+
+                                    <a href="#" class="btn btn-default">Detalhes</a>
                                 </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.2s">
                         <div class="portfolio-thumb">
                            <img src="<?php echo URL; ?>public/img/portfolio-img3.jpg" class="img-responsive" alt="portfolio img 3">
                                 <div class="portfolio-overlay">
-                                    <h4>Project Three</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                                    <a href="#" class="btn btn-default">DETAIL</a>
+                                    <h4>Nome projeto</h4>
+
+                                    <a href="#" class="btn btn-default">Detalhes</a>
                                 </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.2s">
                         <div class="portfolio-thumb">
                            <img src="<?php echo URL; ?>public/img/portfolio-img4.jpg" class="img-responsive" alt="portfolio img 4">
                                 <div class="portfolio-overlay">
-                                    <h4>Project Four</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                                    <a href="#" class="btn btn-default">DETAIL</a>
+									<h4>Nome projeto</h4>
+
+                                    <a href="#" class="btn btn-default">Detalhes</a>
                                 </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.2s">
                         <div class="portfolio-thumb">
                            <img src="<?php echo URL; ?>public/img/portfolio-img3.jpg" class="img-responsive" alt="portfolio img 3">
                                 <div class="portfolio-overlay">
-                                    <h4>Project Five</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                                    <a href="#" class="btn btn-default">DETAIL</a>
+									<h4>Nome projeto</h4>
+
+                                    <a href="#" class="btn btn-default">Detalhes</a>
                                 </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.2s">
                         <div class="portfolio-thumb">
                            <img src="<?php echo URL; ?>public/img/portfolio-img4.jpg" class="img-responsive" alt="portfolio img 4">
                                 <div class="portfolio-overlay">
-                                    <h4>Project Six</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                                    <a href="#" class="btn btn-default">DETAIL</a>
+									<h4>Nome projeto</h4>
+
+                                    <a href="#" class="btn btn-default">Detalhes</a>
                                 </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.2s">
                         <div class="portfolio-thumb">
                            <img src="<?php echo URL; ?>public/img/portfolio-img1.jpg" class="img-responsive" alt="portfolio img 1">
                                 <div class="portfolio-overlay">
-                                    <h4>Project Seven</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                                    <a href="#" class="btn btn-default">DETAIL</a>
+									<h4>Nome projeto</h4>
+
+                                    <a href="#" class="btn btn-default">Detalhes</a>
                                 </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.2s">
                         <div class="portfolio-thumb">
                            <img src="<?php echo URL; ?>public/img/portfolio-img2.jpg" class="img-responsive" alt="portfolio img 2">
                                 <div class="portfolio-overlay">
-                                    <h4>Project Eight</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                                    <a href="#" class="btn btn-default">DETAIL</a>
+									<h4>Nome projeto</h4>
+
+                                    <a href="#" class="btn btn-default">Detalhes</a>
                                 </div>
                         </div>
                     </div>
@@ -302,36 +307,36 @@
     	<!-- end portfolio -->
 
     	<!-- start contact -->
-    	<section id="contact">
+    	<section id="contact" style="background: #0e0e0e">
     		<div class="container">
     			<div class="row">
     				<div class="col-md-12">
-    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTACT <span>AWESOME</span></h2>
+    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTATO <span>PEÇA JÁ O SEU</span></h2>
     				</div>
-    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.2s">
     					<form action="#" method="post">
-    						<label>NAME</label>
+    						<label>NOME</label>
     						<input name="fullname" type="text" class="form-control" id="fullname">
 
-                            <label>EMAIL</label>
+                            <label>E-MAIL</label>
     						<input name="email" type="email" class="form-control" id="email">
 
-                            <label>MESSAGE</label>
+                            <label>MENSAGEM</label>
     						<textarea name="message" rows="4" class="form-control" id="message"></textarea>
 
                             <input type="submit" class="form-control">
     					</form>
     				</div>
-    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.2s">
     					<address>
-    						<p class="address-title">OUR ADDRESS</p>
+    						<p class="address-title">NOSSO ENDEREÇO</p>
     						<span>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</span>
-    						<p><i class="fa fa-phone"></i> 010-020-0340</p>
-    						<p><i class="fa fa-envelope-o"></i> awesome@company.com</p>
-    						<p><i class="fa fa-map-marker"></i> 663 New Walk Roadside, Birdeye View, GO 11020</p>
+    						<p><i class="fa fa-phone"></i> (11) 3380-1329</p>
+    						<p><i class="fa fa-envelope-o"></i> contato@3dself.com</p>
+    						<p><i class="fa fa-map-marker"></i> Lorem ipsum dolor sit amet, consectetur adipiscing</p>
     					</address>
     					<ul class="social-icon">
-    						<li><h4>WE ARE SOCIAL</h4></li>
+    						<li><h4>Siga-nos</h4></li>
     						<li><a href="#" class="fa fa-facebook"></a></li>
     						<li><a href="#" class="fa fa-twitter"></a></li>
     						<li><a href="#" class="fa fa-instagram"></a></li>
@@ -347,8 +352,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
-                       	Copyright &copy; 2084 Company Name</p>
+                        <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.1s">
+                       	Copyright &copy; <?php echo date('Y') ?> by <a href="http://www.nepali.com.br" target="_blank">nepali</a></p>
                     </div>
                 </div>
             </div>

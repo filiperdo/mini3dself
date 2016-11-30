@@ -39,15 +39,17 @@
 	<tr>
 		<th>Id_user </th>
 		<th>Name </th>
+		<th>Email </th>
 		<th>Login </th>
 		<th>Password </th>
-		<th>Email </th>
-		<th>Numlogin </th>
 		<th>Date </th>
-		<th>Id_typeuser </th>
 		<th>Lastlogin </th>
-		<th>Status </th>
-		<th>Path </th>
+		<th>Adress1 </th>
+		<th>Adress2 </th>
+		<th>Phone1 </th>
+		<th>Phone2 </th>
+		<th>Num_login </th>
+		<th>Id_usertype </th>
 		<th></th>
 	</tr>
 	</thead>
@@ -56,15 +58,17 @@
 	<tr>
  		<td><?php echo $user->getId_user(); ?></td>
 		<td><?php echo $user->getName(); ?></td>
+		<td><?php echo $user->getEmail(); ?></td>
 		<td><?php echo $user->getLogin(); ?></td>
 		<td><?php echo $user->getPassword(); ?></td>
-		<td><?php echo $user->getEmail(); ?></td>
-		<td><?php echo $user->getNumlogin(); ?></td>
 		<td><?php echo $user->getDate(); ?></td>
-		<td><?php echo ""; ?></td>
 		<td><?php echo $user->getLastlogin(); ?></td>
-		<td><?php echo $user->getStatus(); ?></td>
-		<td><?php echo $user->getPath(); ?></td>
+		<td><?php echo $user->getAdress1(); ?></td>
+		<td><?php echo $user->getAdress2(); ?></td>
+		<td><?php echo $user->getPhone1(); ?></td>
+		<td><?php echo $user->getPhone2(); ?></td>
+		<td><?php echo $user->getNum_login(); ?></td>
+		<td><?php echo ""; ?></td>
 		<td align="right">
 			<a href="<?php echo URL;?>user/form/<?php echo $user->getId_user();?>" class="btn btn-dark btn-sm"><i class="glyphicon glyphicon-pencil"></i></a>
 			<a href="<?php echo URL;?>user/delete/<?php echo $user->getId_user();?>" class="delete btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></a>

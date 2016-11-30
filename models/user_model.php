@@ -4,10 +4,10 @@
  * Classe User
  * @author __ 
  *
- * Data: 14/10/2016
+ * Data: 30/11/2016
  */ 
 
-include_once 'typeuser_model.php';
+include_once 'usertype_model.php';
 
 class User_Model extends Model
 {
@@ -16,15 +16,17 @@ class User_Model extends Model
 	*/
 	private $id_user;
 	private $name;
+	private $email;
 	private $login;
 	private $password;
-	private $email;
-	private $numlogin;
 	private $date;
-	private $typeuser;
 	private $lastlogin;
-	private $status;
-	private $path;
+	private $adress1;
+	private $adress2;
+	private $phone1;
+	private $phone2;
+	private $num_login;
+	private $usertype;
 
 	public function __construct()
 	{
@@ -32,15 +34,17 @@ class User_Model extends Model
 
 		$this->id_user = '';
 		$this->name = '';
+		$this->email = '';
 		$this->login = '';
 		$this->password = '';
-		$this->email = '';
-		$this->numlogin = '';
 		$this->date = '';
-		$this->typeuser = new Typeuser_Model();
 		$this->lastlogin = '';
-		$this->status = '';
-		$this->path = '';
+		$this->adress1 = '';
+		$this->adress2 = '';
+		$this->phone1 = '';
+		$this->phone2 = '';
+		$this->num_login = '';
+		$this->usertype = new Usertype_Model();
 	}
 
 	/** 
@@ -56,6 +60,11 @@ class User_Model extends Model
 		$this->name = $name;
 	}
 
+	public function setEmail( $email )
+	{
+		$this->email = $email;
+	}
+
 	public function setLogin( $login )
 	{
 		$this->login = $login;
@@ -66,24 +75,9 @@ class User_Model extends Model
 		$this->password = $password;
 	}
 
-	public function setEmail( $email )
-	{
-		$this->email = $email;
-	}
-
-	public function setNumlogin( $numlogin )
-	{
-		$this->numlogin = $numlogin;
-	}
-
 	public function setDate( $date )
 	{
 		$this->date = $date;
-	}
-
-	public function setTypeuser( Typeuser_Model $typeuser )
-	{
-		$this->typeuser = $typeuser;
 	}
 
 	public function setLastlogin( $lastlogin )
@@ -91,14 +85,34 @@ class User_Model extends Model
 		$this->lastlogin = $lastlogin;
 	}
 
-	public function setStatus( $status )
+	public function setAdress1( $adress1 )
 	{
-		$this->status = $status;
+		$this->adress1 = $adress1;
 	}
 
-	public function setPath( $path )
+	public function setAdress2( $adress2 )
 	{
-		$this->path = $path;
+		$this->adress2 = $adress2;
+	}
+
+	public function setPhone1( $phone1 )
+	{
+		$this->phone1 = $phone1;
+	}
+
+	public function setPhone2( $phone2 )
+	{
+		$this->phone2 = $phone2;
+	}
+
+	public function setNum_login( $num_login )
+	{
+		$this->num_login = $num_login;
+	}
+
+	public function setUsertype( Usertype_Model $usertype )
+	{
+		$this->usertype = $usertype;
 	}
 
 	/** 
@@ -114,6 +128,11 @@ class User_Model extends Model
 		return $this->name;
 	}
 
+	public function getEmail()
+	{
+		return $this->email;
+	}
+
 	public function getLogin()
 	{
 		return $this->login;
@@ -124,24 +143,9 @@ class User_Model extends Model
 		return $this->password;
 	}
 
-	public function getEmail()
-	{
-		return $this->email;
-	}
-
-	public function getNumlogin()
-	{
-		return $this->numlogin;
-	}
-
 	public function getDate()
 	{
 		return $this->date;
-	}
-
-	public function getTypeuser()
-	{
-		return $this->typeuser;
 	}
 
 	public function getLastlogin()
@@ -149,14 +153,34 @@ class User_Model extends Model
 		return $this->lastlogin;
 	}
 
-	public function getStatus()
+	public function getAdress1()
 	{
-		return $this->status;
+		return $this->adress1;
 	}
 
-	public function getPath()
+	public function getAdress2()
 	{
-		return $this->path;
+		return $this->adress2;
+	}
+
+	public function getPhone1()
+	{
+		return $this->phone1;
+	}
+
+	public function getPhone2()
+	{
+		return $this->phone2;
+	}
+
+	public function getNum_login()
+	{
+		return $this->num_login;
+	}
+
+	public function getUsertype()
+	{
+		return $this->usertype;
 	}
 
 
@@ -266,18 +290,20 @@ class User_Model extends Model
 	{
 		$this->setId_user( $row["id_user"] );
 		$this->setName( $row["name"] );
+		$this->setEmail( $row["email"] );
 		$this->setLogin( $row["login"] );
 		$this->setPassword( $row["password"] );
-		$this->setEmail( $row["email"] );
-		$this->setNumlogin( $row["numlogin"] );
 		$this->setDate( $row["date"] );
-
-		$objTypeuser = new Typeuser_Model();
-		$objTypeuser->obterTypeuser( $row["id_typeuser"] );
-		$this->setTypeuser( $objTypeuser );
 		$this->setLastlogin( $row["lastlogin"] );
-		$this->setStatus( $row["status"] );
-		$this->setPath( $row["path"] );
+		$this->setAdress1( $row["adress1"] );
+		$this->setAdress2( $row["adress2"] );
+		$this->setPhone1( $row["phone1"] );
+		$this->setPhone2( $row["phone2"] );
+		$this->setNum_login( $row["num_login"] );
+
+		$objUsertype = new Usertype_Model();
+		$objUsertype->obterUsertype( $row["id_usertype"] );
+		$this->setUsertype( $objUsertype );
 
 		return $this;
 	}

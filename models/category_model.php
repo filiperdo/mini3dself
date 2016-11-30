@@ -1,22 +1,20 @@
-<?php
+<?php 
 
-/**
+/** 
  * Classe Category
- * @author __
+ * @author __ 
  *
- * Data: 13/09/2016
- */
+ * Data: 30/11/2016
+ */ 
 
-include_once 'typecategory_model.php';
 
 class Category_Model extends Model
 {
-	/**
-	* Atributos Private
+	/** 
+	* Atributos Private 
 	*/
 	private $id_category;
 	private $name;
-	private $typecategory;
 
 	public function __construct()
 	{
@@ -24,10 +22,9 @@ class Category_Model extends Model
 
 		$this->id_category = '';
 		$this->name = '';
-		$this->typecategory = new Typecategory_Model();
 	}
 
-	/**
+	/** 
 	* Metodos set's
 	*/
 	public function setId_category( $id_category )
@@ -40,12 +37,7 @@ class Category_Model extends Model
 		$this->name = $name;
 	}
 
-	public function setTypecategory( Typecategory_Model $typecategory )
-	{
-		$this->typecategory = $typecategory;
-	}
-
-	/**
+	/** 
 	* Metodos get's
 	*/
 	public function getId_category()
@@ -58,13 +50,8 @@ class Category_Model extends Model
 		return $this->name;
 	}
 
-	public function getTypecategory()
-	{
-		return $this->typecategory;
-	}
 
-
-	/**
+	/** 
 	* Metodo create
 	*/
 	public function create( $data )
@@ -80,7 +67,7 @@ class Category_Model extends Model
 		return true;
 	}
 
-	/**
+	/** 
 	* Metodo edit
 	*/
 	public function edit( $data, $id )
@@ -96,14 +83,14 @@ class Category_Model extends Model
 		return $update;
 	}
 
-	/**
+	/** 
 	* Metodo delete
 	*/
 	public function delete( $id )
 	{
 		$this->db->beginTransaction();
 
-		if( !$delete = $this->db->delete("category", "id_category = {$id} ") ){
+	 if( !$delete = $this->db->delete("category", "id_category = {$id} ") ){ 
 			$this->db->rollBack();
 			return false;
 		}
@@ -112,7 +99,7 @@ class Category_Model extends Model
 		return $delete;
 	}
 
-	/**
+	/** 
 	* Metodo obterCategory
 	*/
 	public function obterCategory( $id_category )
@@ -125,67 +112,26 @@ class Category_Model extends Model
 		return $this->montarObjeto( $result[0] );
 	}
 
-	/**
+	/** 
 	* Metodo listarCategory
 	*/
-	public function listarCategoryByType( $type, $limit1 = NULL, $limit2 = NULL )
+	public function listarCategory()
 	{
 		$sql  = "select * ";
-		$sql .= "from category as c ";
-		$sql .= "where c.id_typecategory = :type ";
+		$sql .= "from category ";
 
 		if ( isset( $_POST["like"] ) )
 		{
-			$sql .= "and name like :name ";
-			$result = $this->db->select( $sql, array("type" => $type, "name" => "%{$_POST["like"]}%") );
+			$sql .= "where id_category like :id "; // Configurar o like com o campo necessario da tabela 
+			$result = $this->db->select( $sql, array("id" => "%{$_POST["like"]}%") );
 		}
 		else
-		{
-			if($limit1)
-				$sql .= "limit {$limit1},{$limit2} ";
-
-			$result = $this->db->select( $sql, array("type" => $type) );
-		}
+			$result = $this->db->select( $sql );
 
 		return $this->montarLista($result);
 	}
 
-	/**
-	 * Lista as categorias vinculadas a um projetos
-	 * @param unknown $id_post
-	 */
-	public function listCategoryByPost( $id_post )
-	{
-		$sql  = "select c.* ";
-		$sql .= "from category as c ";
-		$sql .= "inner join post_category as pc ";
-		$sql .= "on pc.id_category = c.id_category ";
-		$sql .= "where pc.id_post = :id_p ";
-
-		$result = $this->db->select( $sql, array("id_p" => $id_post ) );
-
-		return $this->montarLista($result);
-	}
-
-
-	/**
-	 * Lista as categorias vinculadas a um produto
-	 * @param unknown $id_post
-	 */
-	public function listCategoryByProduct( $id_product )
-	{
-		$sql  = "select c.* ";
-		$sql .= "from category as c ";
-		$sql .= "inner join product_category as pc ";
-		$sql .= "on pc.id_category = c.id_category ";
-		$sql .= "where pc.id_product = :id_p ";
-
-		$result = $this->db->select( $sql, array("id_p" => $id_product ) );
-
-		return $this->montarLista($result);
-	}
-
-	/**
+	/** 
 	* Metodo montarLista
 	*/
 	private function montarLista( $result )
@@ -204,17 +150,13 @@ class Category_Model extends Model
 		return $objs;
 	}
 
-	/**
+	/** 
 	* Metodo montarObjeto
 	*/
 	private function montarObjeto( $row )
 	{
 		$this->setId_category( $row["id_category"] );
 		$this->setName( $row["name"] );
-
-		$objTypecategory = new Typecategory_Model();
-		$objTypecategory->obterTypecategory( $row["id_typecategory"] );
-		$this->setTypecategory( $objTypecategory );
 
 		return $this;
 	}
