@@ -8,12 +8,24 @@ class Index extends Controller {
 
     public function index()
     {
+        Session::init();
+
         $this->view->title = 'Home';
 
         //$this->view->js[] = ''
         $this->view->render('header.site');
         $this->view->render('index/index');
         $this->view->render('footer.site');
+    }
+
+    public function addCart($id_product)
+    {
+      Session::init();
+    }
+
+    public function editCart( $id_product, $amount )
+    {
+      Session::init();
     }
 
     public function produto( $id_product )
