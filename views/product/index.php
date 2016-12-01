@@ -9,7 +9,7 @@
 			<div class="col-lg-6 col-md-6">
 				<ol class="breadcrumb">
 					<li><a href="index.php">Home</a></li>
-					<li class="active"><a href="<?php echo URL;?>product/lista"><?php echo $this->title; ?></a></li>
+					<li class="active"><a href="<?php echo URL;?>product"><?php echo $this->title; ?></a></li>
 				</ol>
 			</div>
 			<div class="col-lg-4 col-md-3">
@@ -37,11 +37,16 @@
 <table id="datatable-responsive" class="table table-striped" cellspacing="0" width="100%">
 	<thead>
 	<tr>
-		<th>Id</th>
+		<th>Id_product </th>
+		<th>Code </th>
 		<th>Name </th>
-		<th>Data </th>
-		<th>User </th>
-		<th>Status </th>
+		<th>Price </th>
+		<th>Note </th>
+		<th>Color </th>
+		<th>Size </th>
+		<th>Id_category </th>
+		<th>Id_provider </th>
+		<th>Id_manufacturer </th>
 		<th></th>
 	</tr>
 	</thead>
@@ -49,10 +54,15 @@
 	<?php foreach( $this->listarProduct as $product ) { ?>
 	<tr>
  		<td><?php echo $product->getId_product(); ?></td>
+		<td><?php echo $product->getCode(); ?></td>
 		<td><?php echo $product->getName(); ?></td>
-		<td><?php echo Data::formataDataRetiraHora($product->getData()); ?></td>
+		<td><?php echo $product->getPrice(); ?></td>
+		<td><?php echo $product->getNote(); ?></td>
+		<td><?php echo $product->getColor(); ?></td>
+		<td><?php echo $product->getSize(); ?></td>
 		<td><?php echo ""; ?></td>
-		<td><?php echo $product->getStatus(); ?></td>
+		<td><?php echo ""; ?></td>
+		<td><?php echo ""; ?></td>
 		<td align="right">
 			<a href="<?php echo URL;?>product/form/<?php echo $product->getId_product();?>" class="btn btn-dark btn-sm"><i class="glyphicon glyphicon-pencil"></i></a>
 			<a href="<?php echo URL;?>product/delete/<?php echo $product->getId_product();?>" class="delete btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></a>
@@ -71,6 +81,6 @@ $(function() {
 	$(".delete").click(function(e) {
 		var c = confirm("Deseja realmente deletar este registro?");
 		if (c == false) return false;
-	});
+	}); 
  });
 </script>

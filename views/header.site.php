@@ -1,3 +1,15 @@
+<?php
+Session::init();
+$totalCart = 0;
+if(	isset($_COOKIE[PREFIX_SESSION.'carrinho']) )
+{
+	$_SESSION[PREFIX_SESSION.'carrinho'] = unserialize($_COOKIE[PREFIX_SESSION.'carrinho']);
+}
+if( isset($_SESSION[PREFIX_SESSION.'carrinho']) )
+{
+	$totalCart = count($_SESSION[PREFIX_SESSION.'carrinho']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -6,7 +18,7 @@
         Awesome Template
         http://www.templatemo.com/preview/templatemo_450_awesome
         -->
-		<title>3DSELF</title>
+		<title>3DSelfie</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -18,11 +30,12 @@
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="<?php echo URL; ?>public/css/templatemo-style.css">
 		<script src="<?php echo URL; ?>public/js/jquery.js"></script>
-		<script src="<?php echo URL; ?>public/js/bootstrap.min.js"></script>
+
         <script src="<?php echo URL; ?>public/js/jquery.singlePageNav.min.js"></script>
 		<script src="<?php echo URL; ?>public/js/typed.js"></script>
 		<script src="<?php echo URL; ?>public/js/wow.min.js"></script>
 		<script src="<?php echo URL; ?>public/js/custom.js"></script>
+		<script src="<?php echo URL; ?>public/js/bootstrap.min.js"></script>
 	</head>
 	<body id="top">
 
@@ -72,16 +85,15 @@
 						<span class="icon icon-bar"></span>
 						<span class="icon icon-bar"></span>
 					</button>
-					<div style="margin-top:-70px"><a href="#" class="navbar-brand"><img src="<?php echo URL?>public/img/logo-3dself.png" height="150" alt=""></a></div>
+					<div style="margin-top:-70px"><a href="<?php echo URL?>" class="navbar-brand"><img src="<?php echo URL?>public/img/logo-3dself.png" height="150" alt=""></a></div>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#top">HOME</a></li>
-						<li><a href="#about">QUEM SOMOS</a></li>
-						<li><a href="#team">PRODUTOS</a></li>
-						<!--<li><a href="#service">SERVICE</a></li>-->
-						<li><a href="#portfolio">PORTFOLIO</a></li>
-						<li><a href="#contact">CONTATO</a></li>
+						<?php foreach ($this->menu as $key => $value) { ?>
+							<li><a href="<?php echo $key ?>"><?php echo $value ?></a></li>
+						<?php } ?>
+						<li><a href="<?php echo URL?>index/cart"><i class="glyphicon glyphicon-shopping-cart cart"></i> <span id="amount-cart">(<?php echo $totalCart; ?>)</span></a></li>
+
 					</ul>
 				</div>
 			</div>

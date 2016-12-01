@@ -9,14 +9,11 @@
         <form action="#" method="post">
           <label>NOME</label>
           <input name="fullname" type="text" class="form-control" id="fullname">
-
-                      <label>E-MAIL</label>
+          <label>E-MAIL</label>
           <input name="email" type="email" class="form-control" id="email">
-
-                      <label>MENSAGEM</label>
+          <label>MENSAGEM</label>
           <textarea name="message" rows="4" class="form-control" id="message"></textarea>
-
-                      <input type="submit" class="form-control">
+          <input type="submit" class="form-control">
         </form>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.2s">
@@ -52,15 +49,31 @@
   </footer>
   <!-- end copyright -->
 
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        ... teste modal
+      </div>
+    </div>
+  </div>
+
 <script type="text/javascript">
-  var URL = '<?php echo URL; ?>';
-  $(document).ready(function(){
+    var URL = '<?php echo URL; ?>';
+    $(document).ready(function(){
 
-    $('.team-wrapper').on('click', function(){
-      window.location.href = URL + 'index/produto/' + $(this).attr('id');
+        $('.team-wrapper').on('click', function(){
+            window.location.href = URL + 'index/produto/' + $(this).attr('id');
+        });
+
+        $('#addCart').on('click',function(){
+            $.post(URL + 'index/addCart/'+$('#idProduct').val(), function(data){
+                alert('Produto adicionado!');
+                $('#amount-cart').html( '(' + data + ')');
+            });
+        });
+
+
     });
-
-  });
 </script>
 
 </body>

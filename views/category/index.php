@@ -37,18 +37,16 @@
 <table id="datatable-responsive" class="table table-striped" cellspacing="0" width="100%">
 	<thead>
 	<tr>
-		<th>Id</th>
+		<th>Id_category </th>
 		<th>Name </th>
-		<th>Tipo </th>
 		<th></th>
 	</tr>
 	</thead>
 	<tbody>
-	<?php foreach( $this->category->listarCategoryByType(1) as $category ) { ?>
+	<?php foreach( $this->listarCategory as $category ) { ?>
 	<tr>
  		<td><?php echo $category->getId_category(); ?></td>
 		<td><?php echo $category->getName(); ?></td>
-		<td><?php echo $category->getTypecategory()->getName(); ?></td>
 		<td align="right">
 			<a href="<?php echo URL;?>category/form/<?php echo $category->getId_category();?>" class="btn btn-dark btn-sm"><i class="glyphicon glyphicon-pencil"></i></a>
 			<a href="<?php echo URL;?>category/delete/<?php echo $category->getId_category();?>" class="delete btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></a>
@@ -67,6 +65,6 @@ $(function() {
 	$(".delete").click(function(e) {
 		var c = confirm("Deseja realmente deletar este registro?");
 		if (c == false) return false;
-	});
+	}); 
  });
 </script>

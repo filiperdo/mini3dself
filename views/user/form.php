@@ -28,6 +28,13 @@
 </div>
 
 <div class="form-group">
+	<label for="email" class="col-md-2 col-sm-2 col-xs-12 control-label">Email</label> 
+	<div class="col-md-9 col-sm-9 col-xs-12"> 
+		<input type="text" name="email" id="email"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getEmail()?>" />
+	</div>
+</div>
+
+<div class="form-group">
 	<label for="login" class="col-md-2 col-sm-2 col-xs-12 control-label">Login</label> 
 	<div class="col-md-9 col-sm-9 col-xs-12"> 
 		<input type="text" name="login" id="login"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getLogin()?>" />
@@ -42,32 +49,9 @@
 </div>
 
 <div class="form-group">
-	<label for="email" class="col-md-2 col-sm-2 col-xs-12 control-label">Email</label> 
-	<div class="col-md-9 col-sm-9 col-xs-12"> 
-		<input type="text" name="email" id="email"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getEmail()?>" />
-	</div>
-</div>
-
-<div class="form-group">
-	<label for="numlogin" class="col-md-2 col-sm-2 col-xs-12 control-label">Numlogin</label> 
-	<div class="col-md-9 col-sm-9 col-xs-12"> 
-		<input type="text" name="numlogin" id="numlogin"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getNumlogin()?>" />
-	</div>
-</div>
-
-<div class="form-group">
 	<label for="date" class="col-md-2 col-sm-2 col-xs-12 control-label">Date</label> 
 	<div class="col-md-9 col-sm-9 col-xs-12"> 
 		<input type="text" name="date" id="date"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getDate()?>" />
-	</div>
-</div>
-
-<div class="form-group">
-	<label for="id_typeuser" class="col-md-2 col-sm-2 col-xs-12 control-label">Id_typeuser</label> 
-	<div class="col-md-9 col-sm-9 col-xs-12"> 
-	<select name="id_typeuser" id="id_typeuser"  class="form-control col-md-7 col-xs-12" required="required">
-		<option value=""></option>
-	</select>
 	</div>
 </div>
 
@@ -79,16 +63,46 @@
 </div>
 
 <div class="form-group">
-	<label for="status" class="col-md-2 col-sm-2 col-xs-12 control-label">Status</label> 
+	<label for="adress1" class="col-md-2 col-sm-2 col-xs-12 control-label">Adress1</label> 
 	<div class="col-md-9 col-sm-9 col-xs-12"> 
-		<input type="text" name="status" id="status"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getStatus()?>" />
+		<input type="text" name="adress1" id="adress1"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getAdress1()?>" />
 	</div>
 </div>
 
 <div class="form-group">
-	<label for="path" class="col-md-2 col-sm-2 col-xs-12 control-label">Path</label> 
+	<label for="adress2" class="col-md-2 col-sm-2 col-xs-12 control-label">Adress2</label> 
 	<div class="col-md-9 col-sm-9 col-xs-12"> 
-		<input type="text" name="path" id="path"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getPath()?>" />
+		<input type="text" name="adress2" id="adress2"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getAdress2()?>" />
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="phone1" class="col-md-2 col-sm-2 col-xs-12 control-label">Phone1</label> 
+	<div class="col-md-9 col-sm-9 col-xs-12"> 
+		<input type="text" name="phone1" id="phone1"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getPhone1()?>" />
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="phone2" class="col-md-2 col-sm-2 col-xs-12 control-label">Phone2</label> 
+	<div class="col-md-9 col-sm-9 col-xs-12"> 
+		<input type="text" name="phone2" id="phone2"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getPhone2()?>" />
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="num_login" class="col-md-2 col-sm-2 col-xs-12 control-label">Num_login</label> 
+	<div class="col-md-9 col-sm-9 col-xs-12"> 
+		<input type="text" name="num_login" id="num_login"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getNum_login()?>" />
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="id_usertype" class="col-md-2 col-sm-2 col-xs-12 control-label">Id_usertype</label> 
+	<div class="col-md-9 col-sm-9 col-xs-12"> 
+	<select name="id_usertype" id="id_usertype"  class="form-control col-md-7 col-xs-12" required="required">
+		<option value=""></option>
+	</select>
 	</div>
 </div>
 

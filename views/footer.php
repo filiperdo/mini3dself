@@ -1,7 +1,7 @@
 <!-- footer content -->
         <footer>
           <div class="copyright-info">
-            <p class="pull-right"><?php echo SYSTEM_NAME; ?> - by <a href="http://www.anacom.com.br" target="_blank">Anacom</a>  
+            <p class="pull-right"><?php echo SYSTEM_NAME; ?> - by <a href="http://www.nepali.com.br" target="_blank">Nepali</a>  
             </p>
           </div>
           <div class="clearfix"></div>

@@ -21,21 +21,9 @@
 <input type="hidden" name="idCategory" value="<?=$this->obj->getId_category()?>" />
 
 <div class="form-group">
-	<label for="name" class="col-md-2 col-sm-2 col-xs-12 control-label">Name</label>
-	<div class="col-md-9 col-sm-9 col-xs-12">
+	<label for="name" class="col-md-2 col-sm-2 col-xs-12 control-label">Name</label> 
+	<div class="col-md-9 col-sm-9 col-xs-12"> 
 		<input type="text" name="name" id="name"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getName()?>" />
-	</div>
-</div>
-
-<div class="form-group">
-	<label for="id_typecategory" class="col-md-2 col-sm-2 col-xs-12 control-label">Tipo</label>
-	<div class="col-md-9 col-sm-9 col-xs-12">
-	<select name="id_typecategory" id="id_typecategory"  class="form-control col-md-7 col-xs-12" required="required">
-		<?php foreach ($this->listType as $type) { ?>
-			<option value="<?php echo $type->getId_typecategory(); ?>"><?php echo $type->getName(); ?></option>
-		<?php } ?>
-
-	</select>
 	</div>
 </div>
 
