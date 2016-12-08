@@ -3,13 +3,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-offset-2 col-md-8">
-					<h1 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">Grandes momentos merecem ser eternizados com <span>uma miniatura 3D</span></h1>
-					<div class="element">
-						<!--<div class="sub-element">Hello, this is Typed.js</div>
+					<!--<h1 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">Grandes momentos merecem ser eternizados com <span>uma miniatura 3D</span></h1>-->
+					<!--<div class="element">
+						<div class="sub-element">Hello, this is Typed.js</div>
 						<div class="sub-element">Awesome Template is provided by templatemo.com website for everyone</div>
-						<div class="sub-element">Download, edit and apply this awesome template for your websites</div>-->
+						<div class="sub-element">Download, edit and apply this awesome template for your websites</div>
 					</div>
-					<a data-scroll href="#about" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">Comece agora</a>
+					<a data-scroll href="#about" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">Comece agora</a>-->
 				</div>
 			</div>
 		</div>
@@ -82,13 +82,15 @@
 						<img src="<?php echo URL; ?>public/img/product/<?php echo $i;?>/1.jpg" class="img-responsive" alt="team img 1">
 						<div class="team-des">
 							<h4 style="color:#fff">Nome produto</h4>
-							<span>R$ 99,00</span>
+							<!--<span>R$ 99,00</span>-->
 							<!--<p style="color:#eaeaea">Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molest.</p>-->
 						</div>
 					</div>
 				</div>
 				<?php } ?>
-
+				<div class="col-md-12">
+					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><a href="<?php echo URL?>index/categoria" class="btn btn-default btn-lg">Visualizar todos</a></h2>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -125,7 +127,7 @@
 	<!-- end servie -->
 
 	<!-- start portfolio -->
-	<section id="portfolio">
+	<section id="portfolio" >
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -215,3 +217,7 @@
 		</div>
 	</section>
 	<!-- end portfolio -->
+
+
+	<!-- start paralax -->
+	<section id="paralax"></section>

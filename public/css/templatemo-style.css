@@ -272,6 +272,11 @@ header .social-icon li a
 /* end home */
 
 /* start about */
+#about
+	{
+		background: #fff;
+		color: #999;
+	}
 #about .media-heading-wrapper
 	{
 		padding-bottom: 32px;
@@ -304,7 +309,8 @@ header .social-icon li a
 }
 #team .team-product
 {
-	background: #404040;
+	background: #fff;
+	color: #333;
 	padding-bottom: 10px;
 	-webkit-transition: all 0.4s ease-in-out;
 	        transition: all 0.4s ease-in-out;
@@ -356,6 +362,13 @@ header .social-icon li a
 /* end team */
 
 /* start service */
+#service
+	{
+		background: #fff;
+		color: #999;
+		padding: 20px 0;
+		margin: 40px 0;
+	}
 #service .col-md-4
 	{
 		padding: 40px;
@@ -447,6 +460,19 @@ header .social-icon li a
 		opacity: 0.8;
 	}
 /* end portfolio */
+
+
+/* start paralax */
+#paralax{
+	height: 250px;
+	background: url('../../public/img/home-bg.jpg') no-repeat center center;
+	z-index: -1;
+	overflow: hidden;
+  background-position: 100% 0;
+  background-size: cover;
+  background-attachment: fixed;
+}
+/* end paralax */
 
 /* start contact */
 #contact

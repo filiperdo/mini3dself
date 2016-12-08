@@ -72,6 +72,9 @@
             });
         });
 
+        $('.model-size').on('click', function(){
+            $('#label-price').html('R$ ' + $(this).attr('title') + ',00');
+        });
 
     });
 </script>

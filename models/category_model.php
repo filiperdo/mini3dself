@@ -1,17 +1,17 @@
-<?php 
+<?php
 
-/** 
+/**
  * Classe Category
- * @author __ 
+ * @author __
  *
  * Data: 30/11/2016
- */ 
+ */
 
 
 class Category_Model extends Model
 {
-	/** 
-	* Atributos Private 
+	/**
+	* Atributos Private
 	*/
 	private $id_category;
 	private $name;
@@ -24,7 +24,7 @@ class Category_Model extends Model
 		$this->name = '';
 	}
 
-	/** 
+	/**
 	* Metodos set's
 	*/
 	public function setId_category( $id_category )
@@ -37,7 +37,7 @@ class Category_Model extends Model
 		$this->name = $name;
 	}
 
-	/** 
+	/**
 	* Metodos get's
 	*/
 	public function getId_category()
@@ -51,7 +51,7 @@ class Category_Model extends Model
 	}
 
 
-	/** 
+	/**
 	* Metodo create
 	*/
 	public function create( $data )
@@ -67,7 +67,7 @@ class Category_Model extends Model
 		return true;
 	}
 
-	/** 
+	/**
 	* Metodo edit
 	*/
 	public function edit( $data, $id )
@@ -83,14 +83,14 @@ class Category_Model extends Model
 		return $update;
 	}
 
-	/** 
+	/**
 	* Metodo delete
 	*/
 	public function delete( $id )
 	{
 		$this->db->beginTransaction();
 
-	 if( !$delete = $this->db->delete("category", "id_category = {$id} ") ){ 
+	 if( !$delete = $this->db->delete("category", "id_category = {$id} ") ){
 			$this->db->rollBack();
 			return false;
 		}
@@ -99,7 +99,7 @@ class Category_Model extends Model
 		return $delete;
 	}
 
-	/** 
+	/**
 	* Metodo obterCategory
 	*/
 	public function obterCategory( $id_category )
@@ -112,7 +112,7 @@ class Category_Model extends Model
 		return $this->montarObjeto( $result[0] );
 	}
 
-	/** 
+	/**
 	* Metodo listarCategory
 	*/
 	public function listarCategory()
@@ -122,8 +122,8 @@ class Category_Model extends Model
 
 		if ( isset( $_POST["like"] ) )
 		{
-			$sql .= "where id_category like :id "; // Configurar o like com o campo necessario da tabela 
-			$result = $this->db->select( $sql, array("id" => "%{$_POST["like"]}%") );
+			$sql .= "where name like :name "; // Configurar o like com o campo necessario da tabela
+			$result = $this->db->select( $sql, array("name" => "%{$_POST["like"]}%") );
 		}
 		else
 			$result = $this->db->select( $sql );
@@ -131,7 +131,7 @@ class Category_Model extends Model
 		return $this->montarLista($result);
 	}
 
-	/** 
+	/**
 	* Metodo montarLista
 	*/
 	private function montarLista( $result )
@@ -150,7 +150,7 @@ class Category_Model extends Model
 		return $objs;
 	}
 
-	/** 
+	/**
 	* Metodo montarObjeto
 	*/
 	private function montarObjeto( $row )

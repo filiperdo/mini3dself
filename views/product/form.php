@@ -1,4 +1,12 @@
 
+<!-- Styles -->
+<link href="<?php echo URL?>util/jqueryfiler/css/jquery.filer.css" rel="stylesheet">
+<link href="<?php echo URL?>util/jqueryfiler/css/themes/jquery.filer-dragdropbox-theme.css" rel="stylesheet">
+
+<!-- Jvascript -->
+<script src="<?php echo URL?>util/jqueryfiler/js/jquery.filer.min.js" type="text/javascript"></script>
+<script src="<?php echo URL?>util/jqueryfiler/js/custom.js" type="text/javascript"></script>
+
 <!-- Page Heading -->
 <div class="row">
 	<div class="col-md-12 col-sm-12 col-xs-12">
@@ -8,72 +16,78 @@
 		<div class="clearfix"></div>
 		<ol class="breadcrumb">
 			<li><a href="<?php echo URL; ?>">Home</a></li>
-			<li><a href="<?php echo URL; ?>product">Listar Product</a></li>
+			<li><a href="<?php echo URL; ?>product">Listar Produto</a></li>
 			<li class="active"><?php echo $this->title; ?></li>
 		</ol>
 	</div>
 
-<form id="form1" name="form1" method="post" action="<?php echo URL;?>product/<?php echo $this->action;?>/" class="form-horizontal">
+
 
 <div class="row">
 
 <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
-<input type="hidden" name="idProduct" value="<?=$this->obj->getId_product()?>" />
+<form id="form1" name="form1" method="post" action="<?php echo URL;?>product/<?php echo $this->action;?>/" class="form-horizontal">
 
-<div class="form-group">
-	<label for="code" class="col-md-2 col-sm-2 col-xs-12 control-label">Code</label> 
-	<div class="col-md-9 col-sm-9 col-xs-12"> 
+<input type="hidden" name="idProduct" value="<?=$this->obj->getId_product()?>" />
+<input type="hidden" name="path" value="<?=$this->path?>" />
+<!--<div class="form-group">
+	<label for="code" class="col-md-2 col-sm-2 col-xs-12 control-label">Code</label>
+	<div class="col-md-9 col-sm-9 col-xs-12">
 		<input type="text" name="code" id="code"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getCode()?>" />
 	</div>
-</div>
+</div>-->
 
 <div class="form-group">
-	<label for="name" class="col-md-2 col-sm-2 col-xs-12 control-label">Name</label> 
-	<div class="col-md-9 col-sm-9 col-xs-12"> 
+	<label for="name" class="col-md-2 col-sm-2 col-xs-12 control-label">Nome</label>
+	<div class="col-md-9 col-sm-9 col-xs-12">
 		<input type="text" name="name" id="name"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getName()?>" />
 	</div>
 </div>
-
+<!--
 <div class="form-group">
-	<label for="price" class="col-md-2 col-sm-2 col-xs-12 control-label">Price</label> 
-	<div class="col-md-9 col-sm-9 col-xs-12"> 
+	<label for="price" class="col-md-2 col-sm-2 col-xs-12 control-label">Price</label>
+	<div class="col-md-9 col-sm-9 col-xs-12">
 		<input type="text" name="price" id="price"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getPrice()?>" />
 	</div>
 </div>
-
+-->
 <div class="form-group">
-	<label for="note" class="col-md-2 col-sm-2 col-xs-12 control-label">Note</label> 
-	<div class="col-md-9 col-sm-9 col-xs-12"> 
-		<input type="text" name="note" id="note"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getNote()?>" />
+	<label for="note" class="col-md-2 col-sm-2 col-xs-12 control-label">Descrição</label>
+	<div class="col-md-9 col-sm-9 col-xs-12">
+		<input type="text" name="note" id="note"  class="form-control col-md-7 col-xs-12" value="<?=$this->obj->getNote()?>" />
 	</div>
 </div>
-
+<!--
 <div class="form-group">
-	<label for="color" class="col-md-2 col-sm-2 col-xs-12 control-label">Color</label> 
-	<div class="col-md-9 col-sm-9 col-xs-12"> 
+	<label for="color" class="col-md-2 col-sm-2 col-xs-12 control-label">Color</label>
+	<div class="col-md-9 col-sm-9 col-xs-12">
 		<input type="text" name="color" id="color"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getColor()?>" />
 	</div>
 </div>
 
 <div class="form-group">
-	<label for="size" class="col-md-2 col-sm-2 col-xs-12 control-label">Size</label> 
-	<div class="col-md-9 col-sm-9 col-xs-12"> 
+	<label for="size" class="col-md-2 col-sm-2 col-xs-12 control-label">Size</label>
+	<div class="col-md-9 col-sm-9 col-xs-12">
 		<input type="text" name="size" id="size"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getSize()?>" />
 	</div>
 </div>
-
+-->
 <div class="form-group">
-	<label for="id_category" class="col-md-2 col-sm-2 col-xs-12 control-label">Id_category</label> 
-	<div class="col-md-9 col-sm-9 col-xs-12"> 
+	<label for="id_category" class="col-md-2 col-sm-2 col-xs-12 control-label">Categoria</label>
+	<div class="col-md-9 col-sm-9 col-xs-12">
 	<select name="id_category" id="id_category"  class="form-control col-md-7 col-xs-12" required="required">
-		<option value=""></option>
+		<?php foreach ($this->category->listarCategory() as $category ) { ?>
+			<option value="<?php echo $category->getId_category();?>" <?php if( $category->getId_category() == $this->obj->getCategory()->getId_category() ) { ?>selected="selected"<?php } ?>>
+					<?php echo $category->getName(); ?>
+			</option>
+		<?php } ?>
 	</select>
 	</div>
 </div>
-
+<!--
 <div class="form-group">
-	<label for="id_provider" class="col-md-2 col-sm-2 col-xs-12 control-label">Id_provider</label> 
-	<div class="col-md-9 col-sm-9 col-xs-12"> 
+	<label for="id_provider" class="col-md-2 col-sm-2 col-xs-12 control-label">Id_provider</label>
+	<div class="col-md-9 col-sm-9 col-xs-12">
 	<select name="id_provider" id="id_provider"  class="form-control col-md-7 col-xs-12" required="required">
 		<option value=""></option>
 	</select>
@@ -81,14 +95,14 @@
 </div>
 
 <div class="form-group">
-	<label for="id_manufacturer" class="col-md-2 col-sm-2 col-xs-12 control-label">Id_manufacturer</label> 
-	<div class="col-md-9 col-sm-9 col-xs-12"> 
+	<label for="id_manufacturer" class="col-md-2 col-sm-2 col-xs-12 control-label">Id_manufacturer</label>
+	<div class="col-md-9 col-sm-9 col-xs-12">
 	<select name="id_manufacturer" id="id_manufacturer"  class="form-control col-md-7 col-xs-12" required="required">
 		<option value=""></option>
 	</select>
 	</div>
 </div>
-
+-->
 <div class="form-group">
 	<div class="col-sm-10  col-sm-offset-2">
 		<input type="submit" name="salvar" id="salvar" value="Salvar" class="btn btn-success" />
@@ -96,12 +110,101 @@
 	</div>
 </div>
 
-
-</div>
-</div>
-
+<input type="hidden" name="mainpicture" id="mainpicture" value="<?=$this->obj->getMainpicture()?>">
 </form>
+</div>
+
+	<div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
+
+		<!-- debug
+		<form name="form5" action="<?php echo URL;?>product/wideimage_ajax/" method="post" enctype="multipart/form-data" >
+			<input type="file" name="files[]"  multiple="multiple" >
+			<input type="submit">
+		</form>-->
+
+		<input type="hidden" name="action_post" id="action_post" value="<?php echo $this->method_upload; ?>">
+		<input type="file" name="files[]" id="filer_input2" multiple="multiple">
+
+		<div id="output-files">
+		<div class="jFiler-items-list jFiler-items-grid" >
+
+			<?php if( $this->path != '' ) { ?>
+			<?php foreach ( Data::getImgPost('product', $this->path, true ) as $img ) { ?>
+
+			<?php
+			// pega o nome da imagem
+			$array_img = explode('/', $img); $nome_img = end($array_img);
+			?>
+
+			<div class="jFiler-item" id="<?php echo 'id-'.base64_encode($nome_img);?>">
+				<div class="jFiler-item-container">
+					<div class="jFiler-item-inner">
+						<div class="jFiler-item-thumb"><img alt="" src="<?=URL.$img?>" ></div>
+						<div class="jFiler-item-assets jFiler-row" style="text-align:center">
+
+							<ul class="list-inline pull-right">
+								<?php $link_img = str_replace('/thumb/', '/', $img);?>
+								<li>
+									<button class="bt-copy btn btn-info btn-xs" data-clipboard-action="copy" data-clipboard-text="<?='../../'.$link_img?>"><i class="glyphicon glyphicon-link"></i></button>
+									<a rel="<?php echo base64_encode($this->obj->getPath());?>" name="<?php echo base64_encode($nome_img); ?>" href="#" class="btn delete btn-danger btn-xs"><i class="icon-jfi-trash jFiler-item-trash-action"></i> Deletar</a>
+								</li>
+
+							</ul><br>
+							<label>
+
+								<?php $checked = $this->obj->getMainpicture() == $nome_img ? 'checked="checked"' : ''; ?>
+								<input type="radio" class="radio-mainpicture" <?php echo $checked; ?> name="rd-mainpicture" value="<?php echo $nome_img; ?>">
+								Destaque
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?php } // end foreach?>
+			<?php } // end if ?>
+		</div>
+		</div>
+
+	</div><!-- col-md-4 -->
+
+</div>
+
 </div>
 </div>
 </div>
 <!-- /.row -->
+
+<script>
+
+	var clipboard = new Clipboard('.bt-copy');
+
+	$(document).ready(function(){
+
+		if( window.location.hostname == 'localhost' )
+		{
+			var URL = 'http://localhost/mini3dselfie/';
+		}
+		else
+		{
+			var URL = 'http://www.nepali.com.br/clientes/3dselfie/';
+		}
+
+		$(".delete").click(function(){
+
+			$target = $(this);
+			$liImg = '#id-' + $(this).attr('name');
+			//alert('Nome: ' + $liImg);
+			$($target).html('Deletando...');
+			$.post(URL+'post/delete_img/'+$(this).attr('rel'), function(data){
+
+				$($liImg).fadeOut( "slow", function() { $($liImg).remove(); });
+				//alert(data);
+			});
+		});
+
+		$('.radio-mainpicture').on('click',function(){
+			$('#mainpicture').val($(this).val());
+		})
+
+	});
+</script>

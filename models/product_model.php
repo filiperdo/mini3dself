@@ -1,20 +1,21 @@
-<?php 
+<?php
 
-/** 
+/**
  * Classe Product
- * @author __ 
+ * @author __
  *
  * Data: 30/11/2016
- */ 
+ */
 
 include_once 'category_model.php';
 include_once 'provider_model.php';
 include_once 'manufacturer_model.php';
+require_once 'models/user_model.php';
 
 class Product_Model extends Model
 {
-	/** 
-	* Atributos Private 
+	/**
+	* Atributos Private
 	*/
 	private $id_product;
 	private $code;
@@ -25,7 +26,11 @@ class Product_Model extends Model
 	private $size;
 	private $category;
 	private $provider;
+	private $user;
 	private $manufacturer;
+	private $path;
+	private $mainpicture;
+	private $slug;
 
 	public function __construct()
 	{
@@ -39,11 +44,15 @@ class Product_Model extends Model
 		$this->color = '';
 		$this->size = '';
 		$this->category = new Category_Model();
-		$this->provider = new Provider_Model();
-		$this->manufacturer = new Manufacturer_Model();
+		//$this->provider = new Provider_Model();
+		//$this->manufacturer = new Manufacturer_Model();
+		$this->user = new User_Model();
+		$this->path = '';
+		$this->mainpicture = '';
+		$this->slug = '';
 	}
 
-	/** 
+	/**
 	* Metodos set's
 	*/
 	public function setId_product( $id_product )
@@ -96,7 +105,27 @@ class Product_Model extends Model
 		$this->manufacturer = $manufacturer;
 	}
 
-	/** 
+	public function setUser( User_Model $user )
+	{
+		$this->user = $user;
+	}
+
+	public function setPath( $path )
+	{
+		$this->path = $path;
+	}
+
+	public function setMainpicture( $mainpicture )
+	{
+		$this->mainpicture = $mainpicture;
+	}
+
+	public function setSlug( $slug )
+	{
+		$this->slug = $slug;
+	}
+
+	/**
 	* Metodos get's
 	*/
 	public function getId_product()
@@ -144,13 +173,32 @@ class Product_Model extends Model
 		return $this->provider;
 	}
 
+	public function getUser()
+	{
+		return $this->user;
+	}
+
 	public function getManufacturer()
 	{
 		return $this->manufacturer;
 	}
 
+	public function getPath()
+	{
+		return $this->path;
+	}
 
-	/** 
+	public function getMainpicture()
+	{
+		return $this->mainpicture;
+	}
+
+	public function getSlug()
+	{
+		return $this->slug;
+	}
+
+	/**
 	* Metodo create
 	*/
 	public function create( $data )
@@ -166,7 +214,7 @@ class Product_Model extends Model
 		return true;
 	}
 
-	/** 
+	/**
 	* Metodo edit
 	*/
 	public function edit( $data, $id )
@@ -182,14 +230,14 @@ class Product_Model extends Model
 		return $update;
 	}
 
-	/** 
+	/**
 	* Metodo delete
 	*/
 	public function delete( $id )
 	{
 		$this->db->beginTransaction();
 
-	 if( !$delete = $this->db->delete("product", "id_product = {$id} ") ){ 
+	 	if( !$delete = $this->db->delete("product", "id_product = {$id} ") ){
 			$this->db->rollBack();
 			return false;
 		}
@@ -198,7 +246,7 @@ class Product_Model extends Model
 		return $delete;
 	}
 
-	/** 
+	/**
 	* Metodo obterProduct
 	*/
 	public function obterProduct( $id_product )
@@ -211,7 +259,7 @@ class Product_Model extends Model
 		return $this->montarObjeto( $result[0] );
 	}
 
-	/** 
+	/**
 	* Metodo listarProduct
 	*/
 	public function listarProduct()
@@ -221,8 +269,8 @@ class Product_Model extends Model
 
 		if ( isset( $_POST["like"] ) )
 		{
-			$sql .= "where id_product like :id "; // Configurar o like com o campo necessario da tabela 
-			$result = $this->db->select( $sql, array("id" => "%{$_POST["like"]}%") );
+			$sql .= "where name like :name "; // Configurar o like com o campo necessario da tabela
+			$result = $this->db->select( $sql, array("name" => "%{$_POST["like"]}%") );
 		}
 		else
 			$result = $this->db->select( $sql );
@@ -230,7 +278,32 @@ class Product_Model extends Model
 		return $this->montarLista($result);
 	}
 
-	/** 
+	/**
+	* Metodo listarProduct
+	*/
+	public function listarProductByCategory( $id_category = NULL )
+	{
+		$sql  = "select * ";
+		$sql .= "from product as p ";
+		$sql .= "where p.id_product > 1 ";
+
+		if ( isset( $_POST["like"] ) )
+		{
+			$sql .= "and p.name like :name ";
+			$result = $this->db->select( $sql, array("name" => "%{$_POST["like"]}%") );
+		}
+		else if( $id_category )
+		{
+			$sql .= "and p.id_category = :id_category ";
+			$result = $this->db->select( $sql, array("id_category" => $id_category ) );
+		}
+		else
+			$result = $this->db->select( $sql );
+
+		return $this->montarLista($result);
+	}
+
+	/**
 	* Metodo montarLista
 	*/
 	private function montarLista( $result )
@@ -249,7 +322,7 @@ class Product_Model extends Model
 		return $objs;
 	}
 
-	/** 
+	/**
 	* Metodo montarObjeto
 	*/
 	private function montarObjeto( $row )
@@ -266,13 +339,21 @@ class Product_Model extends Model
 		$objCategory->obterCategory( $row["id_category"] );
 		$this->setCategory( $objCategory );
 
-		$objProvider = new Provider_Model();
-		$objProvider->obterProvider( $row["id_provider"] );
-		$this->setProvider( $objProvider );
+		//$objProvider = new Provider_Model();
+		//$objProvider->obterProvider( $row["id_provider"] );
+		//$this->setProvider( $objProvider );
 
-		$objManufacturer = new Manufacturer_Model();
-		$objManufacturer->obterManufacturer( $row["id_manufacturer"] );
-		$this->setManufacturer( $objManufacturer );
+		//$objManufacturer = new Manufacturer_Model();
+		//$objManufacturer->obterManufacturer( $row["id_manufacturer"] );
+		//$this->setManufacturer( $objManufacturer );
+
+		$objUser = new User_Model();
+		$objUser->obterUser( $row['id_user'] );
+		$this->setUser( $objUser );
+
+		$this->setPath( $row['path'] ) ;
+		$this->setMainpicture( $row['mainpicture'] );
+		$this->setSlug( $row['slug'] );
 
 		return $this;
 	}

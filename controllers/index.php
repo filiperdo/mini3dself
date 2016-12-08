@@ -32,8 +32,11 @@ class Index extends Controller {
         $this->view->product = new Product_Model();
         $this->view->product->obterProduct( $id_product );*/
 
+        // Valores por tamanho, passar para o banco de dados
+        $this->view->model_size = array(12 => '200', 14 => '260', 15 => '300', 17 => '450');
+
         $this->view->menu = array(
-            '/'         => 'HOME',
+            '/'             => 'HOME',
             '#about'        => 'QUEM SOMOS',
             '#team'         => 'PRODUTOS',
             '#portfolio'    => 'PORTFOLIO',
@@ -45,6 +48,29 @@ class Index extends Controller {
 
         $this->view->render('header.site');
         $this->view->render('index/produto');
+        $this->view->render('footer.site');
+    }
+
+    /*
+     * Lista os produtos por categoria
+     */
+    public function categoria()
+    {
+        require_once 'models/category_model.php';
+        $this->view->category = new Category_Model();
+
+        $this->view->menu = array(
+            '/'             => 'HOME',
+            '#about'        => 'QUEM SOMOS',
+            '#team'         => 'PRODUTOS',
+            '#portfolio'    => 'PORTFOLIO',
+            '#contact'      => 'CONTATO'
+        );
+
+        $this->view->title = 'Produtos';
+
+        $this->view->render('header.site');
+        $this->view->render('index/categoria');
         $this->view->render('footer.site');
     }
 

@@ -13,15 +13,15 @@
 				</ol>
 			</div>
 			<div class="col-lg-4 col-md-3">
-			<form name="form-search" action="<?php echo URL;?>category" method="post">
-				<div class="form-group input-group">
-					<input type="text" class="form-control" required="required" name="like" id="busca">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="submit">
-								<i class="glyphicon glyphicon-search"></i>
-						</button>
-					</span>
-				</div>
+				<form name="form-search" action="<?php echo URL;?>category" method="post">
+					<div class="form-group input-group">
+						<input type="text" class="form-control" required="required" name="like" id="busca">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+									<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</span>
+					</div>
 				</form>
 			</div>
 			<div class="col-lg-2 col-md-2">
@@ -65,6 +65,6 @@ $(function() {
 	$(".delete").click(function(e) {
 		var c = confirm("Deseja realmente deletar este registro?");
 		if (c == false) return false;
-	}); 
+	});
  });
 </script>
