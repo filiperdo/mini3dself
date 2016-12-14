@@ -183,7 +183,7 @@ class Index extends Controller {
 
         require_once 'models/order_product_model.php';
         $objOrderProduct = new Order_product_Model();
-        $this->view->order_product = $objOrderProduct;
+        $this->view->listarOrderProductByOrder = $objOrderProduct;
 
         $this->view->menu = array(
             0 => array('link' => URL,               'class' => 'external', 'label' => 'HOME'),
