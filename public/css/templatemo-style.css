@@ -24,6 +24,8 @@ a:hover {
 /* start h2 */
 h2
 	{
+
+		font-family: 'Russo One', sans-serif;
 		color: #28a7e9;
 		text-align: center;
 		font-size: 40px;
@@ -364,7 +366,7 @@ header .social-icon li a
 /* start service */
 #service
 	{
-		background: #fff;
+		background: url('../../public/img/bg-site-branco.jpg') center center;
 		color: #999;
 		padding: 20px 0;
 		margin: 40px 0;
@@ -398,11 +400,16 @@ header .social-icon li a
 	}
 #service h4
 	{
+		font-family: 'Russo One', sans-serif;
 		color: #28a7e9;
 		font-weight: 600;
 		padding-top: 10px;
 		padding-bottom: 14px;
 	}
+	#service h3
+		{
+			font-family: 'Russo One', sans-serif;
+		}
 /* end service */
 
 /* start portfolio */
@@ -465,11 +472,11 @@ header .social-icon li a
 /* start paralax */
 #paralax{
 	height: 250px;
-	background: url('../../public/img/home-bg.jpg') no-repeat center center;
+	background: url('../../public/img/model-samples.jpg') no-repeat center center;
 	z-index: -1;
 	overflow: hidden;
-  background-position: 100% 0;
-  background-size: cover;
+
+  background-size: 2300px;
   background-attachment: fixed;
 }
 /* end paralax */
@@ -477,8 +484,12 @@ header .social-icon li a
 /* start contact */
 #contact
 	{
-		background: #202020;
+		background: url('../../public/img/nikon-d80.jpg') no-repeat #202020;
+		background-size: cover;
 	}
+.contact-into{
+	background: url('../../public/img/bg-contact-branco.png');
+}
 #contact .form-control
 	{
 		background: transparent;
@@ -547,6 +558,19 @@ header .social-icon li a
 		font-weight: 400;
 	}
 /* end copyright */
+
+
+.btn-3dselfie
+	{
+		background: #28a7e9;
+		font-weight: bold;
+		-webkit-transition: all 0.4s ease-in-out;
+		        transition: all 0.4s ease-in-out;
+	}
+.btn-3dselfie:hover
+	{
+		background: transparent;
+	}
 
 /* start social icon */
 .social-icon

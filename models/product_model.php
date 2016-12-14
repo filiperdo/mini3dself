@@ -262,7 +262,7 @@ class Product_Model extends Model
 	/**
 	* Metodo listarProduct
 	*/
-	public function listarProduct()
+	public function listarProduct( $limit = NULL )
 	{
 		$sql  = "select * ";
 		$sql .= "from product ";
@@ -270,10 +270,22 @@ class Product_Model extends Model
 		if ( isset( $_POST["like"] ) )
 		{
 			$sql .= "where name like :name "; // Configurar o like com o campo necessario da tabela
+
+			if ( $limit ) {
+				$sql .= "limit " . $limit . " ";
+			}
+
 			$result = $this->db->select( $sql, array("name" => "%{$_POST["like"]}%") );
 		}
 		else
+		{
+			if ( $limit ) {
+				$sql .= "limit " . $limit . " ";
+			}
+
 			$result = $this->db->select( $sql );
+		}
+
 
 		return $this->montarLista($result);
 	}

@@ -172,6 +172,7 @@
 </div>
 </div>
 </div>
+
 <!-- /.row -->
 
 <script>
@@ -179,23 +180,15 @@
 	var clipboard = new Clipboard('.bt-copy');
 
 	$(document).ready(function(){
-
-		if( window.location.hostname == 'localhost' )
-		{
-			var URL = 'http://localhost/mini3dselfie/';
-		}
-		else
-		{
-			var URL = 'http://www.nepali.com.br/clientes/3dselfie/';
-		}
+		var URL = 'http://localhost/mini3dself/';
 
 		$(".delete").click(function(){
 
 			$target = $(this);
 			$liImg = '#id-' + $(this).attr('name');
-			//alert('Nome: ' + $liImg);
+			//alert($(this).attr('rel') +' - '+ $(this).attr('name'));
 			$($target).html('Deletando...');
-			$.post(URL+'post/delete_img/'+$(this).attr('rel'), function(data){
+			$.post(URL+'product/delete_img', { path:$(this).attr('rel'), img_name: $(this).attr('name') }, function(data){
 
 				$($liImg).fadeOut( "slow", function() { $($liImg).remove(); });
 				//alert(data);

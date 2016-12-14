@@ -134,19 +134,25 @@ class Product extends Controller {
 		header("location: " . URL . "product?st=".$msg);
 	}
 
-	public function delete_img($path)
+	public function delete_img()
 	{
 		Session::init();
-		$path_original =  'public/img/post/' . base64_decode($path) . '/';
 
-		if(is_dir($path_original))
+		$img_name = base64_decode( $_POST['img_name'] );
+
+		$path =  'public/img/product/' . base64_decode($_POST['path']) . '/';
+
+		if(is_dir($path))
 		{
- 			unlink($path_original);
-			echo 'Deletou: ' . $path_original;
+ 			unlink($path.$img_name);
+			unlink($path.'thumb/'.$img_name);
+
+			echo 'Deletou: ' .$path.$img_name.'<br>';
+			echo 'Deletou: ' .$path.'thumb/'.$img_name;
  		}
 		else
 		{
-			echo 'Nao deletou ' . $path_original;
+			echo 'Nao deletou '.$path . $img_name;
 		}
 	}
 
@@ -189,7 +195,7 @@ class Product extends Controller {
 
 				// cria a img default =========================================
 				$image = WideImage::load( $tmp_name[$i] );
-				$image = $image->resize(800, 600, 'inside');
+				$image = $image->resize(367, 700, 'inside');
 				//$image = $image->crop('center', 'center', 170, 180);
 
 				// verifica so o diretorio existe
@@ -202,7 +208,7 @@ class Product extends Controller {
 				// cria a img thumb ==========================================
 				$image_thumb = WideImage::load( $tmp_name[$i] );
 				$image_thumb = $image_thumb->resize(170, 150, 'outside');
-				$image_thumb = $image_thumb->crop('center', 'center', 170, 150);
+				$image_thumb = $image_thumb->crop('center', 'top', 170, 150);
 
 				$dir_thumb = $dir.'thumb/';
 				// verifica so o diretorio existe

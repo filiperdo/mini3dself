@@ -1,7 +1,7 @@
 <!-- start contact -->
-<section id="contact" style="background: #0e0e0e">
+<section id="contact">
   <div class="container">
-    <div class="row">
+    <div class="row contact-into">
       <div class="col-md-12">
         <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTATO <span>PEÇA JÁ O SEU</span></h2>
       </div>
@@ -58,22 +58,18 @@
   </div>
 
 <script type="text/javascript">
-    var URL = '<?php echo URL; ?>';
     $(document).ready(function(){
 
-        $('.team-wrapper').on('click', function(){
-            window.location.href = URL + 'index/produto/' + $(this).attr('id');
-        });
-
-        $('#addCart').on('click',function(){
+        /*$('#addCart').on('click',function(){
             $.post(URL + 'index/addCart/'+$('#idProduct').val(), function(data){
                 alert('Produto adicionado!');
                 $('#amount-cart').html( '(' + data + ')');
             });
-        });
+        });*/
 
         $('.model-size').on('click', function(){
             $('#label-price').html('R$ ' + $(this).attr('title') + ',00');
+            $('#price').val($(this).attr('title'));
         });
 
     });

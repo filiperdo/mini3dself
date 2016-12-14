@@ -1,5 +1,3 @@
-<!-- start paralax -->
-<section id="paralax"></section>
 
 <!-- start team -->
 <section id="team">
@@ -8,24 +6,27 @@
             <div class="col-md-3" style="background: #fff; color:#333">
                 <h3>Categorias</h3>
                 <ul>
+					<li><a href="<?php echo URL . 'index/categoria/';?>">Todos</a></li>
                     <?php foreach ($this->category->listarCategory() as $category ) { ?>
-                        <li><?php echo $category->getName(); ?></li>
+					<li><a href="<?php echo URL . 'index/categoria/'.$category->getId_category();?>"><?php echo $category->getName(); ?></a></li>
                     <?php } ?>
                 </ul>
             </div>
 
             <div class="col-md-9" >
 
-    			<?php for ($i=1; $i <=12; $i++) { ?>
+    			<?php foreach( $this->listarProduct as $product ) { ?>
     			<div class="col-md-3 col-sm-3 col-xs-6 wow fadeIn produto-box" data-wow-offset="50" data-wow-delay="0.4s" style="margin-top:-20px; margin-bottom: 20px">
-    				<div class="team-wrapper" id="<?php echo $i; ?>">
-    					<img src="<?php echo URL; ?>public/img/product/<?php echo $i;?>/1.jpg" class="img-responsive" alt="team img 1">
-    					<div class="team-des">
-    						<h4 style="color:#fff">Nome produto</h4>
-    						<span>R$ 99,00</span>
-    						<!--<p style="color:#eaeaea">Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molest.</p>-->
-    					</div>
-    				</div>
+					<a href="<?php echo URL . 'index/produto/' . $product->getId_product();?>">
+						<div class="team-wrapper" >
+	    					<img src="<?php echo URL; ?>public/img/product/<?php echo $product->getPath() . '/'.$product->getMainpicture();?>" class="img-responsive" alt="team img 1">
+	    					<div class="team-des">
+	    						<h4 style="color:#fff"><?php echo $product->getName(); ?></h4>
+
+	    						<!--<p style="color:#eaeaea">Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molest.</p>-->
+	    					</div>
+	    				</div>
+					</a>
     			</div>
     			<?php } ?>
 

@@ -27,6 +27,7 @@ if( isset($_SESSION[PREFIX_SESSION.'carrinho']) )
 		<link rel="stylesheet" href="<?php echo URL; ?>public/css/animate.min.css">
 		<link rel="stylesheet" href="<?php echo URL; ?>public/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo URL; ?>public/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="<?php echo URL; ?>public/css/templatemo-style.css">
 		<script src="<?php echo URL; ?>public/js/jquery.js"></script>
@@ -60,7 +61,6 @@ if( isset($_SESSION[PREFIX_SESSION.'carrinho']) )
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <!--<p><i class="fa fa-envelope-o"></i> <a href="#">contato@3dself.com</a> <i class="fa fa-phone" ></i> (11) 95569-1005</p>-->
-
                     </div>
                     <div class="col-md-5 col-sm-4 col-xs-12">
                         <ul class="social-icon">
@@ -68,7 +68,6 @@ if( isset($_SESSION[PREFIX_SESSION.'carrinho']) )
                             <li><a href="#" class="fa fa-facebook" style="background:#1c90dd; "></a></li>
                             <li><a href="#" class="fa fa-twitter" style="background:#1c90dd; "></a></li>
                             <li><a href="#" class="fa fa-instagram" style="background:#1c90dd; "></a></li>
-                            <li><a href="#" class="fa fa-apple" style="background:#1c90dd; "></a></li>
                         </ul>
                     </div>
                 </div>
@@ -77,7 +76,7 @@ if( isset($_SESSION[PREFIX_SESSION.'carrinho']) )
         <!-- end header -->
 
     	<!-- start navigation -->
-		<nav class="navbar navbar-default templatemo-nav " role="navigation">
+		<nav class="navbar navbar-default templatemo-nav" role="navigation">
 			<div class="container" style="margin-bottom:5px; margin-top:5px">
 				<div class="navbar-header">
 					<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -89,11 +88,10 @@ if( isset($_SESSION[PREFIX_SESSION.'carrinho']) )
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<?php foreach ($this->menu as $key => $value) { ?>
-							<li><a href="<?php echo $key ?>"><?php echo $value ?></a></li>
+						<?php foreach ($this->menu as $value) { ?>
+							<li><a href="<?php echo $value['link'] ?>" class="<?=$value['class'];?>"><?php echo $value['label'] ?></a></li>
 						<?php } ?>
 						<li><a href="<?php echo URL?>index/cart"><i class="glyphicon glyphicon-shopping-cart cart"></i> <span id="amount-cart">(<?php echo $totalCart; ?>)</span></a></li>
-
 					</ul>
 				</div>
 			</div>

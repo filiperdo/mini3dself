@@ -1,18 +1,18 @@
-<?php 
+<?php
 
-/** 
+/**
  * Classe User
- * @author __ 
+ * @author __
  *
  * Data: 30/11/2016
- */ 
+ */
 
 include_once 'usertype_model.php';
 
 class User_Model extends Model
 {
-	/** 
-	* Atributos Private 
+	/**
+	* Atributos Private
 	*/
 	private $id_user;
 	private $name;
@@ -47,7 +47,7 @@ class User_Model extends Model
 		$this->usertype = new Usertype_Model();
 	}
 
-	/** 
+	/**
 	* Metodos set's
 	*/
 	public function setId_user( $id_user )
@@ -115,7 +115,7 @@ class User_Model extends Model
 		$this->usertype = $usertype;
 	}
 
-	/** 
+	/**
 	* Metodos get's
 	*/
 	public function getId_user()
@@ -184,7 +184,7 @@ class User_Model extends Model
 	}
 
 
-	/** 
+	/**
 	* Metodo create
 	*/
 	public function create( $data )
@@ -200,7 +200,7 @@ class User_Model extends Model
 		return true;
 	}
 
-	/** 
+	/**
 	* Metodo edit
 	*/
 	public function edit( $data, $id )
@@ -216,14 +216,14 @@ class User_Model extends Model
 		return $update;
 	}
 
-	/** 
+	/**
 	* Metodo delete
 	*/
 	public function delete( $id )
 	{
 		$this->db->beginTransaction();
 
-	 if( !$delete = $this->db->delete("user", "id_user = {$id} ") ){ 
+	 if( !$delete = $this->db->delete("user", "id_user = {$id} ") ){
 			$this->db->rollBack();
 			return false;
 		}
@@ -232,7 +232,7 @@ class User_Model extends Model
 		return $delete;
 	}
 
-	/** 
+	/**
 	* Metodo obterUser
 	*/
 	public function obterUser( $id_user )
@@ -242,10 +242,15 @@ class User_Model extends Model
 		$sql .= "where id_user = :id ";
 
 		$result = $this->db->select( $sql, array("id" => $id_user) );
-		return $this->montarObjeto( $result[0] );
+
+		if( !empty( $result ) )
+			return $this->montarObjeto( $result[0] );
+		else {
+			return $this;
+		}
 	}
 
-	/** 
+	/**
 	* Metodo listarUser
 	*/
 	public function listarUser()
@@ -255,7 +260,7 @@ class User_Model extends Model
 
 		if ( isset( $_POST["like"] ) )
 		{
-			$sql .= "where id_user like :id "; // Configurar o like com o campo necessario da tabela 
+			$sql .= "where id_user like :id "; // Configurar o like com o campo necessario da tabela
 			$result = $this->db->select( $sql, array("id" => "%{$_POST["like"]}%") );
 		}
 		else
@@ -264,7 +269,7 @@ class User_Model extends Model
 		return $this->montarLista($result);
 	}
 
-	/** 
+	/**
 	* Metodo montarLista
 	*/
 	private function montarLista( $result )
@@ -283,7 +288,7 @@ class User_Model extends Model
 		return $objs;
 	}
 
-	/** 
+	/**
 	* Metodo montarObjeto
 	*/
 	private function montarObjeto( $row )

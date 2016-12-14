@@ -1,33 +1,83 @@
-<?php 
+<?php
 
-/** 
+/**
  * Classe Order
- * @author __ 
+ * @author __
  *
  * Data: 30/11/2016
- */ 
+ */
 
+include_once 'user_model.php';
+include_once 'order_status_model.php';
 
 class Order_Model extends Model
 {
-	/** 
-	* Atributos Private 
+	/**
+	* Atributos Private
 	*/
+	private $id_order;
+	private $user;
+	private $date;
+	private $order_status;
 
 	public function __construct()
 	{
 		parent::__construct();
 
+		$this->id_order = '';
+		$this->user = new User_Model();
+		$this->date = '';
+		$this->order_status = new Order_status_Model();
+
 	}
 
-	/** 
+	/**
 	* Metodos set's
 	*/
-	/** 
+	public function setId_order($id_order)
+	{
+		$this->id_order = $id_order;
+	}
+
+	public function setUser( User_Model $user )
+	{
+		$this->user = $user;
+	}
+
+	public function setDate( $date )
+	{
+		$this->date = $date;
+	}
+
+	public function setOrder_status( Order_status_Model $order_status )
+	{
+		$this->order_satus = $order_status;
+	}
+
+	/**
 	* Metodos get's
 	*/
+	public function getId_order()
+	{
+		return $this->id_order;
+	}
 
-	/** 
+	public function getUser()
+	{
+		return $this->user;
+	}
+
+	public function getDate()
+	{
+		return $this->date;
+	}
+
+	public function getOrder_status()
+	{
+		return $this->order_satus;
+	}
+
+	/**
 	* Metodo create
 	*/
 	public function create( $data )
@@ -43,7 +93,7 @@ class Order_Model extends Model
 		return true;
 	}
 
-	/** 
+	/**
 	* Metodo edit
 	*/
 	public function edit( $data, $id )
@@ -59,14 +109,14 @@ class Order_Model extends Model
 		return $update;
 	}
 
-	/** 
+	/**
 	* Metodo delete
 	*/
 	public function delete( $id )
 	{
 		$this->db->beginTransaction();
 
-	 if( !$delete = $this->db->delete("order", "id_order = {$id} ") ){ 
+	 if( !$delete = $this->db->delete("order", "id_order = {$id} ") ){
 			$this->db->rollBack();
 			return false;
 		}
@@ -75,30 +125,49 @@ class Order_Model extends Model
 		return $delete;
 	}
 
-	/** 
+	/**
 	* Metodo obterOrder
 	*/
 	public function obterOrder( $id_order )
 	{
 		$sql  = "select * ";
-		$sql .= "from order ";
+		$sql .= "from `order` ";
 		$sql .= "where id_order = :id ";
 
 		$result = $this->db->select( $sql, array("id" => $id_order) );
 		return $this->montarObjeto( $result[0] );
 	}
 
-	/** 
+	/**
+	* Metodo obterOrderBySession
+	* Para recuperar o carrinho
+	*/
+	public function obterOrderBySession( $session )
+	{
+		$sql  = "select * ";
+		$sql .= "from `order` ";
+		$sql .= "where session = :sess ";
+
+		$result = $this->db->select( $sql, array("sess" => $session) );
+
+		if( !empty( $result ) )
+			return $this->montarObjeto( $result[0] );
+		else {
+			return $this;
+		}
+	}
+
+	/**
 	* Metodo listarOrder
 	*/
 	public function listarOrder()
 	{
 		$sql  = "select * ";
-		$sql .= "from order ";
+		$sql .= "from `order` ";
 
 		if ( isset( $_POST["like"] ) )
 		{
-			$sql .= "where id_order like :id "; // Configurar o like com o campo necessario da tabela 
+			$sql .= "where id_order like :id "; // Configurar o like com o campo necessario da tabela
 			$result = $this->db->select( $sql, array("id" => "%{$_POST["like"]}%") );
 		}
 		else
@@ -107,7 +176,7 @@ class Order_Model extends Model
 		return $this->montarLista($result);
 	}
 
-	/** 
+	/**
 	* Metodo montarLista
 	*/
 	private function montarLista( $result )
@@ -126,11 +195,23 @@ class Order_Model extends Model
 		return $objs;
 	}
 
-	/** 
+	/**
 	* Metodo montarObjeto
 	*/
 	private function montarObjeto( $row )
 	{
+		$this->setId_order( $row['id_order'] );
+
+		//$objUser = new User_Model();
+		//$objUser->obterUser( $row['id_user'] );
+		//$this->setUser($objUser);
+
+		$this->setDate( $row['date'] );
+
+		$objOrderStatus = new Order_status_Model();
+		$objOrderStatus->obterOrder_status( $row['id_order_status'] );
+		$this->setOrder_status($objOrderStatus);
+
 
 		return $this;
 	}

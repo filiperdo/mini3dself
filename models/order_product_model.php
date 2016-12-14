@@ -1,25 +1,27 @@
-<?php 
+<?php
 
-/** 
+/**
  * Classe Order_product
- * @author __ 
+ * @author __
  *
  * Data: 30/11/2016
- */ 
+ */
 
 include_once 'product_model.php';
 include_once 'order_model.php';
 
 class Order_product_Model extends Model
 {
-	/** 
-	* Atributos Private 
+	/**
+	* Atributos Private
 	*/
 	private $id_order_product;
 	private $product;
 	private $order;
 	private $quantity;
 	private $price;
+	private $path;
+	private $size;
 
 	public function __construct()
 	{
@@ -30,9 +32,11 @@ class Order_product_Model extends Model
 		$this->order = new Order_Model();
 		$this->quantity = '';
 		$this->price = '';
+		$this->path = '';
+		$this->size = '';
 	}
 
-	/** 
+	/**
 	* Metodos set's
 	*/
 	public function setId_order_product( $id_order_product )
@@ -60,7 +64,17 @@ class Order_product_Model extends Model
 		$this->price = $price;
 	}
 
-	/** 
+	public function setPath( $path )
+	{
+		$this->path = $path;
+	}
+
+	public function setSize( $size )
+	{
+		$this->size = $size;
+	}
+
+	/**
 	* Metodos get's
 	*/
 	public function getId_order_product()
@@ -88,8 +102,18 @@ class Order_product_Model extends Model
 		return $this->price;
 	}
 
+	public function getPath()
+	{
+		return $this->path;
+	}
 
-	/** 
+	public function getSize()
+	{
+		return $this->size;
+	}
+
+
+	/**
 	* Metodo create
 	*/
 	public function create( $data )
@@ -105,7 +129,7 @@ class Order_product_Model extends Model
 		return true;
 	}
 
-	/** 
+	/**
 	* Metodo edit
 	*/
 	public function edit( $data, $id )
@@ -121,14 +145,14 @@ class Order_product_Model extends Model
 		return $update;
 	}
 
-	/** 
+	/**
 	* Metodo delete
 	*/
 	public function delete( $id )
 	{
 		$this->db->beginTransaction();
 
-	 if( !$delete = $this->db->delete("order_product", "id_order_product = {$id} ") ){ 
+	 if( !$delete = $this->db->delete("order_product", "id_order_product = {$id} ") ){
 			$this->db->rollBack();
 			return false;
 		}
@@ -137,7 +161,7 @@ class Order_product_Model extends Model
 		return $delete;
 	}
 
-	/** 
+	/**
 	* Metodo obterOrder_product
 	*/
 	public function obterOrder_product( $id_order_product )
@@ -150,7 +174,23 @@ class Order_product_Model extends Model
 		return $this->montarObjeto( $result[0] );
 	}
 
-	/** 
+
+
+	/**
+	* Metodo listarOrder_productByOrder
+	*/
+	public function listarOrder_productByOrder( $id_order )
+	{
+		$sql  = "select * ";
+		$sql .= "from order_product ";
+		$sql .= "where id_order = :id ";
+
+		$result = $this->db->select( $sql, array("id" => $id_order) );
+
+		return $this->montarLista($result);
+	}
+
+	/**
 	* Metodo listarOrder_product
 	*/
 	public function listarOrder_product()
@@ -160,7 +200,7 @@ class Order_product_Model extends Model
 
 		if ( isset( $_POST["like"] ) )
 		{
-			$sql .= "where id_order_product like :id "; // Configurar o like com o campo necessario da tabela 
+			$sql .= "where id_order_product like :id "; // Configurar o like com o campo necessario da tabela
 			$result = $this->db->select( $sql, array("id" => "%{$_POST["like"]}%") );
 		}
 		else
@@ -169,7 +209,7 @@ class Order_product_Model extends Model
 		return $this->montarLista($result);
 	}
 
-	/** 
+	/**
 	* Metodo montarLista
 	*/
 	private function montarLista( $result )
@@ -188,7 +228,7 @@ class Order_product_Model extends Model
 		return $objs;
 	}
 
-	/** 
+	/**
 	* Metodo montarObjeto
 	*/
 	private function montarObjeto( $row )
@@ -204,6 +244,8 @@ class Order_product_Model extends Model
 		$this->setOrder( $objOrder );
 		$this->setQuantity( $row["quantity"] );
 		$this->setPrice( $row["price"] );
+		$this->setPath( $row['path'] );
+		$this->setSize( $row['size'] );
 
 		return $this;
 	}
