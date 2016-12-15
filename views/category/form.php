@@ -8,7 +8,7 @@
 		<div class="clearfix"></div>
 		<ol class="breadcrumb">
 			<li><a href="<?php echo URL; ?>">Home</a></li>
-			<li><a href="<?php echo URL; ?>category">Listar Category</a></li>
+			<li><a href="<?php echo URL; ?>category">Listar Categoria</a></li>
 			<li class="active"><?php echo $this->title; ?></li>
 		</ol>
 	</div>
@@ -21,8 +21,8 @@
 <input type="hidden" name="idCategory" value="<?=$this->obj->getId_category()?>" />
 
 <div class="form-group">
-	<label for="name" class="col-md-2 col-sm-2 col-xs-12 control-label">Name</label> 
-	<div class="col-md-9 col-sm-9 col-xs-12"> 
+	<label for="name" class="col-md-2 col-sm-2 col-xs-12 control-label">Name</label>
+	<div class="col-md-9 col-sm-9 col-xs-12">
 		<input type="text" name="name" id="name"  class="form-control col-md-7 col-xs-12" required="required" value="<?=$this->obj->getName()?>" />
 	</div>
 </div>
