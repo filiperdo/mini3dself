@@ -71,6 +71,35 @@ class Index extends Controller {
         $this->view->render('footer.site');
     }
 
+    /*
+     * Remove um item do carrinho
+     */
+    public function removeItemCart( $id_order_product )
+    {
+        Session::init();
+        $this->model->db->beginTransaction();
+
+        require_once 'models/order_product_model.php';
+        $objOrderProduct = new Order_product_Model();
+        $objOrderProduct->obterOrder_product(base64_decode($id_order_product));
+
+        if( !$this->model->db->delete("order_product", "id_order_product = " . $objOrderProduct->getId_order_product()) ){
+   			$this->model->db->rollBack();
+            $msg = base64_encode( "OPERACAO_ERRO" );
+   			header("location: " . URL . "index/carrinho/".base64_encode($objOrderProduct->getId_order_product())."?st=".$msg);
+   		}
+
+        // Remover as fotos referentes a este item
+
+        $this->model->db->commit();
+        $msg = base64_encode( "OPERACAO_SUCESSO" );
+        header("location: " . URL . "index/carrinho/".base64_encode($objOrderProduct->getOrder()->getId_order())."?st=".$msg);
+
+    }
+
+    /*
+     * Adiciona um novo item ao carrinho gravando no banco
+     */
     public function addCart( $id_product )
     {
         Session::init();
@@ -83,7 +112,7 @@ class Index extends Controller {
         // Verifica se ja foi gravado uma order para esta sessao
         $objOrder->obterOrderBySession( Session::get('session_order') );
 
-        if( empty($objOrder->getId_order()) )
+        if( $objOrder->getId_order() == '' )
         {
             // Insere os dados do pedido ==========================
             $data_order = array(
@@ -175,22 +204,35 @@ class Index extends Controller {
         header("location: " . URL . "index/carrinho/".base64_encode($id_order)."?st=".$msg);
     }
 
-    public function carrinho( $id_order )
+    public function carrinho( $id_order = NULL )
     {
         Session::init();
 
-        $this->view->id_order = base64_decode($id_order);
+        //$this->view->id_order = base64_decode($id_order);
 
         require_once 'models/order_product_model.php';
         $objOrderProduct = new Order_product_Model();
-        $this->view->listarOrderProductByOrder = $objOrderProduct;
+
+        if( $id_order )
+        {
+            $id_order = base64_decode($id_order);
+        }
+        else if( Session::get('session_order') != null )
+        {
+            require_once 'models/order_model.php';
+            $objOrder = new Order_Model();
+            $objOrder->obterOrderBySession( Session::get('session_order') );
+            $id_order = $objOrder->getId_order();
+        }
+
+        $this->view->listarOrderProductByOrder = $objOrderProduct->listarOrder_productByOrder($id_order);
 
         $this->view->menu = array(
-            0 => array('link' => URL,               'class' => 'external', 'label' => 'HOME'),
-            1 => array('link' => URL.'#about',      'class' => 'external', 'label' => 'QUEM SOMOS'),
-            2 => array('link' => URL.'index/categoria',       'class' => 'external', 'label' => 'PRODUTOS'),
-            3 => array('link' => URL.'#portfolio',  'class' => 'external', 'label' => 'PORTFOLIO'),
-            4 => array('link' => '#contact',        'class' => '',         'label' => 'CONTATO'),
+            0 => array('link' => URL,                           'class' => 'external', 'label' => 'HOME'),
+            1 => array('link' => URL.'#about',                  'class' => 'external', 'label' => 'QUEM SOMOS'),
+            2 => array('link' => URL.'index/categoria',         'class' => 'external', 'label' => 'PRODUTOS'),
+            3 => array('link' => URL.'#portfolio',              'class' => 'external', 'label' => 'PORTFOLIO'),
+            4 => array('link' => '#contact',                    'class' => '',         'label' => 'CONTATO'),
         );
 
         $this->view->render('header.site');

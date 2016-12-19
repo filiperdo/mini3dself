@@ -91,7 +91,7 @@ if( isset($_SESSION[PREFIX_SESSION.'carrinho']) )
 						<?php foreach ($this->menu as $value) { ?>
 							<li><a href="<?php echo $value['link'] ?>" class="<?=$value['class'];?>"><?php echo $value['label'] ?></a></li>
 						<?php } ?>
-						<li><a href="<?php echo URL?>index/cart"><i class="glyphicon glyphicon-shopping-cart cart"></i> <span id="amount-cart">(<?php echo $totalCart; ?>)</span></a></li>
+						<li><a href="<?php echo URL?>index/carrinho/" class="external"><i class="glyphicon glyphicon-shopping-cart cart"></i> <span id="amount-cart">(<?php echo $totalCart; ?>)</span></a></li>
 					</ul>
 				</div>
 			</div>
