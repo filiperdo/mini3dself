@@ -53,7 +53,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span>PRODUTOS</span></h2>
+					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span>MODELOS DE CORPO</span></h2>
 				</div>
 
 				<?php foreach( $this->product->listarProduct(12) as $product ) { ?>
@@ -67,7 +67,7 @@
 								<!--<p style="color:#eaeaea">Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molest.</p>-->
 							</div>
 						</div>
-					</a	>
+					</a>
 				</div>
 				<?php } ?>
 				<div class="col-md-12">
@@ -77,6 +77,8 @@
 		</div>
 	</section>
 	<!-- end team -->
+
+
 
 	<!-- start about -->
 	<section id="about">

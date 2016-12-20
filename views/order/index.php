@@ -6,9 +6,9 @@
 		<h2 class="page-header"><?php echo $this->title; ?></h2>
 		<div class="clearfix"></div>
 		<div class="row">
-			<div class="col-lg-6 col-md-6">
+			<div class="col-lg-8 col-md-8">
 				<ol class="breadcrumb">
-					<li><a href="index.php">Home</a></li>
+					<li><a href="<?php echo URL;?>home">Home</a></li>
 					<li class="active"><a href="<?php echo URL;?>order"><?php echo $this->title; ?></a></li>
 				</ol>
 			</div>
@@ -24,9 +24,7 @@
 				</div>
 				</form>
 			</div>
-			<div class="col-lg-2 col-md-2">
-				<a href="<?php echo URL;?>order/form" class="btn btn-dark">Cadastrar <?php echo $this->title; ?></a>
-			</div>
+
 		</div>
 	</div>
 
@@ -37,13 +35,19 @@
 <table id="datatable-responsive" class="table table-striped" cellspacing="0" width="100%">
 	<thead>
 	<tr>
+		<th>Pedido</th>
+		<th>Data</th>
+		<th>Status</th>
 		<th></th>
 	</tr>
 	</thead>
 	<tbody>
 	<?php foreach( $this->listarOrder as $order ) { ?>
 	<tr>
- 		<td align="right">
+		<td><?php echo $order->getId_order(); ?></td>
+		<td><?php echo Data::formataDataHora($order->getDate()); ?></td>
+		<td><span class="<?php echo $order->getOrder_status()->getClass(); ?>"><?php echo $order->getOrder_status()->getDescription(); ?></span></td>
+		<td align="right">
 			<a href="<?php echo URL;?>order/form/<?php echo $order->getId_order();?>" class="btn btn-dark btn-sm"><i class="glyphicon glyphicon-pencil"></i></a>
 			<a href="<?php echo URL;?>order/delete/<?php echo $order->getId_order();?>" class="delete btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></a>
 		</td>
@@ -61,6 +65,6 @@ $(function() {
 	$(".delete").click(function(e) {
 		var c = confirm("Deseja realmente deletar este registro?");
 		if (c == false) return false;
-	}); 
+	});
  });
 </script>

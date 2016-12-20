@@ -1,3 +1,5 @@
+
+
 <!-- start slider -->
 <!-- Reduzir slide para paginas internas -->
 <section id="pagina">
@@ -26,9 +28,12 @@
 					<div class="row" style="margin-top:25px">
 						<?php for ($i=1; $i <=4; $i++) { ?>
 							<div class="col-md-3">
-								<img src="<?php echo URL?>public/img/product/<?php echo $this->product->getPath().'/thumb/img-'.$i.'.jpg'; ?>" width="100%" alt="<?php echo 'Imagem ' . $this->product->getName();?>">
+								<a data-src="<?php echo URL;?>public/img/product/<?php echo $this->product->getPath().'/img-'.$i.'.jpg'; ?>">
+									<img src="<?php echo URL?>public/img/product/<?php echo $this->product->getPath().'/thumb/img-'.$i.'.jpg'; ?>" width="100%" alt="<?php echo 'Imagem ' . $this->product->getName();?>">
+								</a>
 							</div>
 						<?php } ?>
+
 					</div>
 				</div>
 			</div>
@@ -44,8 +49,7 @@
 		                        <h4>Cod. <?php echo $this->product->getId_product(); ?></h4>
 		    					<h3><span id="label-price">R$ 200,00</span></h3>
 
-								<p><?php echo 'test_session_order: ' . $this->test_session_order; ?></p>
-								<p><?php echo 'test_path_photo: ' . $this->test_path_photo; ?></p>
+								<p>Selecione as fotos como no exemplo abaixo e adicione ao carrinho!</p>
 
 								</div>
 								<div class="col-md-6 col-sm-6 col-xs-12">
@@ -63,31 +67,31 @@
 
                             <div class="row">
                                 <div class="col-md-3 col-sm-3 col-xs-6">
-									<p><img src="<?php echo URL?>public/img/foto-manual1.jpg" width="100%" alt="<?php echo 'Nome';?>"></p>
+									<div class="foto-manual"><img id="foto-user-1" src="<?php echo URL?>public/img/foto-manual1.jpg" width="100%" alt="<?php echo 'Nome';?>"></div>
 									<p>Foto frontal</p>
-                                    <input name="fileUpload1" id="fileUpload1" required type="file" />
+                                    <input name="fileUpload1" id="1" class="btn-foto-user" required type="file" />
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-xs-6">
-									<p><img src="<?php echo URL?>public/img/foto-manual2.jpg" width="100%" alt="<?php echo 'Nome';?>"></p>
+									<div class="foto-manual"><img id="foto-user-2" src="<?php echo URL?>public/img/foto-manual2.jpg" width="100%" alt="<?php echo 'Nome';?>"></div>
                                     <p>Perfil direito</p>
-                                    <input name="fileUpload2" id="fileUpload2"  type="file" />
+                                    <input name="fileUpload2" id="2" class="btn-foto-user" type="file" />
                                 </div>
 								<div class="col-md-3 col-sm-3 col-xs-6">
-									<p><img src="<?php echo URL?>public/img/foto-manual3.jpg" width="100%" alt="<?php echo 'Nome';?>"></p>
+									<div class="foto-manual"><img id="foto-user-3" src="<?php echo URL?>public/img/foto-manual3.jpg" width="100%" alt="<?php echo 'Nome';?>"></div>
                                     <p>Perfil esquerdo</p>
-                                    <input name="fileUpload3" id="fileUpload3"  type="file" />
+                                    <input name="fileUpload3" id="3" class="btn-foto-user" type="file" />
                                 </div>
 								<div class="col-md-3 col-sm-3 col-xs-6">
-									<p><img src="<?php echo URL?>public/img/foto-manual4.jpg" width="100%" alt="<?php echo 'Nome';?>"></p>
+									<div class="foto-manual"><img id="foto-user-4" src="<?php echo URL?>public/img/foto-manual4.jpg" width="100%" alt="<?php echo 'Nome';?>"></div>
                                     <p>Foto da nuca</p>
-                                    <input name="fileUpload4" id="fileUpload4"  type="file" />
+                                    <input name="fileUpload4" id="4" class="btn-foto-user" type="file" />
                                 </div>
                             </div><!-- row -->
 
                             <div class="row" style="margin-top:25px">
                                 <div class="col-md-12">
                                     <input type="hidden" id="idProduct" value="<?php echo $this->id; ?>">
-                                    <button type="submit" class="btn btn-info" name="Enviar">Adicionar ao carrinho</button>
+                                    <button type="submit" class="btn btn-info" name="Enviar">Comprar</button>
 									<a href="<?php echo URL.'index/categoria';?>" class="btn btn-success" name="button">Continuar comprando</a>
                                 </div>
                             </div><!-- row -->
@@ -100,3 +104,24 @@
 	</div>
 </section>
 <!-- end team -->
+<style media="screen">
+	.foto-manual{
+		margin-bottom: 15px;
+		height: 155px;
+		background: #ccc;
+		text-align: center;
+		font-size: 18px;
+	}
+</style>
+
+<script type="text/javascript">
+
+	var URL = '<?=URL;?>';
+	$('.btn-foto-user').change(function() {
+		var id = $(this).attr('id');
+		var filename = $(this)[0].files[0]['name'];
+		$target = '#foto-user-'+id;
+		$($target).attr('src',URL+'public/img/img-ok.jpg');
+	});
+
+</script>

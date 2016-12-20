@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Order extends Controller {
 
@@ -7,12 +7,12 @@ class Order extends Controller {
 		//Auth::handleLogin();
 	}
 
-	/** 
+	/**
 	* Metodo index
 	*/
 	public function index()
 	{
-		$this->view->title = "Order";
+		$this->view->title = "Pedidos";
 		$this->view->listarOrder = $this->model->listarOrder();
 
 		$this->view->render( "header" );
@@ -20,7 +20,7 @@ class Order extends Controller {
 		$this->view->render( "footer" );
 	}
 
-	/** 
+	/**
 	* Metodo editForm
 	*/
 	public function form( $id = NULL )
@@ -29,7 +29,7 @@ class Order extends Controller {
 		$this->view->action = "create";
 		$this->view->obj = $this->model;
 
-		if( $id ) 
+		if( $id )
 		{
 			$this->view->title = "Editar Order";
 			$this->view->action = "edit/".$id;
@@ -45,7 +45,7 @@ class Order extends Controller {
 		$this->view->render( "footer" );
 	}
 
-	/** 
+	/**
 	* Metodo create
 	*/
 	public function create()
@@ -58,7 +58,7 @@ class Order extends Controller {
 		header("location: " . URL . "order?st=".$msg);
 	}
 
-	/** 
+	/**
 	* Metodo edit
 	*/
 	public function edit( $id )
@@ -71,7 +71,7 @@ class Order extends Controller {
 		header("location: " . URL . "order?st=".$msg);
 	}
 
-	/** 
+	/**
 	* Metodo delete
 	*/
 	public function delete( $id )

@@ -1,13 +1,13 @@
 <?php
+
 Session::init();
 $totalCart = 0;
-if(	isset($_COOKIE[PREFIX_SESSION.'carrinho']) )
+
+if( Session::get('session_order') != null )
 {
-	$_SESSION[PREFIX_SESSION.'carrinho'] = unserialize($_COOKIE[PREFIX_SESSION.'carrinho']);
-}
-if( isset($_SESSION[PREFIX_SESSION.'carrinho']) )
-{
-	$totalCart = count($_SESSION[PREFIX_SESSION.'carrinho']);
+	require_once 'models/order_product_model.php';
+	$objOrderProduct = new Order_product_Model();
+	$totalCart = $objOrderProduct->countOrder_productBySession( Session::get('session_order') );
 }
 ?>
 <!DOCTYPE html>

@@ -174,7 +174,21 @@ class Order_product_Model extends Model
 		return $this->montarObjeto( $result[0] );
 	}
 
+	/*
+	 * Conta quantos itens tem no carrinho
+	 */
+	public function countOrder_productBySession( $session )
+	{
+		$sql  = "select count(id_order_product) as total ";
+		$sql .= "from order_product as op ";
+		$sql .= "inner join `order`  as o ";
+		$sql .= "on o.id_order = op.id_order ";
+		$sql .= "where o.session = :session ";
 
+		$result = $this->db->select( $sql, array("session" => $session) );
+
+		return $result[0]['total'];
+	}
 
 	/**
 	* Metodo listarOrder_productByOrder

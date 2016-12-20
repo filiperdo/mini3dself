@@ -196,7 +196,7 @@ class Index extends Controller {
         //======================================================
         //======================================================
 
-        // Destruir sessao do path do post
+        // Destruir sessao do path das fotos do cliente
 		Session::destroy('path_photo');
 
         $msg = base64_encode( "OPERACAO_SUCESSO" );
@@ -292,11 +292,6 @@ class Index extends Controller {
         echo count($_SESSION[PREFIX_SESSION.'carrinho']);
     }
     */
-
-    public function editCart( $id_product, $amount )
-    {
-        Session::init();
-    }
 
 
 }

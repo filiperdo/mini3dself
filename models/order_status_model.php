@@ -1,17 +1,17 @@
-<?php 
+<?php
 
-/** 
+/**
  * Classe Order_status
- * @author __ 
+ * @author __
  *
  * Data: 30/11/2016
- */ 
+ */
 
 
 class Order_status_Model extends Model
 {
-	/** 
-	* Atributos Private 
+	/**
+	* Atributos Private
 	*/
 	private $id_order_status;
 	private $description;
@@ -22,9 +22,10 @@ class Order_status_Model extends Model
 
 		$this->id_order_status = '';
 		$this->description = '';
+		$this->class = '';
 	}
 
-	/** 
+	/**
 	* Metodos set's
 	*/
 	public function setId_order_status( $id_order_status )
@@ -37,7 +38,12 @@ class Order_status_Model extends Model
 		$this->description = $description;
 	}
 
-	/** 
+	public function setClass( $class )
+	{
+		$this->class = $class;
+	}
+
+	/**
 	* Metodos get's
 	*/
 	public function getId_order_status()
@@ -50,8 +56,13 @@ class Order_status_Model extends Model
 		return $this->description;
 	}
 
+	public function getClass()
+	{
+		return $this->class;
+	}
 
-	/** 
+
+	/**
 	* Metodo create
 	*/
 	public function create( $data )
@@ -67,7 +78,7 @@ class Order_status_Model extends Model
 		return true;
 	}
 
-	/** 
+	/**
 	* Metodo edit
 	*/
 	public function edit( $data, $id )
@@ -83,14 +94,14 @@ class Order_status_Model extends Model
 		return $update;
 	}
 
-	/** 
+	/**
 	* Metodo delete
 	*/
 	public function delete( $id )
 	{
 		$this->db->beginTransaction();
 
-	 if( !$delete = $this->db->delete("order_status", "id_order_status = {$id} ") ){ 
+	 if( !$delete = $this->db->delete("order_status", "id_order_status = {$id} ") ){
 			$this->db->rollBack();
 			return false;
 		}
@@ -99,7 +110,7 @@ class Order_status_Model extends Model
 		return $delete;
 	}
 
-	/** 
+	/**
 	* Metodo obterOrder_status
 	*/
 	public function obterOrder_status( $id_order_status )
@@ -112,7 +123,7 @@ class Order_status_Model extends Model
 		return $this->montarObjeto( $result[0] );
 	}
 
-	/** 
+	/**
 	* Metodo listarOrder_status
 	*/
 	public function listarOrder_status()
@@ -122,7 +133,7 @@ class Order_status_Model extends Model
 
 		if ( isset( $_POST["like"] ) )
 		{
-			$sql .= "where id_order_status like :id "; // Configurar o like com o campo necessario da tabela 
+			$sql .= "where id_order_status like :id "; // Configurar o like com o campo necessario da tabela
 			$result = $this->db->select( $sql, array("id" => "%{$_POST["like"]}%") );
 		}
 		else
@@ -131,7 +142,7 @@ class Order_status_Model extends Model
 		return $this->montarLista($result);
 	}
 
-	/** 
+	/**
 	* Metodo montarLista
 	*/
 	private function montarLista( $result )
@@ -150,13 +161,14 @@ class Order_status_Model extends Model
 		return $objs;
 	}
 
-	/** 
+	/**
 	* Metodo montarObjeto
 	*/
 	private function montarObjeto( $row )
 	{
 		$this->setId_order_status( $row["id_order_status"] );
 		$this->setDescription( $row["description"] );
+		$this->setClass( $row['class'] );
 
 		return $this;
 	}

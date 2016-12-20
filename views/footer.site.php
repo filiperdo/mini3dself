@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row contact-into">
       <div class="col-md-12">
-        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTATO <span>PEÇA JÁ O SEU</span></h2>
+        <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span>PEÇA JÁ O SEU</span></h2>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.2s">
         <form action="#" method="post">
@@ -13,16 +13,16 @@
           <input name="email" type="email" class="form-control" id="email">
           <label>MENSAGEM</label>
           <textarea name="message" rows="4" class="form-control" id="message"></textarea>
-          <input type="submit" class="form-control">
+          <input type="submit" class="form-control" value="Enviar">
         </form>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.2s">
         <address>
-          <p class="address-title">NOSSO ENDEREÇO</p>
-          <span>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</span>
-          <p><i class="fa fa-phone"></i> (11) 3380-1329</p>
-          <p><i class="fa fa-envelope-o"></i> contato@3dselfie.com</p>
-          <p><i class="fa fa-map-marker"></i> Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+          <p class="address-title">NOSSOS CONTATOS</p>
+          <!--<span>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</span>-->
+          <p><i class="fa fa-phone"></i> (11) 3380-1329 / (11) 95569-1005</p>
+          <p><i class="fa fa-envelope-o"></i> contato@miniaturafacil.com.br</p>
+          <!--<p><i class="fa fa-map-marker"></i> Lorem ipsum dolor sit amet, consectetur adipiscing</p>-->
         </address>
         <ul class="social-icon">
           <li><h4>Siga-nos</h4></li>
