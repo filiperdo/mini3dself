@@ -91,8 +91,8 @@
                             <div class="row" style="margin-top:25px">
                                 <div class="col-md-12">
                                     <input type="hidden" id="idProduct" value="<?php echo $this->id; ?>">
-                                    <button type="submit" class="btn btn-info" name="Enviar">Comprar</button>
-									<a href="<?php echo URL.'index/categoria';?>" class="btn btn-success" name="button">Continuar comprando</a>
+                                    <button type="submit" class="btn btn-success btn-lg" name="Enviar">Comprar</button>
+									<a href="<?php echo URL.'index/categoria';?>" class="btn btn-info btn-lg" name="button">Voltar</a>
                                 </div>
                             </div><!-- row -->
     					</form>
