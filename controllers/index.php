@@ -204,6 +204,8 @@ class Index extends Controller {
         header("location: " . URL . "index/carrinho/".base64_encode($id_order)."?st=".$msg);
     }
 
+
+
     public function carrinho( $id_order = NULL )
     {
         Session::init();
@@ -235,9 +237,51 @@ class Index extends Controller {
             4 => array('link' => '#contact',                    'class' => '',         'label' => 'CONTATO'),
         );
 
+
+        require_once 'models/user_model.php';
+        $objUser = new User_Model();
+
+        if(Session::get('userid'))
+        {
+            $objUser->obterUser(Session::get('userid'));
+            $this->view->user = $objUser;
+        }
+        else
+        {
+            $this->view->user = $objUser;
+        }
+
         $this->view->render('header.site');
         $this->view->render('index/carrinho');
         //$this->view->render('footer.site');
+    }
+
+
+    public function finalizar_compra()
+    {
+        Session::init();
+
+        $this->view->menu = array(
+            0 => array('link' => URL,                           'class' => 'external', 'label' => 'HOME'),
+            1 => array('link' => URL.'#about',                  'class' => 'external', 'label' => 'QUEM SOMOS'),
+            2 => array('link' => URL.'index/categoria',         'class' => 'external', 'label' => 'PRODUTOS'),
+            3 => array('link' => URL.'#portfolio',              'class' => 'external', 'label' => 'PORTFOLIO'),
+            4 => array('link' => '#contact',                    'class' => '',         'label' => 'CONTATO'),
+        );
+
+        require_once 'models/user_model.php';
+        $objUser = new User_Model();
+
+        if(Session::get('userid'))
+        {
+            $this->view->render('header.site');
+            $this->view->render('index/carrinho');
+        }
+        else
+        {
+            $this->view->render('header.site');
+            $this->view->render('index/finalizar_compra');
+        }
     }
 
     /*

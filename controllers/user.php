@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class User extends Controller {
 
@@ -7,7 +7,7 @@ class User extends Controller {
 		//Auth::handleLogin();
 	}
 
-	/** 
+	/**
 	* Metodo index
 	*/
 	public function index()
@@ -20,7 +20,7 @@ class User extends Controller {
 		$this->view->render( "footer" );
 	}
 
-	/** 
+	/**
 	* Metodo editForm
 	*/
 	public function form( $id = NULL )
@@ -29,7 +29,7 @@ class User extends Controller {
 		$this->view->action = "create";
 		$this->view->obj = $this->model;
 
-		if( $id ) 
+		if( $id )
 		{
 			$this->view->title = "Editar User";
 			$this->view->action = "edit/".$id;
@@ -45,49 +45,62 @@ class User extends Controller {
 		$this->view->render( "footer" );
 	}
 
-	/** 
+	public function login()
+    {
+        $this->model->login();
+    }
+
+	/**
 	* Metodo create
 	*/
 	public function create()
 	{
 		$data = array(
-			'name' => $_POST["name"], 
-			'email' => $_POST["email"], 
-			'login' => $_POST["login"], 
-			'password' => $_POST["password"], 
-			'date' => $_POST["date"], 
-			'lastlogin' => $_POST["lastlogin"], 
-			'adress1' => $_POST["adress1"], 
-			'adress2' => $_POST["adress2"], 
-			'phone1' => $_POST["phone1"], 
-			'phone2' => $_POST["phone2"], 
-			'num_login' => $_POST["num_login"], 
-			'id_usertype' => $_POST["id_usertype"], 
+			'name' 			=> $_POST["name"],
+			'email' 		=> $_POST["email"],
+			'login' 		=> $_POST["email"],
+			'password' 		=> $_POST["password"],
+			'adress' 		=> $_POST["adress"],
+			'number' 		=> $_POST["number"],
+			'cpf' 			=> $_POST["cpf"],
+			'cep'			=> $_POST['cep'],
+			'complement' 	=> $_POST["complement"],
+			'district' 		=> $_POST["district"],
+			'city' 			=> $_POST["city"],
+			'state' 		=> $_POST["state"],
+			'phone1' 		=> $_POST["phone1"],
+			'phone2' 		=> $_POST["phone2"],
+			'id_usertype' 	=> 2, // customer
 		);
 
 		$this->model->create( $data ) ? $msg = base64_encode( "OPERACAO_SUCESSO" ) : $msg = base64_encode( "OPERACAO_ERRO" );
 
-		header("location: " . URL . "user?st=".$msg);
+		$msg = base64_encode( "OPERACAO_SUCESSO" );
+
+        header("location: " . URL . "index/carrinho/".base64_encode($id_order)."?st=".$msg);
+
 	}
 
-	/** 
+	/**
 	* Metodo edit
 	*/
 	public function edit( $id )
 	{
 		$data = array(
-			'name' => $_POST["name"], 
-			'email' => $_POST["email"], 
-			'login' => $_POST["login"], 
-			'password' => $_POST["password"], 
-			'date' => $_POST["date"], 
-			'lastlogin' => $_POST["lastlogin"], 
-			'adress1' => $_POST["adress1"], 
-			'adress2' => $_POST["adress2"], 
-			'phone1' => $_POST["phone1"], 
-			'phone2' => $_POST["phone2"], 
-			'num_login' => $_POST["num_login"], 
-			'id_usertype' => $_POST["id_usertype"], 
+			'name' 			=> $_POST["name"],
+			'email' 		=> $_POST["email"],
+			'login' 		=> $_POST["email"],
+			'password' 		=> $_POST["password"],
+			'adress' 		=> $_POST["adress"],
+			'number' 		=> $_POST["number"],
+			'cpf' 			=> $_POST["cpf"],
+			'cep'			=> $_POST['cep'],
+			'complement' 	=> $_POST["complement"],
+			'district' 		=> $_POST["district"],
+			'city' 			=> $_POST["city"],
+			'state' 		=> $_POST["state"],
+			'phone1' 		=> $_POST["phone1"],
+			'phone2' 		=> $_POST["phone2"]
 		);
 
 		$this->model->edit( $data, $id ) ? $msg = base64_encode( "OPERACAO_SUCESSO" ) : $msg = base64_encode( "OPERACAO_ERRO" );
@@ -95,7 +108,7 @@ class User extends Controller {
 		header("location: " . URL . "user?st=".$msg);
 	}
 
-	/** 
+	/**
 	* Metodo delete
 	*/
 	public function delete( $id )

@@ -21,8 +21,14 @@ class User_Model extends Model
 	private $password;
 	private $date;
 	private $lastlogin;
-	private $adress1;
-	private $adress2;
+	private $cep;
+	private $adress;
+	private $number;
+	private $cpf;
+	private $complement;
+	private $district;
+	private $city;
+	private $state;
 	private $phone1;
 	private $phone2;
 	private $num_login;
@@ -39,8 +45,14 @@ class User_Model extends Model
 		$this->password = '';
 		$this->date = '';
 		$this->lastlogin = '';
-		$this->adress1 = '';
-		$this->adress2 = '';
+		$this->cep = '';
+		$this->adress = '';
+		$this->number = '';
+		$this->cpf = '';
+		$this->complement = '';
+		$this->district = '';
+		$this->city = '';
+		$this->state = '';
 		$this->phone1 = '';
 		$this->phone2 = '';
 		$this->num_login = '';
@@ -85,14 +97,44 @@ class User_Model extends Model
 		$this->lastlogin = $lastlogin;
 	}
 
-	public function setAdress1( $adress1 )
+	public function setCep( $cep )
 	{
-		$this->adress1 = $adress1;
+		$this->cep = $cep;
 	}
 
-	public function setAdress2( $adress2 )
+	public function setAdress( $adress )
 	{
-		$this->adress2 = $adress2;
+		$this->adress = $adress;
+	}
+
+	public function setNumber( $number )
+	{
+		$this->number = $number;
+	}
+
+	public function setCpf( $cpf )
+	{
+		$this->cpf = $cpf;
+	}
+
+	public function setComplement( $complement )
+	{
+		$this->complement = $complement;
+	}
+
+	public function setDistrict( $district )
+	{
+		$this->district = $district;
+	}
+
+	public function setCity( $city )
+	{
+		$this->city = $city;
+	}
+
+	public function setState( $state )
+	{
+		$this->state = $state;
 	}
 
 	public function setPhone1( $phone1 )
@@ -153,14 +195,44 @@ class User_Model extends Model
 		return $this->lastlogin;
 	}
 
-	public function getAdress1()
+	public function getCep()
 	{
-		return $this->adress1;
+		return $this->cep;
 	}
 
-	public function getAdress2()
+	public function getAdress()
 	{
-		return $this->adress2;
+		return $this->adress;
+	}
+
+	public function getNumber()
+	{
+		return $this->number;
+	}
+
+	public function getCpf()
+	{
+		return $this->cpf;
+	}
+
+	public function getComplement()
+	{
+		return $this->complement;
+	}
+
+	public function getDistrict()
+	{
+		return $this->district;
+	}
+
+	public function getCity()
+	{
+		return $this->city;
+	}
+
+	public function getState()
+	{
+		return $this->state;
 	}
 
 	public function getPhone1()
@@ -205,14 +277,14 @@ class User_Model extends Model
 	*/
 	public function edit( $data, $id )
 	{
-		$this->db->beginTransaction();
+		//$this->db->beginTransaction();
 
 		if( !$update = $this->db->update("user", $data, "id_user = {$id} ") ){
 			$this->db->rollBack();
 			return false;
 		}
 
-		$this->db->commit();
+		//$this->db->commit();
 		return $update;
 	}
 
@@ -231,6 +303,48 @@ class User_Model extends Model
 		$this->db->commit();
 		return $delete;
 	}
+
+
+	/*
+	 * Metodo login customer
+	 */
+	public function login()
+    {
+    	$sql  = 'SELECT * ';
+    	$sql .= 'FROM user ';
+    	$sql .= 'WHERE email = :email ';
+    	$sql .= 'AND password = :password ';
+
+        $sth = $this->db->prepare( $sql );
+        $sth->execute(array(
+            ':email' 	=> $_POST['email'],
+            ':password' => $_POST['password']
+        ));
+
+        $data = $sth->fetch();
+
+        if ( $sth->rowCount() > 0 )
+        {
+            // login
+            Session::init();
+            Session::set( 'loggedIn', true );
+            Session::set( 'user_name', $data['name']);
+            Session::set( 'userid', $data['id_user'] );
+            header('location: '.URL.'index/carrinho/');
+        }
+        else
+        {
+        	$msg = base64_encode( 'LOGIN_INCORRETO' );
+            header('location: '.URL.'finalizar_compra/?st=' . $msg );
+        }
+    }
+
+    public function logout()
+    {
+    	Session::init();
+    	Session::destroy();
+    	header('location: ../login');
+    }
 
 	/**
 	* Metodo obterUser
@@ -300,8 +414,14 @@ class User_Model extends Model
 		$this->setPassword( $row["password"] );
 		$this->setDate( $row["date"] );
 		$this->setLastlogin( $row["lastlogin"] );
-		$this->setAdress1( $row["adress1"] );
-		$this->setAdress2( $row["adress2"] );
+		$this->setCep( $row['cep'] );
+		$this->setAdress( $row["adress"] );
+		$this->setNumber( $row["number"] );
+		$this->setCpf( $row["cpf"] );
+		$this->setComplement( $row["complement"] );
+		$this->setDistrict( $row["district"] );
+		$this->setCity( $row["city"] );
+		$this->setState( $row["state"] );
 		$this->setPhone1( $row["phone1"] );
 		$this->setPhone2( $row["phone2"] );
 		$this->setNum_login( $row["num_login"] );
