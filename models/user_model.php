@@ -335,7 +335,7 @@ class User_Model extends Model
         else
         {
         	$msg = base64_encode( 'LOGIN_INCORRETO' );
-            header('location: '.URL.'finalizar_compra/?st=' . $msg );
+            header('location: '.URL.'index/finalizar_compra/?st=' . $msg );
         }
     }
 
