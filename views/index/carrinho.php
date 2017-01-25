@@ -49,9 +49,16 @@
 			                        		</td>
 			                        	</tr>
 			                        	<?php } ?>
+										<tr id="linhaFrete" style="display: none;">
+											<td colspan="4" align="right">Valor Frete</td>
+											<td colspan="2"><div id="exibeFrete"></div></td>
+										</tr>
 										<tr style="background: #eaeaea">
 											<td colspan="4" align="right"><strong>Total</strong></td>
-											<td colspan="2"><strong><?php echo 'R$ ' . Data::formataMoeda($total); ?></strong></td>
+											<td colspan="2">
+												<strong id="exibeTotal"><?php echo 'R$ ' . Data::formataMoeda($total); ?></strong>
+												<input type="hidden" id="totalCarrinho" value="<?php echo $total;?>">
+											</td>
 										</tr>
 			                        	</tbody>
 			                        </table>
@@ -69,7 +76,7 @@
 
 											<div class="col-md-9 col-sm-9 col-xs-12">
 												<input type="text" name="cep_entrega" id="cep_entrega" placeholder="CEP de entrega" class="form-control col-md-7 col-xs-12" required="required" value="" />
-												<button style="margin-top:5px" type="submit" name="button" class="btn btn-primary">Calcular</button> <a href="#">Não sei meu cep</a>
+												<button onclick="calcularFrete()" style="margin-top:5px" type="button" name="button" class="btn btn-primary">Calcular</button> <a href="#">Não sei meu cep</a>
 											</div>
 										</div>
 
@@ -100,5 +107,21 @@
 
 		</div>
 	</div>
+	<!-- script start-->
+	<script type="text/javascript">
+		function calcularFrete()
+		{
+			$.post('<?php echo URL . 'index/calcularFrete/';?>' + $('#cep_entrega').val(), function(result){
+				console.log("Resultado:" + result.valor);
+				var valorFrete = Number(result.valor.replace(',', '.'));
+				var totalCarrinho = Number($('#totalCarrinho').val());
+				var valorTotal =  (totalCarrinho + valorFrete).toFixed(2);
+				$('#exibeFrete').html(result.valor);
+				$('#exibeTotal').html(valorTotal.toString().replace('.', ','));
+				$('#linhaFrete').css('display', 'block');
+			});
+		}
+	</script>
+	<!-- script end -->
 </section>
 <!-- end team -->
