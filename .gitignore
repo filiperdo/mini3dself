@@ -3,3 +3,4 @@ _files
 builder.php
 config.php
 public/img
+.htaccess
