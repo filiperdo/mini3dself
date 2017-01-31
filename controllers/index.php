@@ -272,16 +272,19 @@ class Index extends Controller {
         require_once 'models/user_model.php';
         $objUser = new User_Model();
 
-        if(Session::get('userid'))
-        {
-            $this->view->render('header.site');
-            $this->view->render('index/carrinho');
-        }
-        else
-        {
-            $this->view->render('header.site');
-            $this->view->render('index/finalizar_compra');
-        }
+        require_once 'models/order_product_model.php';
+        $objOrderProduct = new Order_product_Model();
+
+        require_once 'models/order_model.php';
+        $objOrder = new Order_Model();
+        $objOrder->obterOrderBySession( Session::get('session_order') );
+        $id_order = $objOrder->getId_order();
+
+        $this->view->listarOrderProductByOrder = $objOrderProduct->listarOrder_productByOrder($id_order);
+
+        $this->view->render('header.site');
+        $this->view->render('index/finalizar_compra');
+
     }
 
     /*
@@ -337,7 +340,15 @@ class Index extends Controller {
         $result = $client->__soapCall($function, $arguments, $options);
 
         header("Content-type: application/json; charset=utf-8");
-        echo json_encode(array("valor" => $result->CalcPrecoPrazoResult->Servicos->cServico->Valor));
+        $retorno = array(
+            "codigo"    => $result->CalcPrecoPrazoResult->Servicos->cServico->Codigo,
+            "valor"     => $result->CalcPrecoPrazoResult->Servicos->cServico->Valor,
+            "prazo"     => $result->CalcPrecoPrazoResult->Servicos->cServico->PrazoEntrega
+        );
+
+        echo json_encode($retorno);
+
+        //echo json_encode(array("valor" => $result->CalcPrecoPrazoResult->Servicos->cServico->Valor));
     }
 
     /*

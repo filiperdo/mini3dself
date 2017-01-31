@@ -65,38 +65,9 @@
 								</fieldset>
 							</div>
 
-							<div class="col-md-5 col-sm-5 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.5s">
-								<fieldset>
-									<legend>CALCULO DE FRETE</legend>
+							<div class="col-md-7 col-sm-7 col-xs-12" data-wow-offset="50" data-wow-delay="0.5s" style="text-align:right">
 
-									<p>Simule o prazo de entrega e o frete para seu CEP abaixo:</p>
-									<form id="form1" name="form1" method="post" action="" class="form-horizontal">
-
-										<div class="form-group">
-
-											<div class="col-md-9 col-sm-9 col-xs-12">
-												<input type="text" name="cep_entrega" id="cep_entrega" placeholder="CEP de entrega" class="form-control col-md-7 col-xs-12" required="required" value="" />
-												<button onclick="calcularFrete()" style="margin-top:5px" type="button" name="button" class="btn btn-primary">Calcular</button> <a href="#">Não sei meu cep</a>
-											</div>
-										</div>
-
-										<p><strong>Atenção:</strong> O prazo começa a contar a partir da aprovação do pagamento.</p>
-									</form>
-								</fieldset>
-
-							</div>
-
-							<div class="col-md-7 col-sm-7 col-xs-12" data-wow-offset="50" data-wow-delay="0.5s">
-								<?php if( $this->user->getName() != '' ) { ?>
-								<fieldset>
-									<legend>DADOS PARA ENTREGA</legend>
-									<p><?php echo $this->user->getName(); ?></p>
-									<p><?php echo $this->user->getEmail(); ?></p>
-									<p><?php echo $this->user->getCep(); ?></p>
-									<p><?php echo $this->user->getAdress().', '.$this->user->getNumber(); ?></p>
-								</fieldset>
-								<?php } ?>
-								<p align="right"><a href="<?=URL?>index/finalizar_compra" class="btn btn-success">Finalizar compra</a>
+								<p align="right"><a href="<?=URL?>index/finalizar_compra" class="btn btn-success">Prosseguir para verificação</a>
 								<a href="<?php echo URL?>index/categoria/" class="btn btn-info">Escolher mais modelos</a></p>
 							</div>
 						</div>
@@ -107,21 +78,6 @@
 
 		</div>
 	</div>
-	<!-- script start-->
-	<script type="text/javascript">
-		function calcularFrete()
-		{
-			$.post('<?php echo URL . 'index/calcularFrete/';?>' + $('#cep_entrega').val(), function(result){
-				console.log("Resultado:" + result.valor);
-				var valorFrete = Number(result.valor.replace(',', '.'));
-				var totalCarrinho = Number($('#totalCarrinho').val());
-				var valorTotal =  (totalCarrinho + valorFrete).toFixed(2);
-				$('#exibeFrete').html(result.valor);
-				$('#exibeTotal').html(valorTotal.toString().replace('.', ','));
-				$('#linhaFrete').css('display', 'block');
-			});
-		}
-	</script>
-	<!-- script end -->
+
 </section>
 <!-- end team -->

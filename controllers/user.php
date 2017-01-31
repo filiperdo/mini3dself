@@ -63,13 +63,12 @@ class User extends Controller {
 			'adress' 		=> $_POST["adress"],
 			'number' 		=> $_POST["number"],
 			'cpf' 			=> $_POST["cpf"],
-			'cep'			=> $_POST['cep'],
+			'cep'			=> $_POST['cep_entrega'],
 			'complement' 	=> $_POST["complement"],
 			'district' 		=> $_POST["district"],
 			'city' 			=> $_POST["city"],
 			'state' 		=> $_POST["state"],
 			'phone1' 		=> $_POST["phone1"],
-			'phone2' 		=> $_POST["phone2"],
 			'id_usertype' 	=> 2, // customer
 		);
 
