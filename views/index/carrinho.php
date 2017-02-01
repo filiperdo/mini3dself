@@ -21,7 +21,7 @@
 
 							<div class="col-md-12 col-sm-12 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.5s">
 								<fieldset>
-									<legend>SEU PEDIDO</legend>
+									<legend>CARRINHO</legend>
 
 			                        <table id="datatable-responsive" class="table table-hover" cellspacing="5" width="100%">
 			                        	<thead>

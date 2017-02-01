@@ -64,6 +64,7 @@ if( Session::get('session_order') != null )
                     </div>
                     <div class="col-md-5 col-sm-4 col-xs-12">
                         <ul class="social-icon">
+							
                             <li><span>Siga-nos</span></li>
                             <li><a href="#" class="fa fa-facebook" style="background:#1c90dd; "></a></li>
                             <li><a href="#" class="fa fa-twitter" style="background:#1c90dd; "></a></li>

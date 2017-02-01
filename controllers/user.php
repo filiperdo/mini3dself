@@ -55,7 +55,7 @@ class User extends Controller {
 	*/
 	public function create()
 	{
-		$data = array(
+		$data_user = array(
 			'name' 			=> $_POST["name"],
 			'email' 		=> $_POST["email"],
 			'login' 		=> $_POST["email"],
@@ -72,11 +72,33 @@ class User extends Controller {
 			'id_usertype' 	=> 2, // customer
 		);
 
-		$this->model->create( $data ) ? $msg = base64_encode( "OPERACAO_SUCESSO" ) : $msg = base64_encode( "OPERACAO_ERRO" );
+		$this->model->db->beginTransaction();
+
+		if( $id_user = $this->model->create( $data_user ) )
+		{
+			// Efetuar login
+			Session::init();
+			Session::set( 'loggedIn', true );
+			Session::set( 'user_name', $_POST["name"]);
+			Session::set( 'userid', $id_user );
+
+			// Atualizar tabela order colocando o id_user
+			$data_order = array(
+				'id_user' 			=> $id_user,
+				'id_order_status'	=> 2, // em aberto
+				'total'				=> Data::formataMoedaBD($_POST['totalCarrinho'])
+			);
+
+			$this->model->db->update("order", $data_order, "id_order = " . $_POST["id_order"]);
+		}
+
+		$this->model->db->commit();
+
+		Session::destroy('path_photo');
+		Session::destroy('session_order');
 
 		$msg = base64_encode( "OPERACAO_SUCESSO" );
-
-        header("location: " . URL . "index/carrinho/".base64_encode($id_order)."?st=".$msg);
+        header("location: " . URL . "index/minhaconta/?st=".$msg);
 
 	}
 

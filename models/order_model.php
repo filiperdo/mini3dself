@@ -19,6 +19,8 @@ class Order_Model extends Model
 	private $user;
 	private $date;
 	private $order_status;
+	private $session;
+	private $total;
 
 	public function __construct()
 	{
@@ -28,7 +30,8 @@ class Order_Model extends Model
 		$this->user = new User_Model();
 		$this->date = '';
 		$this->order_status = new Order_status_Model();
-
+		$this->session = '';
+		$this->total = '';
 	}
 
 	/**
@@ -54,6 +57,16 @@ class Order_Model extends Model
 		$this->order_satus = $order_status;
 	}
 
+	public function setSession( $session )
+	{
+		$this->session = $session;
+	}
+
+	public function setTotal( $total )
+	{
+		$this->total = $total;
+	}
+
 	/**
 	* Metodos get's
 	*/
@@ -75,6 +88,16 @@ class Order_Model extends Model
 	public function getOrder_status()
 	{
 		return $this->order_satus;
+	}
+
+	public function getSession()
+	{
+		return $this->session;
+	}
+
+	public function getTotal()
+	{
+		return $this->total;
 	}
 
 	/**
@@ -158,6 +181,21 @@ class Order_Model extends Model
 	}
 
 	/**
+	* Metodo listOrderByUser
+	*/
+	public function listOrderByUser( $id_user )
+	{
+		$sql  = "select * ";
+		$sql .= "from `order` ";
+		$sql .= "where id_user = :id_user ";
+
+		$result = $this->db->select( $sql, array("id_user" => $id_user) );
+
+		return $this->montarLista($result);
+
+	}
+
+	/**
 	* Metodo listarOrder
 	*/
 	public function listarOrder()
@@ -202,9 +240,9 @@ class Order_Model extends Model
 	{
 		$this->setId_order( $row['id_order'] );
 
-		//$objUser = new User_Model();
-		//$objUser->obterUser( $row['id_user'] );
-		//$this->setUser($objUser);
+		$objUser = new User_Model();
+		$objUser->obterUser( $row['id_user'] );
+		$this->setUser($objUser);
 
 		$this->setDate( $row['date'] );
 
@@ -212,6 +250,8 @@ class Order_Model extends Model
 		$objOrderStatus->obterOrder_status( $row['id_order_status'] );
 		$this->setOrder_status($objOrderStatus);
 
+		$this->setSession($row['session']);
+		$this->setTotal( $row['total'] );
 
 		return $this;
 	}

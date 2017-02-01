@@ -20,8 +20,8 @@
 						<?php if (isset($_GET["st"])) { $objAlert = new Alerta($_GET["st"]); } ?>
 						<div class="row">
 							<form id="form1" name="form1" method="post" action="<?php echo URL;?>user/create/" >
-
-								<div class="col-md-4 col-sm-4 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.5s">
+								<input type="hidden" name="id_order" value="<?php echo $this->id_order;?>">
+								<div class="col-md-5 col-sm-5 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.5s">
 
 									<h4>1. DADOS PESSOAIS</h4>
 
@@ -126,23 +126,21 @@
 
 								</div><!-- col-md-4 -->
 
-								<div class="col-md-4 col-sm-4 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.5s">
+								<div class="col-md-7 col-sm-7 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.5s">
 									<h4>2. FRETE</h4>
 									<div class="" id="exibeResumoFrete">
-
+										Preencha o campo CEP para calcular o valor e prazo do frete.
 									</div>
-									<h4>3. FORMAS DE PAGAMENTO</h4>
-
-
-								</div>
-
-								<div class="col-md-4 col-sm-4 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.5s">
-									<h4>4. RESUMO DO PEDIDO</h4>
-									<table id="datatable-responsive" class="table table-hover" cellspacing="5" width="100%" style="font-size:85%">
+									<h4 style="padding-top:20px">3. FORMAS DE PAGAMENTO</h4>
+									<p>Transferência bancária</p>
+									<p>Banco - Itaú <br> <strong>AG:</strong> 0263 <br><strong>C/C:</strong> 79762-3</p>
+									<p>Maicon Santana dos Santos <br> <strong>CPF:</strong> 352.828.218-50</p>
+									<h4 style="padding-top:20px">4. RESUMO DO PEDIDO</h4>
+									<table id="datatable-responsive" class="table table-hover" cellspacing="5" width="100%" >
 			                        	<thead>
 			                        	<tr>
 											<th></th>
-											<th>Nome</th>
+											<th>Produto</th>
 			                                <th></th>
 			                                <th>Preço</th>
 			                        	</tr>
@@ -154,11 +152,9 @@
 										<tr>
 											<td><img src="<?php echo URL;?>public/img/product/<?php echo $order_produt->getProduct()->getPath();?>/thumb/img-1.jpg" width="40px" alt=""></td>
 											<td align="left"><?php echo $order_produt->getProduct()->getName().' ('.$tamanho.'cm)'; ?></td>
-
 			                                <td ><?php echo $order_produt->getQuantity().'x'; ?></td>
 			                                <td ><?php echo 'R$ ' . Data::formataMoeda($order_produt->getPrice()*$order_produt->getQuantity()); ?></td>
 											<?php $total += $order_produt->getPrice()*$order_produt->getQuantity(); ?>
-
 			                        	</tr>
 			                        	<?php } ?>
 										<tr id="linhaFrete" style="display: none;">
@@ -169,7 +165,7 @@
 											<td colspan="3" align="right"><strong>Total</strong></td>
 											<td colspan="1">
 												<strong id="exibeTotal"><?php echo 'R$ ' . Data::formataMoeda($total); ?></strong>
-												<input type="hidden" id="totalCarrinho" value="<?php echo $total;?>">
+												<input type="hidden" name="totalCarrinho" id="totalCarrinho" value="<?php echo $total;?>">
 											</td>
 										</tr>
 			                        	</tbody>
@@ -192,6 +188,21 @@
 <!-- end team -->
 
 <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+
+<script type="text/javascript">
+PagSeguroDirectPayment.getPaymentMethods({
+	amount: <?php echo $total;?>
+	success: function(response) {
+		console.log(response);
+	},
+	error: function(response) {
+		//tratamento do erro
+	},
+	complete: function(response) {
+		//tratamento comum para todas chamadas
+	}
+});
+</script>
 
 <!-- script start-->
 <script type="text/javascript">

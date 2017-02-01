@@ -261,15 +261,15 @@ class User_Model extends Model
 	*/
 	public function create( $data )
 	{
-		$this->db->beginTransaction();
+		//$this->db->beginTransaction();
 
 		if( !$id = $this->db->insert( "user", $data ) ){
 			$this->db->rollBack();
 			return false;
 		}
 
-		$this->db->commit();
-		return true;
+		//$this->db->commit();
+		return $id;
 	}
 
 	/**

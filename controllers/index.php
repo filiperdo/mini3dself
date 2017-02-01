@@ -29,6 +29,32 @@ class Index extends Controller {
         $this->view->render('footer.site');
     }
 
+    public function minhaconta()
+    {
+        Session::init();
+        $this->view->menu = array(
+            0 => array('link' => URL,               'class' => 'external', 'label' => 'HOME'),
+            1 => array('link' => URL.'#about',      'class' => 'external', 'label' => 'QUEM SOMOS'),
+            2 => array('link' => URL.'index/categoria',       'class' => 'external', 'label' => 'PRODUTOS'),
+            3 => array('link' => URL.'#portfolio',  'class' => 'external', 'label' => 'PORTFOLIO'),
+            4 => array('link' => '#contact',        'class' => '',         'label' => 'CONTATO'),
+        );
+
+        require_once 'models/user_model.php';
+        $objUser = new User_Model();
+        $this->view->user = $objUser->obterUser( Session::get('userid') );        
+
+        require_once 'models/order_model.php';
+        $objOrder = new Order_Model();
+        $this->view->order = $objOrder;
+
+        $this->view->title = 'Minha conta';
+
+        $this->view->render('header.site');
+        $this->view->render('index/minhaconta');
+        $this->view->render('footer.site');
+    }
+
     public function produto( $id_product )
     {
         Session::init();
@@ -50,7 +76,7 @@ class Index extends Controller {
         //$this->view->path = Session::get('path_photo');
 
         // Valores por tamanho, passar para o banco de dados
-        $this->view->model_size = array(12 => '200', 14 => '260', 15 => '300', 17 => '450');
+        $this->view->model_size = array(12 => '299', 14 => '399', 15 => '490', 17 => '599');
 
         $this->view->menu = array(
             0 => array('link' => URL,               'class' => 'external', 'label' => 'HOME'),
@@ -279,6 +305,7 @@ class Index extends Controller {
         $objOrder = new Order_Model();
         $objOrder->obterOrderBySession( Session::get('session_order') );
         $id_order = $objOrder->getId_order();
+        $this->view->id_order = $id_order;
 
         $this->view->listarOrderProductByOrder = $objOrderProduct->listarOrder_productByOrder($id_order);
 
