@@ -131,6 +131,10 @@
 									<div class="" id="exibeResumoFrete">
 										Preencha o campo CEP para calcular o valor e prazo do frete.
 									</div>
+									<div class="" id="exibeOpcoesFrete" style="display: none;">
+										<input type="radio" name="opcaoFrete" value="" id="idFretePAC" /><div id="htmlPac"></div><br />
+										<input type="radio" name="opcaoFrete" value="" id="idFreteSEDEX" /><div id="htmlSedex"></div>
+									</div>
 									<h4 style="padding-top:20px">3. FORMAS DE PAGAMENTO</h4>
 									<p>Transferência bancária</p>
 									<p>Banco - Itaú <br> <strong>AG:</strong> 0263 <br><strong>C/C:</strong> 79762-3</p>
@@ -207,6 +211,11 @@ PagSeguroDirectPayment.getPaymentMethods({
 <!-- script start-->
 <script type="text/javascript">
 
+	var valorFretePac;
+	var valorFreteSedex;
+	var totalCarrinho;
+	var valorTotal;
+
 	$('#cep_entrega').on('blur',function(){
 		//alert('teste');
 		calcularFrete();
@@ -215,15 +224,36 @@ PagSeguroDirectPayment.getPaymentMethods({
 	function calcularFrete()
 	{
 		$.post('<?php echo URL . 'index/calcularFrete/';?>' + $('#cep_entrega').val(), function(result){
-			console.log("Resultado:" + result.valor);
-			var valorFrete = Number(result.valor.replace(',', '.'));
-			var totalCarrinho = Number($('#totalCarrinho').val());
-			var valorTotal =  (totalCarrinho + valorFrete).toFixed(2);
-			$('#exibeFrete').html('R$ ' + result.valor);
-			$('#exibeResumoFrete').html('Sedex - Em média '+ result.prazo +' dia(s) úteis R$ ' + result.valor);
-			$('#exibeTotal').html('R$ ' + valorTotal.toString().replace('.', ','));
-			$('#linhaFrete').css('display', '');
+			valorFretePac = Number(result.valor_pac.replace(',', '.'));
+			valorFreteSedex = Number(result.valor_sedex.replace(',', '.'));
+
+			$('#htmlPac').html('PAC - Em média '+ result.prazo_pac +' dia(s) úteis R$ ' + result.valor_pac);
+			$('#htmlPac').html('SEDEX - Em média '+ result.prazo_sedex +' dia(s) úteis R$ ' + result.valor_sedex);
+
+			$('#exibeOpcoesFrete').css('display', '');
 		});
+	}
+
+	$('#idFretePAC').on('click',function(){
+		if ($("#idFretePAC").is(":checked")) {
+			somaFrete(valorFretePac);
+		}
+	});
+
+	$('#idFreteSEDEX').on('click',function(){
+		if ($("#idFreteSEDEX").is(":checked")) {
+			somaFrete(valorFreteSedex);
+		}
+	});
+
+	function somaFrete(valorFrete) {
+
+		totalCarrinho = Number($('#totalCarrinho').val());
+		valorTotal =  (totalCarrinho + valorFrete).toFixed(2);
+
+		$('#exibeFrete').html('R$ ' + valorFrete.toString().replace('.', ','));
+		$('#exibeTotal').html('R$ ' + valorTotal.toString().replace('.', ','));
+		$('#linhaFrete').css('display', '');
 	}
 </script>
 <!-- script end -->

@@ -346,31 +346,42 @@ class Index extends Controller {
         $client = new SoapClient('http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?WSDL');
         $function = 'CalcPrecoPrazo';
         $arguments = array('CalcPrecoPrazo' => array(
-            'nCdEmpresa' => 0,
-            'sDsSenha' => '',
-            'nCdServico' => 41106,
-            'sCepOrigem' => '08653300',
-            'sCepDestino' => $cep,
-            'nVlPeso' => 0,
-            'nCdFormato' => 1,
-            'nVlComprimento' => 16,
-            'nVlAltura' => 2,
-            'nVlLargura' => 11,
-            'nVlDiametro' => 0,
-            'sCdMaoPropria' => 'N',
-            'nVlValorDeclarado' => 0,
-            'sCdAvisoRecebimento' => 'N'
-        )
+                'nCdEmpresa' => 0,
+                'sDsSenha' => '',
+                'nCdServico' => 41106,
+                'sCepOrigem' => '08653300',
+                'sCepDestino' => $cep,
+                'nVlPeso' => 0,
+                'nCdFormato' => 1,
+                'nVlComprimento' => 16,
+                'nVlAltura' => 2,
+                'nVlLargura' => 11,
+                'nVlDiametro' => 0,
+                'sCdMaoPropria' => 'N',
+                'nVlValorDeclarado' => 0,
+                'sCdAvisoRecebimento' => 'N'
+            )
         );
 
         $options = array('location' => 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx');
+        //$result = $client->__soapCall($function, $arguments, $options);
+
+        $arguments['CalcPrecoPrazo']['nCdServico'] = 41106;
         $result = $client->__soapCall($function, $arguments, $options);
+        $valor_frete_pac = $result->CalcPrecoPrazoResult->Servicos->cServico->Valor;
+        $prazo_pac = $result->CalcPrecoPrazoResult->Servicos->cServico->PrazoEntrega;
+
+        $arguments['CalcPrecoPrazo']['nCdServico'] = 40010;
+        $result = $client->__soapCall($function, $arguments, $options);
+        $valor_frete_sedex = $result->CalcPrecoPrazoResult->Servicos->cServico->Valor;
+        $prazo_sedex = $result->CalcPrecoPrazoResult->Servicos->cServico->PrazoEntrega;
 
         header("Content-type: application/json; charset=utf-8");
         $retorno = array(
-            "codigo"    => $result->CalcPrecoPrazoResult->Servicos->cServico->Codigo,
-            "valor"     => $result->CalcPrecoPrazoResult->Servicos->cServico->Valor,
-            "prazo"     => $result->CalcPrecoPrazoResult->Servicos->cServico->PrazoEntrega
+            "valor_pac" => $valor_frete_pac,
+            "prazo_pac" => $prazo_pac,
+            "valor_sedex" => $valor_frete_sedex,
+            "prazo_sedex" => $prazo_sedex
         );
 
         echo json_encode($retorno);
