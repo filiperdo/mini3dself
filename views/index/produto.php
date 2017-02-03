@@ -33,7 +33,6 @@
 								</a>
 							</div>
 						<?php } ?>
-
 					</div>
 				</div>
 			</div>
@@ -47,7 +46,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-12">
 		    					<h3><?php echo $this->product->getName(); ?></h3>
 		                        <h4>Cod. <?php echo $this->product->getId_product(); ?></h4>
-		    					<h3><span id="label-price">R$ 200,00</span></h3>
+		    					<h3><span id="label-price">R$ 299,00</span></h3>
 
 								<p>Selecione as fotos como no exemplo abaixo e adicione ao carrinho!</p>
 

@@ -35,6 +35,12 @@ class Order extends Controller {
 			$this->view->action = "edit/".$id;
 			$this->view->obj = $this->model->obterOrder( $id );
 
+			require_once 'models/order_product_model.php';
+			$this->view->order_product = new Order_product_Model();
+
+			require_once 'models/order_status_model.php';
+			$this->view->status = new Order_status_Model();
+
 			if ( empty( $this->view->obj ) ) {
 				die( "Valor invalido!" );
 			}
@@ -64,6 +70,7 @@ class Order extends Controller {
 	public function edit( $id )
 	{
 		$data = array(
+			'id_order_status' => $_POST['order_status']
 		);
 
 		$this->model->edit( $data, $id ) ? $msg = base64_encode( "OPERACAO_SUCESSO" ) : $msg = base64_encode( "OPERACAO_ERRO" );

@@ -21,6 +21,7 @@ class Order_Model extends Model
 	private $order_status;
 	private $session;
 	private $total;
+	private $shipment;
 
 	public function __construct()
 	{
@@ -32,6 +33,7 @@ class Order_Model extends Model
 		$this->order_status = new Order_status_Model();
 		$this->session = '';
 		$this->total = '';
+		$this->shipment = '';
 	}
 
 	/**
@@ -67,6 +69,11 @@ class Order_Model extends Model
 		$this->total = $total;
 	}
 
+	private function setShipment( $shipment )
+	{
+		$this->shipment = $shipment;
+	}
+
 	/**
 	* Metodos get's
 	*/
@@ -98,6 +105,11 @@ class Order_Model extends Model
 	public function getTotal()
 	{
 		return $this->total;
+	}
+
+	public function getShipment()
+	{
+		return $this->shipment;
 	}
 
 	/**
@@ -252,6 +264,7 @@ class Order_Model extends Model
 
 		$this->setSession($row['session']);
 		$this->setTotal( $row['total'] );
+		$this->setShipment( $row['id_shipment'] );
 
 		return $this;
 	}

@@ -1,43 +1,48 @@
-<?php 
+<?php
 
-/** 
+/**
  * Classe Shipment
- * @author __ 
+ * @author __
  *
  * Data: 30/11/2016
- */ 
+ */
 
 include_once 'invoice_model.php';
 include_once 'order_model.php';
 
 class Shipment_Model extends Model
 {
-	/** 
-	* Atributos Private 
+	/**
+	* Atributos Private
 	*/
 	private $id_shipment;
+	private $name;
 	private $date;
 	private $tracking;
 	private $invoice;
-	private $order;
 
 	public function __construct()
 	{
 		parent::__construct();
 
 		$this->id_shipment = '';
+		$this->name = '';
 		$this->date = '';
 		$this->tracking = '';
 		$this->invoice = new Invoice_Model();
-		$this->order = new Order_Model();
 	}
 
-	/** 
+	/**
 	* Metodos set's
 	*/
 	public function setId_shipment( $id_shipment )
 	{
 		$this->id_shipment = $id_shipment;
+	}
+
+	public function setName( $name )
+	{
+		$this->name = $name;
 	}
 
 	public function setDate( $date )
@@ -55,17 +60,17 @@ class Shipment_Model extends Model
 		$this->invoice = $invoice;
 	}
 
-	public function setOrder( Order_Model $order )
-	{
-		$this->order = $order;
-	}
-
-	/** 
+	/**
 	* Metodos get's
 	*/
 	public function getId_shipment()
 	{
 		return $this->id_shipment;
+	}
+
+	public function getName()
+	{
+		return $this->name;
 	}
 
 	public function getDate()
@@ -83,13 +88,8 @@ class Shipment_Model extends Model
 		return $this->invoice;
 	}
 
-	public function getOrder()
-	{
-		return $this->order;
-	}
 
-
-	/** 
+	/**
 	* Metodo create
 	*/
 	public function create( $data )
@@ -105,7 +105,7 @@ class Shipment_Model extends Model
 		return true;
 	}
 
-	/** 
+	/**
 	* Metodo edit
 	*/
 	public function edit( $data, $id )
@@ -121,14 +121,14 @@ class Shipment_Model extends Model
 		return $update;
 	}
 
-	/** 
+	/**
 	* Metodo delete
 	*/
 	public function delete( $id )
 	{
 		$this->db->beginTransaction();
 
-	 if( !$delete = $this->db->delete("shipment", "id_shipment = {$id} ") ){ 
+	 if( !$delete = $this->db->delete("shipment", "id_shipment = {$id} ") ){
 			$this->db->rollBack();
 			return false;
 		}
@@ -137,7 +137,7 @@ class Shipment_Model extends Model
 		return $delete;
 	}
 
-	/** 
+	/**
 	* Metodo obterShipment
 	*/
 	public function obterShipment( $id_shipment )
@@ -150,7 +150,7 @@ class Shipment_Model extends Model
 		return $this->montarObjeto( $result[0] );
 	}
 
-	/** 
+	/**
 	* Metodo listarShipment
 	*/
 	public function listarShipment()
@@ -160,7 +160,7 @@ class Shipment_Model extends Model
 
 		if ( isset( $_POST["like"] ) )
 		{
-			$sql .= "where id_shipment like :id "; // Configurar o like com o campo necessario da tabela 
+			$sql .= "where id_shipment like :id "; // Configurar o like com o campo necessario da tabela
 			$result = $this->db->select( $sql, array("id" => "%{$_POST["like"]}%") );
 		}
 		else
@@ -169,7 +169,7 @@ class Shipment_Model extends Model
 		return $this->montarLista($result);
 	}
 
-	/** 
+	/**
 	* Metodo montarLista
 	*/
 	private function montarLista( $result )
@@ -188,22 +188,19 @@ class Shipment_Model extends Model
 		return $objs;
 	}
 
-	/** 
+	/**
 	* Metodo montarObjeto
 	*/
 	private function montarObjeto( $row )
 	{
 		$this->setId_shipment( $row["id_shipment"] );
+		$this->setName( $row['name'] );
 		$this->setDate( $row["date"] );
 		$this->setTracking( $row["tracking"] );
 
 		$objInvoice = new Invoice_Model();
 		$objInvoice->obterInvoice( $row["id_invoice"] );
 		$this->setInvoice( $objInvoice );
-
-		$objOrder = new Order_Model();
-		$objOrder->obterOrder( $row["id_order"] );
-		$this->setOrder( $objOrder );
 
 		return $this;
 	}

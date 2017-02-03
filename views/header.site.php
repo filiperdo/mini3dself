@@ -9,6 +9,8 @@ if( Session::get('session_order') != null )
 	$objOrderProduct = new Order_product_Model();
 	$totalCart = $objOrderProduct->countOrder_productBySession( Session::get('session_order') );
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,17 +66,55 @@ if( Session::get('session_order') != null )
                     </div>
                     <div class="col-md-5 col-sm-4 col-xs-12">
                         <ul class="social-icon">
-							
-                            <li><span>Siga-nos</span></li>
-                            <li><a href="#" class="fa fa-facebook" style="background:#1c90dd; "></a></li>
-                            <li><a href="#" class="fa fa-twitter" style="background:#1c90dd; "></a></li>
-                            <li><a href="#" class="fa fa-instagram" style="background:#1c90dd; "></a></li>
+							<?php if( Session::get('loggedIn') ) { ?>
+								<li><span>Olá <?php echo Session::get('user_name') ?> <a href="<?=URL?>login/logout">( Sair )</a></span></li>
+								<li><span><a href="<?=URL?>index/minhaconta">Minha conta</span></li>
+							<?php } else { ?>
+								<li><span><a href="" data-toggle="modal" data-target="#modal_login">Login</a></span></li>
+							<?php } ?>
+							<li><span>Siga-nos</span></li>
+                            <li><a href="https://www.youtube.com/channel/UCWXqmeQ_cu9m47LOHXVTfPg/" target="_blank" class="fa fa-facebook" style="background:#1c90dd; "></a></li>
+                            <li><a href="https://www.facebook.com/mini3doficial/?fref=ts" target="_blank" class="fa fa-youtube" style="background:#1c90dd; "></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </header>
         <!-- end header -->
+
+		<!-- Modal -->
+		<div class="modal fade" id="modal_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Login</h4>
+		      </div>
+
+			  <form class="" action="<?=URL?>login/run" method="post">
+			  	  <input type="hidden" name="login_user" value="1">
+
+			      <div class="modal-body">
+					<div class="form-group">
+						<label for="exampleInputEmail1">E-mail</label>
+						<input type="email" class="form-control" name="login" id="exampleInputEmail1" placeholder="E-mail">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Senha</label>
+						<input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Senha">
+					</div>
+			      </div>
+
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			        <button type="button" class="btn btn-primary">Login</button>
+			      </div>
+
+			  </form>
+
+		    </div>
+		  </div>
+		</div>
 
     	<!-- start navigation -->
 		<nav class="navbar navbar-default templatemo-nav" role="navigation">

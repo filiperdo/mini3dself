@@ -29,7 +29,14 @@ class Login_Model extends Model
             Session::set( 'loggedIn', true );
             Session::set( 'user_name', $data['name']);
             Session::set( 'userid', $data['id_user'] );
-            header('location: ../post');
+
+            if(isset($_POST['login_user']))
+            {
+                header('location: ../');
+            }
+            else {
+                header('location: ../post');
+            }
         }
         else
         {
@@ -42,7 +49,7 @@ class Login_Model extends Model
     {
     	Session::init();
     	Session::destroy();
-    	header('location: ../login');
+    	header('location: ../');
     }
 
 }

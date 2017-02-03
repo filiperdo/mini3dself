@@ -18,7 +18,7 @@
 					<input type="text" class="form-control" required="required" name="like" id="busca">
 					<span class="input-group-btn">
 						<button class="btn btn-default" type="submit">
-								<i class="glyphicon glyphicon-search"></i>
+							<i class="glyphicon glyphicon-search"></i>
 						</button>
 					</span>
 				</div>
@@ -36,6 +36,7 @@
 	<thead>
 	<tr>
 		<th>Pedido</th>
+		<th>Enviar para</th>
 		<th>Data</th>
 		<th>Status</th>
 		<th></th>
@@ -44,14 +45,17 @@
 	<tbody>
 	<?php foreach( $this->listarOrder as $order ) { ?>
 	<tr>
-		<td><?php echo $order->getId_order(); ?></td>
-		<td><?php echo Data::formataDataHora($order->getDate()); ?></td>
+		<td><?php echo $order->getId_order() . ' por ' . $order->getUser()->getName() . ' - ' . $order->getUser()->getPhone1() .'<br>' . $order->getUser()->getEmail(); ?></td>
+		<td>
+			<?php echo $order->getUser()->getAdress() . ', ' . $order->getUser()->getNumber() . ' - ' . $order->getUser()->getComplement() . ' - ' . $order->getUser()->getCep(); ?><br>
+			<?php //echo $order->getShip ?>
+		</td>
+		<td><?php echo Data::formatDateShort($order->getDate()); ?></td>
 		<td><span class="<?php echo $order->getOrder_status()->getClass(); ?>"><?php echo $order->getOrder_status()->getDescription(); ?></span></td>
 		<td align="right">
-			<a href="<?php echo URL;?>order/form/<?php echo $order->getId_order();?>" class="btn btn-dark btn-sm"><i class="glyphicon glyphicon-pencil"></i></a>
-			<a href="<?php echo URL;?>order/delete/<?php echo $order->getId_order();?>" class="delete btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></a>
+			<a href="<?php echo URL;?>order/form/<?php echo $order->getId_order();?>" class="btn btn-dark btn-sm"><i class="glyphicon glyphicon-eye-open"></i> Visualizar</a>
 		</td>
-		</tr>
+	</tr>
 	<?php } ?>
 	</tbody>
 </table>
