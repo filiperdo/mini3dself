@@ -389,6 +389,22 @@ class Index extends Controller {
         //echo json_encode(array("valor" => $result->CalcPrecoPrazoResult->Servicos->cServico->Valor));
     }
 
+    public function consultaCep($cep)
+    {
+        $client = new SoapClient('https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl');
+
+        $arguments = array('consultaCEP' => array('cep' => $cep));
+        $options = array('location' => 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente');
+        $function = 'consultaCEP';
+        header("Content-type: application/json; charset=utf-8");
+        try {
+            $result = $client->__soapCall($function, $arguments, $options);
+            echo json_encode($result->return);
+        } catch (Exception $e) {
+            echo json_encode(array('erro' => true));
+        }
+    }
+
     /*
     public function addCart( $id_product )
     {

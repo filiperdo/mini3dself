@@ -61,7 +61,7 @@
 												<input type="text" name="cep_entrega" id="cep_entrega" placeholder="CEP" class="form-control" required="required" value="" />
 											</div>
 											<div class="col-md-4 col-sm-4 col-xs-12">
-												<button type="button" onclick="calcularFrete()" class="btn btn-primary col-md-12" name="button">Calcular</button>
+												<button type="button" id="btnCalcularFrete" class="btn btn-primary col-md-12" name="button">Calcular</button>
 											</div>
 										</div>
 
@@ -91,7 +91,7 @@
 												<input type="text" name="city" id="city" placeholder="Cidade" class="form-control col-md-7 col-xs-12" required="required" value="" />
 											</div>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<select class="form-control" required="required" name="state">
+												<select class="form-control" required="required" name="state" id="state">
 													<option value="">Estado</option>
 													<option value="ac">Acre</option>
 													<option value="al">Alagoas</option>
@@ -217,8 +217,13 @@ PagSeguroDirectPayment.getPaymentMethods({
 	var valorTotal;
 
 	$('#cep_entrega').on('blur',function(){
-		//alert('teste');
 		calcularFrete();
+		buscaCep()
+	});
+
+	$('#btnCalcularFrete').on('click',function(){
+		calcularFrete();
+		buscaCep()
 	});
 
 	function calcularFrete()
@@ -255,5 +260,24 @@ PagSeguroDirectPayment.getPaymentMethods({
 		$('#exibeTotal').html('R$ ' + valorTotal.toString().replace('.', ','));
 		$('#linhaFrete').css('display', '');
 	}
+
+	function buscaCep() {
+		$.post('<?php echo URL . 'index/consultaCep/';?>' + $('#cep_entrega').val(), function(result){
+			if (result.erro) {
+				$("#adress").val("");
+				$("#district").val("");
+				$("#city").val("");
+				$("#state").val("");
+				alert("CEP não encontrado");
+			} else {
+				$("#adress").val(result.end);
+				$("#district").val(result.bairro);
+				$("#city").val(result.cidade);
+				$("#state").val(result.uf.toLowerCase());
+			}
+			$("#number").focus();
+		});
+	}
+
 </script>
 <!-- script end -->
