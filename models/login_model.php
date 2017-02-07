@@ -35,7 +35,7 @@ class Login_Model extends Model
                 header('location: ../');
             }
             else {
-                header('location: ../post');
+                header('location: ../order');
             }
         }
         else

@@ -80,6 +80,24 @@
 </div>
 
 </div>
+
+<div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
+	<div class="row"><h2>Fotos do cliente:</h2></div>
+	<?php foreach ($this->order_product->listarOrder_productByOrder($this->obj->getId_order()) as $order_produt) { ?>
+
+	<div class="row">
+		<p>Produto: <?php echo $order_produt->getProduct()->getId_product(); ?></p>
+		<?php for($i=1; $i<4; $i++) { ?>
+		<div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
+			<a href="<?=URL?>public/img/user/<?php echo $order_produt->getPath().'/img-'.$i.'.jpg';?>" target="_blank">
+				<img src="<?=URL?>public/img/user/<?php echo $order_produt->getPath().'/img-'.$i.'.jpg';?>" alt="">
+			</a>
+		</div>
+		<?php } ?>
+	</div>
+	<?php } ?>
+</div>
+
 </div>
 
 </form>

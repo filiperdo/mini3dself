@@ -43,13 +43,13 @@
     <script src="<?php echo URL; ?>public/js/jquery.min.js"></script>
     <link href="<?php echo URL; ?>public/css/bootstrap.css" rel="stylesheet">
     <script src="<?php echo URL; ?>public/js/bootstrap.min.js"></script>
-	
+
     <script src="<?php echo URL; ?>public/js/jquery.validate.min.js"></script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="../js/html5shiv.js"></script>
     <![endif]-->
-    
+
     <script>
 		$().ready(function() {
 			var container = $('div.container');
@@ -64,13 +64,13 @@
   </head>
   <body>
     <div class="container">
-	  
+
       <form action="<?php echo URL?>login/run" class="form-signin" method="post" id="formLogin">
       <input type="hidden" name="action" value="autenticarUsuario">
-        <h2 class="form-signin-heading" align="center"><!-- <img src="../img/img_logo.png" width="216" height="89" alt=" "> --></h2>
-        
-		<?php if (isset($_GET['st'])) { $objAlerta = new Alerta($_GET['st']); } ?> 
-		
+        <p class="form-signin-heading" align="center"><img src="<?=URL?>public/img/logo-3dself.png" width="250"  alt=" "></p>
+
+		<?php if (isset($_GET['st'])) { $objAlerta = new Alerta($_GET['st']); } ?>
+
         <input type="text" name="login" class="form-control input-block-level" placeholder="Login" required>
         <input type="password" name="password" class="form-control input-block-level" placeholder="Senha" required>
         <button class="btn btn-large btn-success" type="submit">Entrar</button>

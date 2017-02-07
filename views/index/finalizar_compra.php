@@ -131,9 +131,19 @@
 									<div class="" id="exibeResumoFrete">
 										Preencha o campo CEP para calcular o valor e prazo do frete.
 									</div>
-									<div class="" id="exibeOpcoesFrete" style="display: none;">
-										<input type="radio" name="opcaoFrete" value="" id="idFretePAC" /><div id="htmlPac"></div><br />
-										<input type="radio" name="opcaoFrete" value="" id="idFreteSEDEX" /><div id="htmlSedex"></div>
+									<div class="checkbox" id="exibeOpcoesFrete" style="display: none;">
+										<div class="row">
+											<div class="col-md-1" style="text-align:right">
+												<input type="radio" name="opcaoFrete" value="" id="idFretePAC" />
+											</div>
+											<div class="col-md-11"><span id="htmlPac"></span></div>
+										</div>
+										<div class="row" style="margin-top:4px">
+											<div class="col-md-1" style="text-align:right">
+												<input type="radio" name="opcaoFrete" value="" id="idFreteSEDEX" />
+											</div>
+											<div class="col-md-11"><span id="htmlSedex"></span></div>
+										</div>
 									</div>
 									<h4 style="padding-top:20px">3. FORMAS DE PAGAMENTO</h4>
 									<p>Transferência bancária</p>
@@ -155,7 +165,7 @@
 										<?php $tamanho = $order_produt->getSize() == 15 ? '15,5' : $order_produt->getSize(); ?>
 										<tr>
 											<td><img src="<?php echo URL;?>public/img/product/<?php echo $order_produt->getProduct()->getPath();?>/thumb/img-1.jpg" width="40px" alt=""></td>
-											<td align="left"><?php echo $order_produt->getProduct()->getName().' ('.$tamanho.'cm)'; ?></td>
+											<td align="left"><a href="" data-toggle="modal" data-target="#myModal"><?php echo $order_produt->getProduct()->getName().' ('.$tamanho.'cm)'; ?></a></td>
 			                                <td ><?php echo $order_produt->getQuantity().'x'; ?></td>
 			                                <td ><?php echo 'R$ ' . Data::formataMoeda($order_produt->getPrice()*$order_produt->getQuantity()); ?></td>
 											<?php $total += $order_produt->getPrice()*$order_produt->getQuantity(); ?>
@@ -191,22 +201,24 @@
 </section>
 <!-- end team -->
 
-<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
-
-<script type="text/javascript">
-PagSeguroDirectPayment.getPaymentMethods({
-	amount: <?php echo $total;?>
-	success: function(response) {
-		console.log(response);
-	},
-	error: function(response) {
-		//tratamento do erro
-	},
-	complete: function(response) {
-		//tratamento comum para todas chamadas
-	}
-});
-</script>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- script start-->
 <script type="text/javascript">
@@ -233,7 +245,7 @@ PagSeguroDirectPayment.getPaymentMethods({
 			valorFreteSedex = Number(result.valor_sedex.replace(',', '.'));
 
 			$('#htmlPac').html('PAC - Em média '+ result.prazo_pac +' dia(s) úteis R$ ' + result.valor_pac);
-			$('#htmlPac').html('SEDEX - Em média '+ result.prazo_sedex +' dia(s) úteis R$ ' + result.valor_sedex);
+			$('#htmlSedex').html('SEDEX - Em média '+ result.prazo_sedex +' dia(s) úteis R$ ' + result.valor_sedex);
 
 			$('#exibeOpcoesFrete').css('display', '');
 		});

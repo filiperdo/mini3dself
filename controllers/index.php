@@ -42,7 +42,7 @@ class Index extends Controller {
 
         require_once 'models/user_model.php';
         $objUser = new User_Model();
-        $this->view->user = $objUser->obterUser( Session::get('userid') );        
+        $this->view->user = $objUser->obterUser( Session::get('userid') );
 
         require_once 'models/order_model.php';
         $objOrder = new Order_Model();
@@ -403,6 +403,13 @@ class Index extends Controller {
         } catch (Exception $e) {
             echo json_encode(array('erro' => true));
         }
+    }
+
+    public function testeEm()
+    {
+        include_once 'util/email.class.php';
+        $objEmail = new Email();
+        $objEmail->sendOrder(52);
     }
 
     /*

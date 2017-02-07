@@ -12,7 +12,7 @@ class User extends Controller {
 	*/
 	public function index()
 	{
-		$this->view->title = "User";
+		$this->view->title = "Clientes";
 		$this->view->listarUser = $this->model->listarUser();
 
 		$this->view->render( "header" );

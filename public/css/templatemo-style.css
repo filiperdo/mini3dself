@@ -12,14 +12,15 @@ body
 		overflow-x: hidden; /* prevent horizontal scrollbar from appearing */
 	}
 a {
-	color: #47C6F8;
+	color: #1386B5;
+}
+a:hover {
+	color: #333;
 }
 .teste{
 	border:1px solid #f00;
 }
-a:hover {
-	color: #0FF;
-}
+
 
 /* start h2 */
 h2

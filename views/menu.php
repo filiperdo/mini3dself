@@ -6,5 +6,5 @@ $menu = array(
 	"category"				=> array("label" => "Categorias", "icon" => "fa fa-cubes"),
 	"product"				=> array("label" => "Produtos", "icon" => "fa fa-cube"),
 	"shipment"				=> array("label" => "Entregas", "icon" => "fa fa-truck"),
-	"user"					=> array("label" => "Usuários", "icon" => "fa fa-users"),
+	"user"					=> array("label" => "Clientes", "icon" => "fa fa-users"),
 );
