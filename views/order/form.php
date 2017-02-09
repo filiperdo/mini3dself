@@ -87,10 +87,10 @@
 
 	<div class="row">
 		<p>Produto: <?php echo $order_produt->getProduct()->getId_product(); ?></p>
-		<?php for($i=1; $i<4; $i++) { ?>
+		<?php for($i=1; $i<=4; $i++) { ?>
 		<div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
 			<a href="<?=URL?>public/img/user/<?php echo $order_produt->getPath().'/img-'.$i.'.jpg';?>" target="_blank">
-				<img src="<?=URL?>public/img/user/<?php echo $order_produt->getPath().'/img-'.$i.'.jpg';?>" alt="">
+				<img src="<?=URL?>public/img/user/<?php echo $order_produt->getPath().'/img-'.$i.'.jpg';?>" width="100%" alt="">
 			</a>
 		</div>
 		<?php } ?>

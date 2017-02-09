@@ -1,5 +1,9 @@
 
-
+<style media="screen">
+    .img-modelos img{
+        z-index:100;
+    }
+</style>
 <!-- start slider -->
 <!-- Reduzir slide para paginas internas -->
 <section id="pagina">
@@ -18,19 +22,17 @@
 				<div class="produto-item">
 					<div class="row">
 						<div class="col-md-6 col-sm-6 ">
-							<img src="<?php echo URL; ?>public/img/product/<?php echo $this->product->getPath(); ?>/img-1.jpg" class="img-responsive" alt="team img 1">
+							<img src="<?php echo URL; ?>public/img/product/<?php echo $this->product->getPath(); ?>/img-1.jpg" second-image="<?php echo URL; ?>public/img/product/<?php echo $this->product->getPath(); ?>/img-1.jpg" class="img-responsive second-image" alt="team img 1">
 						</div>
 						<div class="col-md-6 col-sm-6">
-							<img src="<?php echo URL; ?>public/img/product/<?php echo $this->product->getPath(); ?>/img-2.jpg" class="img-responsive" alt="team img 1">
+							<img src="<?php echo URL; ?>public/img/product/<?php echo $this->product->getPath(); ?>/img-2.jpg" second-image="<?php echo URL; ?>public/img/product/<?php echo $this->product->getPath(); ?>/img-2.jpg" class="img-responsive second-image" alt="team img 1">
 						</div>
 					</div>
 
-					<div class="row" style="margin-top:25px">
+					<div class="row img-modelos" style="margin-top:25px">
 						<?php for ($i=1; $i <=4; $i++) { ?>
 							<div class="col-md-3">
-								<a data-src="<?php echo URL;?>public/img/product/<?php echo $this->product->getPath().'/img-'.$i.'.jpg'; ?>">
-									<img src="<?php echo URL?>public/img/product/<?php echo $this->product->getPath().'/thumb/img-'.$i.'.jpg'; ?>" width="100%" alt="<?php echo 'Imagem ' . $this->product->getName();?>">
-								</a>
+								<img class="second-image" src="<?php echo URL?>public/img/product/<?php echo $this->product->getPath().'/thumb/img-'.$i.'.jpg'; ?>" data-image-opened="<?php echo URL;?>public/img/product/<?php echo $this->product->getPath().'/img-'.$i.'.jpg'; ?>" width="100%" alt="<?php echo 'Imagem ' . $this->product->getName();?>">
 							</div>
 						<?php } ?>
 					</div>
@@ -41,7 +43,7 @@
 				<div class="team-product">
     				<div class="team-des">
 						<form class="" action="<?=URL.'index/addCart/'.$this->product->getId_product();?>" method="post" enctype="multipart/form-data">
-							<input type="hidden" name="price" id="price" value="200">
+							<input type="hidden" name="price" id="price" value="299">
 							<div class="row" style="margin-bottom:20px">
 								<div class="col-md-6 col-sm-6 col-xs-12">
 		    					<h3><?php echo $this->product->getName(); ?></h3>
@@ -73,17 +75,17 @@
                                 <div class="col-md-3 col-sm-3 col-xs-6">
 									<div class="foto-manual"><img id="foto-user-2" src="<?php echo URL?>public/img/foto-manual2.jpg" width="100%" alt="<?php echo 'Nome';?>"></div>
                                     <p>Perfil direito</p>
-                                    <input name="fileUpload2" id="2" class="btn-foto-user" type="file" />
+                                    <input name="fileUpload2" id="2" class="btn-foto-user" required type="file" />
                                 </div>
 								<div class="col-md-3 col-sm-3 col-xs-6">
 									<div class="foto-manual"><img id="foto-user-3" src="<?php echo URL?>public/img/foto-manual3.jpg" width="100%" alt="<?php echo 'Nome';?>"></div>
                                     <p>Perfil esquerdo</p>
-                                    <input name="fileUpload3" id="3" class="btn-foto-user" type="file" />
+                                    <input name="fileUpload3" id="3" class="btn-foto-user" required type="file" />
                                 </div>
 								<div class="col-md-3 col-sm-3 col-xs-6">
 									<div class="foto-manual"><img id="foto-user-4" src="<?php echo URL?>public/img/foto-manual4.jpg" width="100%" alt="<?php echo 'Nome';?>"></div>
                                     <p>Foto da nuca</p>
-                                    <input name="fileUpload4" id="4" class="btn-foto-user" type="file" />
+                                    <input name="fileUpload4" id="4" class="btn-foto-user" required type="file" />
                                 </div>
                             </div><!-- row -->
 
@@ -123,4 +125,34 @@
 		$($target).attr('src',URL+'public/img/img-ok.jpg');
 	});
 
+</script>
+
+
+<!-- Mini lightbox
+================================================ -->
+<script src="<?php echo URL;?>util/mini-lightbox/mini-lightbox.js"></script>
+<link rel="stylesheet" href="<?php echo URL;?>util/mini-lightbox/mini-lightbox.css">
+<script>
+  MiniLightbox.customClose = function () {
+      var self = this;
+      self.img.classList.add("animated", "fadeOutDown");
+      setTimeout(function () {
+          self.box.classList.add("animated", "fadeOut");
+          setTimeout(function () {
+              self.box.classList.remove("animated", "fadeOut");
+              self.img.classList.remove("animated", "fadeOutDown");
+              self.box.style.display = "none";
+          }, 500);
+      }, 500);
+      return false;
+  };
+
+  MiniLightbox.customOpen = function () {
+      this.box.classList.add("animated", "fadeIn");
+      this.img.classList.add("animated", "fadeInUp");
+  };
+
+  window.onload = function () {
+      MiniLightbox(".second-image");
+  };
 </script>
