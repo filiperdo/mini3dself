@@ -33,12 +33,13 @@ if( Session::get('session_order') != null )
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="<?php echo URL; ?>public/css/templatemo-style.css">
 		<script src="<?php echo URL; ?>public/js/jquery.js"></script>
-
+		
         <script src="<?php echo URL; ?>public/js/jquery.singlePageNav.min.js"></script>
 		<script src="<?php echo URL; ?>public/js/typed.js"></script>
 		<script src="<?php echo URL; ?>public/js/wow.min.js"></script>
 		<script src="<?php echo URL; ?>public/js/custom.js"></script>
 		<script src="<?php echo URL; ?>public/js/bootstrap.min.js"></script>
+
 	</head>
 	<body id="top">
 

@@ -22,6 +22,7 @@ class Order_Model extends Model
 	private $session;
 	private $total;
 	private $shipment;
+	private $phone;
 
 	public function __construct()
 	{
@@ -34,6 +35,7 @@ class Order_Model extends Model
 		$this->session = '';
 		$this->total = '';
 		$this->shipment = '';
+		$this->phone = '';
 	}
 
 	/**
@@ -74,6 +76,11 @@ class Order_Model extends Model
 		$this->shipment = $shipment;
 	}
 
+	public function setPhone( $phone )
+	{
+		$this->phone = $phone;
+	}
+
 	/**
 	* Metodos get's
 	*/
@@ -110,6 +117,11 @@ class Order_Model extends Model
 	public function getShipment()
 	{
 		return $this->shipment;
+	}
+
+	public function getPhone()
+	{
+		return $this->phone;
 	}
 
 	/**
@@ -265,6 +277,7 @@ class Order_Model extends Model
 		$this->setSession($row['session']);
 		$this->setTotal( $row['total'] );
 		$this->setShipment( $row['id_shipment'] );
+		$this->setPhone( $row['phone'] );
 
 		return $this;
 	}

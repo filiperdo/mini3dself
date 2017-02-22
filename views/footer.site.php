@@ -4,9 +4,10 @@
     <div class="row contact-into">
       <div class="col-md-12">
         <h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span>PEÇA JÁ O SEU</span></h2>
+        <?php if (isset($_GET["st"])) { $objAlert = new Alerta($_GET["st"]); } ?>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.2s">
-        <form action="#" method="post">
+        <form action="<?php echo URL?>index/sendForm" method="post">
           <label>NOME</label>
           <input name="fullname" type="text" class="form-control" id="fullname">
           <label>E-MAIL</label>

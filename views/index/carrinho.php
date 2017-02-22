@@ -65,10 +65,12 @@
 								</fieldset>
 							</div>
 
-							<div class="col-md-7 col-sm-7 col-xs-12" data-wow-offset="50" data-wow-delay="0.5s" style="text-align:right">
+							<div class="col-md-12" data-wow-offset="50" data-wow-delay="0.5s" style="text-align:right">
 
-								<p align="right"><a href="<?=URL?>index/finalizar_compra" class="btn btn-success">Prosseguir para verificação</a>
-								<a href="<?php echo URL?>index/categoria/" class="btn btn-info">Escolher mais modelos</a></p>
+								<p align="right">
+								<a href="<?php echo URL?>index/categoria/" class="btn btn-info btn-lg">Escolher mais modelos</a>
+								<a href="<?=URL?>index/finalizar_compra" class="btn btn-success btn-lg">Finalizar compra</a>
+								</p>
 							</div>
 						</div>
 

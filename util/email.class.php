@@ -19,25 +19,25 @@ class Email
 
         // Define os dados do servidor e tipo de conexão
         // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-        $this->mail->isSMTP(true); // Define que a mensagem será SMTP
+        $this->mail->isSMTP(); // Define que a mensagem será SMTP
 
         $this->mail->SMTPAuth = true; // Usar autenticação SMTP (obrigatório para smtp.seudomínio.com.br)
-        $this->mail->Mailer = 'smtp';
+        //$this->mail->Mailer = 'smtp';
 
         $this->mail->Host = 'mail.miniaturafacil.com.br'; // Endereço do servidor SMTP (caso queira utilizar a autenticação, utilize o host smtp.seudomínio.com.br)
-        $this->mail->Username = 'noreplay@miniaturafacil.com.br'; // Usuário do servidor SMTP (endereço de email)
-        $this->mail->Password = 'Inicial@123'; // Senha do servidor SMTP (senha do email usado)
+        $this->mail->Username = 'noreply@miniaturafacil.com.br'; // Usuário do servidor SMTP (endereço de email)
+        $this->mail->Password = 'ndtidis@23'; // Senha do servidor SMTP (senha do email usado)
      	//$this->mail->SMTPSecure = 'ssl';
-     	//$this->mail->Port = 465; // 587
+     	$this->mail->Port = 587; //
 
         $this->mail->isHTML(true);
 
-		$this->mail->SMTPDebug = 0;
-		//$this->mail->Port = AWS_PORT; // 587
+		//$this->mail->SMTPDebug = 1;
 
         // Define o remetente
         // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
         $this->mail->From = "noreply@miniaturafacil.com.br"; // Seu e-mail
+        $this->mail->Sender = "noreply@miniaturafacil.com.br";
         $this->mail->FromName = "3D SELFIE"; // Seu nome
 
         $this->configurarDadosPadroes();
@@ -88,13 +88,39 @@ class Email
 
     }
 
+    public function sendContactForm()
+    {
+        $this->mail->Subject = "Contato - 3D Selfie!";
+        $this->mail->AddAddress( 'contato@miniaturafacil.com.br' );
+
+        // Envia uma copia do e-mail
+        $this->mail->addBCC( 'filiperdo@gmail.com' );
+
+        // Configura o corpo do email
+        // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+        $this->mail->Body  = "Oi <strong>" . 'Maicon' . "</strong>, tudo bem?<br/>";
+        $this->mail->Body .= "Você recebeu uma mensagem do formulario de contat.<br/><br/>";
+
+        $this->mail->Body .= '<strong>Nome:</strong>' .$_POST['fullname']. '<br>';
+        $this->mail->Body .= '<strong>E-mail:</strong>' .$_POST['email']. '<br>';
+        $this->mail->Body .= '<strong>Mensagem:</strong>' .$_POST['message']. '<br>';
+
+
+        $this->mail->Body .= $this->corpoRodape;
+        //echo $this->mail->Body;
+        $enviar = $this->enviar();
+
+        return $enviar;
+
+    }
+
     public function sendOrder($id_order)
     {
-    	$this->mail->Subject = "Pedido 3D Selfie";
-    	$this->mail->AddAddress( 'filiperdo@gmail.com' );
+    	$this->mail->Subject = "Novo Pedido - 3D Selfie!";
+    	$this->mail->AddAddress( 'contato@miniaturafacil.com.br' );
 
     	// Envia uma copia do e-mail
-    	//$this->mail->addBCC( '' );
+    	$this->mail->addBCC( 'filiperdo@gmail.com' );
 
         include_once 'models/order_product_model.php';
         $objOrderProduct = new Order_product_Model();
@@ -149,8 +175,7 @@ class Email
      */
     public function enviarSenhaRecuperada( User_Model $user )
     {
-
-    	$this->mail->Subject = "Robo3D - Senha!";
+    	$this->mail->Subject = "3D Selfie - Senha!";
     	$this->mail->AddAddress( $user->getEmail() );
 
     	// Configura o corpo do email
@@ -168,7 +193,6 @@ class Email
     	$enviar = $this->enviar();
 
     	return $enviar;
-
     }
 
 
@@ -178,7 +202,7 @@ class Email
      */
     public function teste_envio()
     {
-    	$this->mail->Subject = "Robo3D - Teste!";
+    	$this->mail->Subject = "Novo Pedido - 3D Selfie!";
     	$this->mail->AddAddress( 'filiperdo@gmail.com' );
 
     	// Configura o corpo do email
@@ -186,7 +210,7 @@ class Email
     	$this->mail->Body  = "Oi <br/>";
 
 
-    	$this->mail->Body .= $this->corpoRodape;
+    	//$this->mail->Body .= $this->corpoRodape;
 
     	$enviar = $this->enviar();
 

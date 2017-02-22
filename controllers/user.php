@@ -97,6 +97,12 @@ class User extends Controller {
 		Session::destroy('path_photo');
 		Session::destroy('session_order');
 
+		// Envia o e-mail do pedido para o cliente
+		include_once 'util/email.class.php';
+        $objEmail = new Email();
+        $objEmail->sendOrder( $_POST["id_order"] );
+		// ---------------------------------------
+
 		$msg = base64_encode( "OPERACAO_SUCESSO" );
         header("location: " . URL . "index/minhaconta/?st=".$msg);
 

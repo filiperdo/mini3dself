@@ -137,13 +137,15 @@ class Index extends Controller {
 
         // Verifica se ja foi gravado uma order para esta sessao
         $objOrder->obterOrderBySession( Session::get('session_order') );
+        Session::set('phone_user', $_POST['phone1']);
 
         if( $objOrder->getId_order() == '' )
         {
             // Insere os dados do pedido ==========================
             $data_order = array(
                 'session'           => Session::get('session_order'),
-                'id_order_status'   => 1
+                'id_order_status'   => 1,
+                'phone'             => Session::get('phone_user')
             );
 
             if( !$id_order = $this->model->db->insert( "order", $data_order) )
@@ -405,11 +407,13 @@ class Index extends Controller {
         }
     }
 
-    public function testeEm()
+    public function sendForm()
     {
         include_once 'util/email.class.php';
         $objEmail = new Email();
-        $objEmail->sendOrder(52);
+        $objEmail->sendContactForm();
+
+        header("location: " . URL . "index/#contact?st=OPERACAO_SUCESSO");
     }
 
     /*

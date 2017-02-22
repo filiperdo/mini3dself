@@ -36,6 +36,7 @@
 	<thead>
 	<tr>
 		<th>Pedido</th>
+		<th>Telefone</th>
 		<th>Enviar para</th>
 		<th>Data</th>
 		<th>Status</th>
@@ -46,6 +47,7 @@
 	<?php foreach( $this->listarOrder as $order ) { ?>
 	<tr>
 		<td><?php echo $order->getId_order() . ' por ' . $order->getUser()->getName() . ' - ' . $order->getUser()->getPhone1() .'<br>' . $order->getUser()->getEmail(); ?></td>
+		<td><?php echo $order->getPhone(); ?></td>
 		<td>
 			<?php echo $order->getUser()->getAdress() . ', ' . $order->getUser()->getNumber() . ' - ' . $order->getUser()->getComplement() . ' - ' . $order->getUser()->getCep(); ?><br>
 			<?php //echo $order->getShip ?>

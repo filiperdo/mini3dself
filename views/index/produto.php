@@ -89,6 +89,15 @@
                                 </div>
                             </div><!-- row -->
 
+                            <div class="row" style="margin-top:20px">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="phone1" class=" control-label">Telefone / Whatsapp</label>
+                                        <input type="text" name="phone1" id="phone1" required="required" class="form-control mask-tel" value="<?=Session::get('phone_user')?>" />
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row" style="margin-top:25px">
                                 <div class="col-md-12">
                                     <input type="hidden" id="idProduct" value="<?php echo $this->id; ?>">
