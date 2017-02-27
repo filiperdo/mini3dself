@@ -49,10 +49,11 @@
 		                        <p><?php echo $this->user->getCep(); ?></p>
 		                        <p><?php echo $this->user->getDistrict().' - '.$this->user->getCity().' - '.$this->user->getState(); ?></p>
 							</div>
-							<div class="col-md-6 col-sm-6 col-xs-12">
+							<div class="col-md-6 col-sm-6 col-xs-12">								
 								<h3 style="padding-top:20px">Dados para o pagamento	</h3>
-								<p>Banco - Itaú <br> <strong>AG:</strong> 8255 <br><strong>C/C:</strong> 18950-1</p>
-								<p>Rodrigo Maciel de Paula <br> <strong>CNPJ:</strong> 24.151.688.1000/79</p>
+								<p>Transferência bancária</p>
+								<p>Banco - Itaú <br> <strong>AG:</strong> 0263 <br><strong>C/C:</strong> 79762-3</p>
+								<p>Maicon Santana dos Santos <br> <strong>CPF:</strong> 352.828.218-50</p>
 							</div>
 						</div>
 
